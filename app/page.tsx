@@ -8,7 +8,6 @@ import { ChevronDown, Menu, HomeIcon, Calendar, Users, BookOpen, X, ChevronLeft,
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { usePathname } from "next/navigation"
 import Autoplay from "embla-carousel-autoplay"
 import { MotionDiv } from "@/components/ui/motion-div"
 import { useState } from 'react'
@@ -392,7 +391,7 @@ export default function Home() {
               </div>
               <div className="mt-12 md:mt-16 text-center">
                 <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                  The Programmer's Club at Saboo Siddik College of Engineering fosters tech skills through hackathons, workshops, and networking, creating a collaborative community. (Since 2016)
+                  The Programmer&apos;s Club at Saboo Siddik College of Engineering fosters tech skills through hackathons, workshops, and networking, creating a collaborative community. (Since 2016)
                 </p>
                 <Button 
                   className="
