@@ -8,7 +8,6 @@ import { ChevronDown, Menu, HomeIcon, Calendar, Users, BookOpen, X, ChevronLeft,
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { usePathname } from "next/navigation"
 import Autoplay from "embla-carousel-autoplay"
 import { MotionDiv } from "@/components/ui/motion-div"
 import { useState } from 'react'
