@@ -46,7 +46,7 @@ function CarouselSection() {
           {[
             "/assets/carousel/event1.png",
             "/assets/carousel/event2.png",
-            "/assets/carousel/event3.jpg"
+            "/assets/carousel/event3.png"
           ].map((imagePath, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
@@ -56,6 +56,7 @@ function CarouselSection() {
                   width={800}
                   height={600}
                   className="w-full h-auto aspect-[5/4] object-cover rounded-xl"
+                  priority={index === 0}
                 />
               </div>
             </CarouselItem>
