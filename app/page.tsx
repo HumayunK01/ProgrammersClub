@@ -8,9 +8,18 @@ import { ChevronDown, Menu, HomeIcon, Calendar, Users, BookOpen, X, ChevronLeft,
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { usePathname } from "next/navigation"
 import Autoplay from "embla-carousel-autoplay"
 import { MotionDiv } from "@/components/ui/motion-div"
 import { useState } from 'react'
+
+interface Event {
+  title: string;
+  date: string;
+  description: string;
+  image: string;
+  tags: string[];
+}
 
 function CarouselSection() {
   return (
@@ -58,7 +67,7 @@ function CarouselSection() {
   )
 }
 
-function EventsCarousel({ events }) {
+function EventsCarousel({ events }: { events: Event[] }) {
   // State management for carousel
   const [currentIndex, setCurrentIndex] = useState(0)
   
@@ -67,11 +76,11 @@ function EventsCarousel({ events }) {
   const [touchEnd, setTouchEnd] = useState(0)
 
   // Touch event handlers
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX)
   }
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.touches[0].clientX)
   }
 
@@ -391,7 +400,7 @@ export default function Home() {
               </div>
               <div className="mt-12 md:mt-16 text-center">
                 <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                  The Programmer&apos;s Club at Saboo Siddik College of Engineering fosters tech skills through hackathons, workshops, and networking, creating a collaborative community. (Since 2016)
+                  The Programmer's Club at Saboo Siddik College of Engineering fosters tech skills through hackathons, workshops, and networking, creating a collaborative community. (Since 2016)
                 </p>
                 <Button 
                   className="
