@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Programmers Club 🚀
 
-## Getting Started
+A sleek and responsive landing page built with Next.js 14, featuring dynamic sections and smooth scrolling effects.
 
-First, run the development server:
+## 🖥️ Live Preview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![Website Preview](public/preview.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> 💡 Live demo: [View Demo](https://programmersclub.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🎨 Modern, responsive design
+- 📱 Smart navbar with scroll detection
+- 🌈 Custom background effects
+- 📑 Multiple content sections (Hero, About, Events, Team)
+- 🔧 Built with TypeScript for type safety
+- 🎭 Smooth animations and transitions
+- 📱 Mobile-first approach
+- 🔍 SEO optimized
+- 🚀 Fast page loads
+- 🌐 Cross-browser compatible
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 14
+- React
+- TypeScript
+- CSS Modules
+- Framer Motion (for animations)
+- ESLint (code quality)
+- Prettier (code formatting)
+- Vercel (deployment)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Minimalist and clean UI
+- Custom color palette
+- Responsive typography
+- Modern card designs
+- Interactive hover effects
+- Smooth scroll behavior
 
-## Deploy on Vercel
+## 🚀 Getting Started
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/HumayunK01/programmersclub.git
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) to view the site
+
+## 📁 Components Overview
+
+- **Navbar**: Responsive navigation with scroll-based styling
+- **Background**: Wrapper component for visual effects
+- **Sections**:
+  - Hero: Main landing section
+  - About: Project/company information
+  - Events: Events showcase
+  - Team: Team members display
+- **Footer**: Site footer with links
+
+## 💡 Usage Tips
+
+- Use the navigation menu to jump to different sections
+- Explore hover effects on interactive elements
+- Check out the responsive design on different devices
+- Experience smooth scrolling animations
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+Copyright © 2024 [Humayun Khan](https://devhumayun.vercel.app/). <br />
+This project is licensed under the MIT License.
+
+## 📧 Contact
+
+Your Name - [humayunk.pvt@gmail.com](mailto:humayunk.pvt@gmail.com)
+
+**[⬆ back to top](#programmers-club-)**
