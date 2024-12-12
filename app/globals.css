@@ -12,10 +12,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Inter', Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -111,4 +107,26 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: #7091E6 #f1f1f1;
+}
+
+/* Add these to your existing CSS */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Optional: Add smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improve animation performance */
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
