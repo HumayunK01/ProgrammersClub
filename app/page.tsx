@@ -10,7 +10,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import Autoplay from "embla-carousel-autoplay"
 import { MotionDiv } from "@/components/ui/motion-div"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Typewriter } from "@/components/ui/typewriter"
+import { ClientOnly } from "@/components/ui/client-only"
 
 interface Event {
   title: string;
@@ -68,12 +70,29 @@ function CarouselSection() {
 }
 
 function EventsCarousel({ events }: { events: Event[] }) {
-  // State management for carousel
+  // Move state declarations after useEffect
+  const [mounted, setMounted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-  
-  // Touch handling states
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+
+  useEffect(() => {
+    // Delay setting mounted to ensure client-side hydration is complete
+    const timer = setTimeout(() => {
+      setMounted(true)
+    }, 0)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Show a placeholder or loading state while mounting
+  if (!mounted) {
+    return (
+      <div className="relative w-full max-w-4xl mx-auto h-[470px] md:h-[430px] bg-gray-100 animate-pulse rounded-lg">
+        {/* Optional loading indicator */}
+      </div>
+    )
+  }
 
   // Touch event handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -205,7 +224,7 @@ function EventsCarousel({ events }: { events: Event[] }) {
   )
 }
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       {/* Navigation */}
@@ -299,20 +318,24 @@ export default function Home() {
         {/* Rest of your content sections */}
         <div className="relative z-10">
           {/* Hero Section */}
-          <section id="hero" className="container mx-auto px-[30px] md:px-[50px] overflow-hidden py-9 md:py-14 lg:py-16 mt-4">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <section id="hero" className="container mx-auto px-[30px] md:px-[50px] overflow-hidden py-4 md:py-8 lg:py-10 mt-4">
+            <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
               <MotionDiv 
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className="space-y-6 md:space-y-8 text-center"
+                className="space-y-4 md:space-y-6 text-center"
               >
-                <div className="space-y-4 md:space-y-5">
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold drop-shadow-md bg-gradient-to-r from-[#5fc2c9] to-[#3D52A0] text-transparent bg-clip-text">
-                    <span className="block lg:py-4 md:py-4">Programmers' Club</span> 
+                <div className="space-y-2 md:space-y-3">
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold drop-shadow-md bg-gradient-to-r from-[#5fc2c9] to-[#3D52A0] text-transparent bg-clip-text font-mono">
+                    <span className="block py-2 md:py-3">
+                      <ClientOnly>
+                        <Typewriter text="Programmers' Club" />
+                      </ClientOnly>
+                    </span>
                   </h1>
-                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl">
+                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
                     Transforming Skills, Inspiring Innovation, and Creating Tomorrow's Trailblazers!
                   </p>
                 </div>
@@ -442,25 +465,32 @@ export default function Home() {
               <EventsCarousel 
                 events={[
                   {
-                    title: "AI Workshop",
-                    date: "May 15, 2023",
-                    description: "Explore the latest advancements in Artificial Intelligence and Machine Learning.",
-                    image: "/placeholder.svg?text=AI+Workshop",
-                    tags: ["AI", "Workshop", "Tech"]
+                    title: "DSA Workshop",
+                    date: "September 23-25, 2024",
+                    description: " Mastery over key DSA concepts that are crucial for technical interviews and competitive programming.",
+                    image: "/assets/events/event1.png",
+                    tags: ["DSA", "Workshop", "Tech"]
                   },
                   {
-                    title: "Hackathon 2023",
-                    date: "June 1-3, 2023",
-                    description: "48-hour coding challenge to solve real-world problems with innovative solutions.",
-                    image: "/placeholder.svg?text=Hackathon",
-                    tags: ["Hackathon", "Coding", "Innovation"]
+                    title: "CodeFeast 3.0",
+                    date: "September 27, 2024",
+                    description: "An intriguing coding competition for the enthusiastic engineers, 5 intense problems in just 75 minutes!.",
+                    image: "/assets/events/event2.png",
+                    tags: ["Contest", "Coding"]
                   },
                   {
-                    title: "Tech Talk: Future of Web",
-                    date: "July 10, 2023",
-                    description: "Industry experts discuss emerging web technologies and their impact on the future.",
-                    image: "/placeholder.svg?text=Tech+Talk",
-                    tags: ["Web", "Future", "Technology"]
+                    title: "Felicitation Program",
+                    date: "August 5, 2024",
+                    description: "Celebrating the achievements of our outstanding club members and recognizing their dedication.",
+                    image: "/assets/events/event3.png",
+                    tags: ["Ceremony", "Celebration"]
+                  },
+                  {
+                    title: "Err_404 5.0",
+                    date: "March 18-19, 2024",
+                    description: "With a prize pool of 2,50,000, multiple goodies, for coders to showcase their talent.",
+                    image: "/assets/events/event4.png",
+                    tags: ["Hackathon", "Coding"]
                   }
                 ]} 
               />
