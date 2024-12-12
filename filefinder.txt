@@ -1,0 +1,38 @@
+Project Structure Guide
+======================
+
+app/                     # Next.js App Router directory
+├── fonts/              # Custom font files and configurations
+├── favicon.ico         # Website favicon
+├── globals.css         # Global styles and Tailwind imports
+├── layout.tsx          # Root layout (common UI for all pages)
+├── loading.tsx         # Loading UI component
+└── page.tsx            # Home page component
+
+components/             # React components organized by feature and type
+├── home/              # Components specific to home page
+│   ├── carousel/      # Carousel-related components
+│   │   ├── events-carousel.tsx    # Events section carousel
+│   │   └── main-carousel.tsx      # Main hero section carousel
+│   └── sections/      # Main page sections
+│       ├── about.tsx      # About section
+│       ├── events.tsx     # Events section
+│       ├── hero.tsx       # Hero/landing section
+│       └── team.tsx       # Team members section
+├── layout/            # Shared layout components
+│   ├── background.tsx     # Background with gradient and orbs
+│   ├── footer.tsx        # Site footer
+│   └── navbar.tsx        # Navigation bar
+└── ui/               # Reusable UI components
+
+constants/            # Shared data and configuration files
+├── animations.ts     # Animation configurations
+└── events-data.ts    # Events data and types
+
+public/              # Static files served at root URL
+package.json         # Project dependencies and scripts
+tailwind.config.js   # Tailwind CSS configuration
+tsconfig.json        # TypeScript configuration
+
+Note: This project uses Next.js 13+ with App Router, TypeScript, and Tailwind CSS.
+Each component is organized based on its scope (page-specific vs shared) and functionality. 
