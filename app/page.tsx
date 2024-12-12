@@ -318,24 +318,24 @@ export default function Home(): JSX.Element {
         {/* Rest of your content sections */}
         <div className="relative z-10">
           {/* Hero Section */}
-          <section id="hero" className="container mx-auto px-[30px] md:px-[50px] overflow-hidden py-4 md:py-8 lg:py-10 mt-4">
-            <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
+          <section id="hero" className="container mx-auto px-[30px] md:px-[50px] overflow-hidden py-9 md:py-14 lg:py-16 mt-4">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <MotionDiv 
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className="space-y-4 md:space-y-6 text-center"
+                className="space-y-6 md:space-y-8 text-center"
               >
-                <div className="space-y-2 md:space-y-3">
+                <div className="space-y-4 md:space-y-5">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold drop-shadow-md bg-gradient-to-r from-[#5fc2c9] to-[#3D52A0] text-transparent bg-clip-text font-mono">
-                    <span className="block py-2 md:py-3">
+                    <span className="block lg:py-4 md:py-4">
                       <ClientOnly>
                         <Typewriter text="Programmers' Club" />
                       </ClientOnly>
                     </span>
                   </h1>
-                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
+                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl">
                     Transforming Skills, Inspiring Innovation, and Creating Tomorrow's Trailblazers!
                   </p>
                 </div>
