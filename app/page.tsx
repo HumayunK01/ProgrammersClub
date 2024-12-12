@@ -373,7 +373,7 @@ export default function Home(): JSX.Element {
 
       {/* Main Content - Add padding-top to account for fixed header */}
       <main className="pt-16 min-h-screen bg-gradient-to-br from-[#7091E6]/20 via-white to-[#3D52A0]/20 relative overflow-hidden">
-        {/* Animated Background */}
+        {/* Animated Background - Static orbs */}
         <div className="animated-background">
           <div className="orb orb-1"></div>
           <div className="orb orb-2"></div>
