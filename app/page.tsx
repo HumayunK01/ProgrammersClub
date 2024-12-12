@@ -14,6 +14,16 @@ import { useState, useEffect } from 'react'
 import { Typewriter } from "@/components/ui/typewriter"
 import { ClientOnly } from "@/components/ui/client-only"
 import { motion, AnimatePresence } from "framer-motion"
+import { 
+  Facebook, 
+  Twitter, 
+  Instagram, 
+  Linkedin, 
+  Github, 
+  Mail, 
+  MapPin, 
+  Phone 
+} from 'lucide-react'
 
 interface Event {
   title: string;
@@ -250,14 +260,30 @@ function EventsCarousel({ events }: { events: Event[] }) {
 }
 
 export default function Home(): JSX.Element {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       {/* Navigation */}
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100 }}
-        className="fixed top-0 left-0 right-0 w-full border-b bg-white/70 backdrop-blur-md z-[50]"
+      <header
+        className={`fixed top-0 left-0 right-0 w-full z-[50] transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white/40 backdrop-blur-xl' 
+            : 'bg-transparent backdrop-blur-xl'
+        }`}
       >
         <div className="container mx-auto px-[30px] md:px-[50px]">
           <nav className="flex items-center justify-between h-16">
@@ -281,21 +307,21 @@ export default function Home(): JSX.Element {
               </Link>
               <Link 
                 href="/about" 
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                className="text-sm font-medium hover:text-primary transition-colors duration-200 flex items-center gap-2"
               >
                 <Info className="w-4 h-4" />
                 About Us
               </Link>
               <Link 
                 href="/events" 
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                className="text-sm font-medium hover:text-primary transition-colors duration-200 flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 Events
               </Link>
               <Link 
                 href="/team" 
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                className="text-sm font-medium hover:text-primary transition-colors duration-200 flex items-center gap-2"
               >
                 <Users className="w-4 h-4" />
                 Our Team
@@ -343,18 +369,24 @@ export default function Home(): JSX.Element {
             </Sheet>
           </nav>
         </div>
-      </motion.header>
+      </header>
 
       {/* Main Content - Add padding-top to account for fixed header */}
       <main className="pt-16 min-h-screen bg-gradient-to-br from-[#7091E6]/20 via-white to-[#3D52A0]/20 relative overflow-hidden">
-        {/* Decorative balls */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7091E6]/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#3D52A0]/30 rounded-full blur-3xl" />
+        {/* Animated Background */}
+        <div className="animated-background">
+          <div className="orb orb-1"></div>
+          <div className="orb orb-2"></div>
+          <div className="orb orb-3"></div>
+        </div>
         
+        {/* Noise Texture */}
+        <div className="noise"></div>
+
         {/* Rest of your content sections */}
         <div className="relative z-10">
           {/* Hero Section */}
-          <section id="hero" className="container mx-auto px-[30px] md:px-[50px] overflow-hidden py-9 md:py-14 lg:py-16 mt-4">
+          <section id="hero" className="container mx-auto px-[30px] md:px-[50px] overflow-hidden py-5 md:py-9 lg:py-9 mt-4">
             <motion.div
               variants={staggerChildren}
               initial="initial"
@@ -635,6 +667,126 @@ export default function Home(): JSX.Element {
           </section>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="relative bg-[#1e2f4d] min-h-[400px]">
+        {/* Decorative Blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+          <div className="absolute top-1/4 -left-10 w-32 h-32 bg-[#4267B2] rounded-full blur-3xl animate-blob" />
+          <div className="absolute bottom-1/4 -right-10 w-32 h-32 bg-[#7091E6] rounded-full blur-3xl animate-blob animation-delay-2000" />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 py-10 sm:py-16">
+            {/* Logo and Description */}
+            <div className="flex flex-col items-center sm:items-start space-y-6">
+              <Link href="/" className="inline-block group">
+                <Image
+                  src="/assets/images/logo.png"
+                  alt="Programmer's Club Logo"
+                  width={200}
+                  height={200}
+                  className="object-contain transform transition-transform duration-300 group-hover:scale-105"
+                />
+              </Link>
+              <p className="text-sm md:text-base text-gray-300/90 leading-relaxed text-center sm:text-left max-w-md">
+                Transforming Skills, Inspiring Innovation, and Creating Tomorrow's Trailblazers.
+              </p>
+              <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+                {[
+                  { icon: Instagram, href: "https://www.instagram.com/programmers.club/" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/programmersclubmhssce/" },
+                ].map((social, index) => (
+                  <Link 
+                    key={index}
+                    href={social.href} 
+                    target="_blank"
+                    className="bg-[#2a4270]/50 p-2.5 rounded-full hover:bg-[#4267B2] group transition-all duration-300
+                      transform hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30"
+                  >
+                    <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-200 flex items-center gap-3 
+                justify-center sm:justify-start mb-8">
+                <span className="w-8 h-0.5 bg-[#4267B2]/70 hidden sm:block"></span>
+                Quick Links
+              </h3>
+              <ul className="space-y-4">
+                {['Home', 'About Us', 'Events', 'Our Team'].map((item, index) => (
+                  <li key={index}>
+                    <Link 
+                      href={`/${item.toLowerCase().replace(' ', '-')}`}
+                      className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
+                        flex items-center gap-2 group justify-center sm:justify-start"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4267B2]/50 group-hover:w-2.5 transition-all duration-300"></span>
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-200 flex items-center gap-3 
+                justify-center sm:justify-start mb-8">
+                <span className="w-8 h-0.5 bg-[#4267B2]/70 hidden sm:block"></span>
+                Contact Us
+              </h3>
+              <ul className="space-y-4">
+                <li>
+                  <Link 
+                    href="mailto:contact@programmersclub.com"
+                    className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
+                      flex items-center gap-2 group justify-center sm:justify-start"
+                  >
+                    <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#4267B2] group-hover:scale-110 transition-transform duration-300" />
+                    programmersclub@mhssce.ac.in
+                  </Link>
+                </li>
+                <li className="flex justify-center sm:justify-start">
+                  <Link 
+                    href="https://maps.google.com"
+                    target="_blank"
+                    className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
+                      flex items-start gap-2 group max-w-[250px]"
+                  >
+                    <MapPin className="w-4 h-4 md:w-5 md:h-5 text-[#4267B2] mt-1 flex-shrink-0 group-hover:scale-110 
+                      transition-transform duration-300" />
+                    <span className="text-center sm:text-left">
+                      M.H. Saboo Siddik College of Engineering, Mumbai - 400008
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-700/50 py-4 sm:py-6">
+            <div className="text-center text-xs sm:text-sm text-gray-400">
+              <p className="flex items-center justify-center gap-2 flex-wrap px-4">
+                © {new Date().getFullYear()} 
+                <span className="text-[#4267B2] font-medium">Programmer's Club</span>
+                All rights reserved.
+              </p>
+              <p className="flex items-center justify-center gap-2 flex-wrap px-4 py-2">
+                Developed By
+                <a href="https://devhumayun.vercel.app/" target="_blank">
+                <span className="text-[#4267B2] font-medium">Humayun Khan</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }
