@@ -55,15 +55,20 @@ export function Footer() {
               Quick Links
             </h3>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Events', 'Our Team'].map((item, index) => (
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'About Us', path: '/about' },
+                { name: 'Events', path: '/events' },
+                { name: 'Our Team', path: '/team' }
+              ].map((item, index) => (
                 <li key={index}>
                   <Link 
-                    href={`/${item.toLowerCase().replace(' ', '-')}`}
+                    href={item.path}
                     className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
                       flex items-center gap-2 group justify-center sm:justify-start"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4267B2]/50 group-hover:w-2.5 transition-all duration-300"></span>
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

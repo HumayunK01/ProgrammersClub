@@ -4,8 +4,11 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation'
 
 export function AboutSection() {
+  const router = useRouter()
+
   return (
     <section id="about" className="py-8">
       <motion.div 
@@ -88,14 +91,12 @@ export function AboutSection() {
               min-w-[200px]
             " 
             size="lg" 
-            asChild
+            onClick={() => router.push('/about')}
           >
-            <Link href="/about" className="flex items-center justify-center gap-2">
-              Learn More About Us
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
+            Learn More About Us
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </Button>
         </div>
       </motion.div>
