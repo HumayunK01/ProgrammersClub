@@ -34,5 +34,12 @@ export const eventsData: Event[] = [
     description: "With a prize pool of 2,50,000, multiple goodies, for coders to showcase their talent.",
     image: "/assets/events/event4.png",
     tags: ["Hackathon", "Coding"]
+  },
+  {
+    title: "Three 90 Challenge",
+    date: "January 26, 2024",
+    description: "A 3-day coding challenge with 90 problems in 90 minutes each day.",
+    image: "/assets/events/event5.png",
+    tags: ["Challenge", "Coding"]
   }
 ]

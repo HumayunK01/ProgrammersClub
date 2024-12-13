@@ -22,13 +22,24 @@ export function EventsCarousel({ events }: { events: Event[] }) {
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
 
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % events.length)
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + events.length) % events.length)
+
+  // Auto-movement effect
+  useEffect(() => {
+    const autoPlay = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % events.length)
+    }, 3000) // Change slide every 3 seconds
+
+    // Cleanup on unmount
+    return () => {
+      clearInterval(autoPlay)
+    }
+  }, []) // Empty dependency array so it only runs once on mount
+
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  if (!mounted) {
-    return <div className="relative w-full max-w-4xl mx-auto h-[470px] md:h-[430px] bg-gray-100 animate-pulse rounded-lg" />
-  }
 
   const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX)
   const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.touches[0].clientX)
@@ -37,88 +48,156 @@ export function EventsCarousel({ events }: { events: Event[] }) {
     if (touchStart - touchEnd < -75) prevSlide()
   }
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % events.length)
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + events.length) % events.length)
+  if (!mounted) {
+    return <div className="relative w-full max-w-4xl mx-auto h-[470px] md:h-[430px] bg-gray-100 animate-pulse rounded-lg" />
+  }
 
   return (
-    <div 
-      className="relative w-full max-w-4xl mx-auto h-[470px] md:h-[430px]"
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >
-      {/* Card Stack */}
-      <div className="relative h-full">
-        {events.map((event, index) => {
-          const position = (index - currentIndex + events.length) % events.length
-          const offset = position * 40
-          const scale = 1 - (position * 0.1)
-          const opacity = 1 - (position * 0.3)
+    <>
+      {/* Mobile Stacked Version (hidden on desktop) */}
+      <div className="md:hidden">
+        <div 
+          className="relative w-full max-w-4xl mx-auto h-[470px]"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Current stacked card implementation */}
+          <div className="relative h-full">
+            {events.map((event, index) => {
+              const position = (index - currentIndex + events.length) % events.length
+              const offset = position * 40
+              const scale = 1 - (position * 0.1)
+              const opacity = 1 - (position * 0.3)
 
-          return (
-            <motion.div
-              key={index}
-              className="absolute left-0 right-0"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ 
-                opacity: opacity > 0 ? opacity : 0,
-                scale: scale,
-                y: offset,
-                zIndex: events.length - position
-              }}
-              transition={{
-                duration: 0.5,
-                type: "spring",
-                stiffness: 100
-              }}
-              style={{
-                pointerEvents: position === 0 ? 'auto' : 'none',
-              }}
-            >
-              <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-48 object-cover"
-                />
-                <CardHeader>
-                  <CardTitle>{event.title}</CardTitle>
-                  <CardDescription>{event.date}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{event.description}</p>
-                </CardContent>
-                <CardFooter className="flex flex-wrap gap-2">
-                  {event.tags.map((tag, tagIndex) => (
-                    <Badge key={tagIndex} variant="secondary">{tag}</Badge>
-                  ))}
-                </CardFooter>
-              </Card>
-            </motion.div>
-          )
-        })}
+              return (
+                <motion.div
+                  key={index}
+                  className="absolute left-0 right-0"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ 
+                    opacity: opacity > 0 ? opacity : 0,
+                    scale: scale,
+                    y: offset,
+                    zIndex: events.length - position
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  style={{
+                    pointerEvents: position === 0 ? 'auto' : 'none',
+                  }}
+                >
+                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover"
+                    />
+                    <CardHeader>
+                      <CardTitle>{event.title}</CardTitle>
+                      <CardDescription>{event.date}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">{event.description}</p>
+                    </CardContent>
+                    <CardFooter className="flex flex-wrap gap-2">
+                      {event.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                      ))}
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
       </div>
 
-      {/* Navigation Controls */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="hidden md:flex absolute left-[-60px] top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-        onClick={prevSlide}
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </Button>
+      {/* Desktop Horizontal Slider Version (hidden on mobile) */}
+      <div className="hidden md:block relative w-full max-w-3xl mx-auto h-[430px]">
+        <div className="overflow-visible relative h-full flex justify-center items-center">
+          {events.map((event, index) => {
+            const position = (index - currentIndex + events.length) % events.length
+            const isActive = position === 0
 
-      <Button
-        variant="ghost"
-        size="icon"
-        className="hidden md:flex absolute right-[-60px] top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-        onClick={nextSlide}
-      >
-        <ChevronRight className="h-6 w-6" />
-      </Button>
-    </div>
+            return (
+              <motion.div
+                key={index}
+                className="absolute w-full left-3"
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ 
+                  opacity: position <= 4 ? 1 - (position * 0.05) : 0,
+                  x: position * 100,
+                  y: 0,
+                  zIndex: events.length - position,
+                  rotateY: -10,
+                }}
+                transition={{
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                style={{
+                  pointerEvents: isActive ? 'auto' : 'none',
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px',
+                  transformOrigin: 'center'
+                }}
+              >
+                <Card className={`
+                  overflow-hidden transition-all duration-300 hover:shadow-lg
+                  ${isActive ? 'opacity-100' : ''}
+                  transform-gpu max-w-[350px] h-[400px]
+                `}>
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-48 object-cover"
+                  />
+                  <CardHeader>
+                    <CardTitle>{event.title}</CardTitle>
+                    <CardDescription>{event.date}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{event.description}</p>
+                  </CardContent>
+                  <CardFooter className="flex flex-wrap gap-2">
+                    {event.tags.map((tag, tagIndex) => (
+                      <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                    ))}
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Navigation Controls */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute left-[-60px] top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+          onClick={prevSlide}
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-[-60px] top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+          onClick={nextSlide}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </Button>
+      </div>
+    </>
   )
 } 
