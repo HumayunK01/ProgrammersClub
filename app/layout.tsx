@@ -9,6 +9,7 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://programmersclub.vercel.app'),
   title: "Programmers' Club MHSSCE",
   description: "Join us to enhance your tech skills, participate in hackathons, workshops, and coding competitions, and collaborate on exciting projects. Let's innovate together!",
 };

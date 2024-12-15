@@ -4,6 +4,16 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { committeeMembers } from "../data/faculty"
 
+interface FacultyMember {
+  name: string
+  role: string
+  department: string
+  qualification: string
+  email: string
+  description: string
+  image: string
+}
+
 export const FacultySection = () => {
   return (
     <motion.div
@@ -51,7 +61,7 @@ export const FacultySection = () => {
   )
 }
 
-const FacultyCard = ({ member, index }: { member: any, index: number }) => {
+const FacultyCard = ({ member, index }: { member: FacultyMember, index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

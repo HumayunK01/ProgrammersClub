@@ -1,8 +1,6 @@
 'use client'
 
 import { motion } from "framer-motion"
-import { ClientOnly } from "@/components/ui/client-only"
-import { Typewriter } from "@/components/ui/typewriter"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
@@ -20,6 +18,8 @@ export function HeroSection() {
       >
         <motion.div
           variants={fadeInUp}
+          initial="initial"
+          animate="animate"
           transition={{ duration: 0.6 }}
           className="space-y-6 md:space-y-8 text-center"
         >

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     siteName: "Programmers' Club MHSSCE",
     images: [
       {
-        url: "/about.png",
+        url: "about.png",
         width: 1200,
         height: 630,
         alt: "About Programmers' Club MHSSCE",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Us | Programmers' Club MHSSCE",
     description: "Learn about the Programmers' Club at M.H. Saboo Siddik College of Engineering - our mission, faculty, and values.",
-    images: ["/about.png"],
+    images: ["about.png"],
   },
 }
 
