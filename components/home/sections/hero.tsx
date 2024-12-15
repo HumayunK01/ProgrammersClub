@@ -20,6 +20,7 @@ export function HeroSection() {
       >
         <motion.div
           variants={fadeInUp}
+          transition={{ duration: 0.6 }}
           className="space-y-6 md:space-y-8 text-center"
         >
           <div className="space-y-4 md:space-y-5">
