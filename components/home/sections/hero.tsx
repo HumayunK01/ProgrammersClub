@@ -23,14 +23,9 @@ export function HeroSection() {
           className="space-y-6 md:space-y-8 text-center"
         >
           <div className="space-y-4 md:space-y-5">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold drop-shadow-md font-mono">
-              <span className="block lg:py-4 md:py-4">
-                <ClientOnly>
-                  <Typewriter 
-                    text="Programmers' Club" 
-                    className="bg-gradient-to-r from-[#40C9CE] via-[#40C9CE] to-[#4267B2] text-transparent bg-clip-text"
-                  />
-                </ClientOnly>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold drop-shadow-md">
+              <span className="block lg:py-4 md:py-4 bg-gradient-to-r from-[#40C9CE] via-[#40C9CE] to-[#4267B2] text-transparent bg-clip-text">
+                Programmers' Club
               </span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl">

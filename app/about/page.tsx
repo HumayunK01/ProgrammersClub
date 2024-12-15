@@ -1,33 +1,26 @@
 'use client'
 
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
-import { Background } from "@/components/layout/background"
 import { motion } from "framer-motion"
+import { FacultySection } from "./components/FacultySection"
+import { MissionSection } from "./components/MissionSection"
+import { ActivitiesSection } from "./components/ActivitiesSection"
+import { ValuesSection } from "./components/ValuesSection"
+import { HeroSection } from "./components/HeroSection"
 
 export default function AboutPage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Background>
-          <div className="container mx-auto px-[30px] md:px-[50px] py-16 md:py-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-                About Us
-              </h1>
-              
-              {/* We'll add more content sections here */}
-              
-            </motion.div>
+    <div className="pt-16">
+      <div className="container mx-auto px-4 py-6">
+        <motion.div className="w-full space-y-16">
+          <HeroSection />
+          <FacultySection />
+          <div className="grid md:grid-cols-2 gap-6">
+            <MissionSection />
+            <ActivitiesSection />
           </div>
-        </Background>
-      </main>
-      <Footer />
-    </>
+          <ValuesSection />
+        </motion.div>
+      </div>
+    </div>
   )
 }

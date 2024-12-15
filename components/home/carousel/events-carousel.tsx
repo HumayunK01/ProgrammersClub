@@ -25,18 +25,6 @@ export function EventsCarousel({ events }: { events: Event[] }) {
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % events.length)
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + events.length) % events.length)
 
-  // Auto-movement effect
-  useEffect(() => {
-    const autoPlay = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % events.length)
-    }, 3000) // Change slide every 3 seconds
-
-    // Cleanup on unmount
-    return () => {
-      clearInterval(autoPlay)
-    }
-  }, []) // Empty dependency array so it only runs once on mount
-
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -119,8 +107,29 @@ export function EventsCarousel({ events }: { events: Event[] }) {
       </div>
 
       {/* Desktop Horizontal Slider Version (hidden on mobile) */}
-      <div className="hidden md:block relative w-full max-w-3xl mx-auto h-[430px]">
-        <div className="overflow-visible relative h-full flex justify-center items-center">
+      <div className="hidden md:block relative w-full mx-auto h-[430px]">
+        {/* Navigation Controls - Moved to top */}
+        <div className="absolute right-4 top-[-50px] flex gap-2 z-10"> {/* New container for arrows */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+            onClick={prevSlide}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+            onClick={nextSlide}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
+        </div>
+
+        <div className="overflow-visible relative h-full flex justify-start items-center">
           {events.map((event, index) => {
             const position = (index - currentIndex + events.length) % events.length
             const isActive = position === 0
@@ -128,14 +137,14 @@ export function EventsCarousel({ events }: { events: Event[] }) {
             return (
               <motion.div
                 key={index}
-                className="absolute w-full left-3"
+                className="absolute w-full left-0"
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ 
                   opacity: position <= 4 ? 1 - (position * 0.05) : 0,
-                  x: position * 100,
+                  x: position * 310,
                   y: 0,
                   zIndex: events.length - position,
-                  rotateY: -10,
+                  rotateY: 0,
                 }}
                 transition={{
                   duration: 0.5,
@@ -144,15 +153,12 @@ export function EventsCarousel({ events }: { events: Event[] }) {
                 }}
                 style={{
                   pointerEvents: isActive ? 'auto' : 'none',
-                  transformStyle: 'preserve-3d',
-                  perspective: '1000px',
-                  transformOrigin: 'center'
                 }}
               >
                 <Card className={`
                   overflow-hidden transition-all duration-300 hover:shadow-lg
                   ${isActive ? 'opacity-100' : ''}
-                  transform-gpu max-w-[350px] h-[400px]
+                  transform-gpu w-[300px] h-[420px]
                 `}>
                   <Image
                     src={event.image}
@@ -178,25 +184,6 @@ export function EventsCarousel({ events }: { events: Event[] }) {
             )
           })}
         </div>
-
-        {/* Navigation Controls */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute left-[-60px] top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-          onClick={prevSlide}
-        >
-          <ChevronLeft className="h-6 w-6" />
-        </Button>
-
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute right-[-60px] top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-          onClick={nextSlide}
-        >
-          <ChevronRight className="h-6 w-6" />
-        </Button>
       </div>
     </>
   )
