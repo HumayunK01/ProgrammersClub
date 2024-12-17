@@ -1,6 +1,6 @@
 export const committeeMembers = [
   {
-    name: "Ahlam Ansari",
+    name: "Er. Ahlam Ansari",
     role: "Chairperson",
     image: "/assets/faculty/ahlam.png",
     department: "Computer Engineering",
@@ -9,7 +9,7 @@ export const committeeMembers = [
     description: "Assistant Professor at MHSSCE | Best Teacher Awarded by OSA | Mentor of Smart India Hackathon Winners."
   },
   {
-    name: "Ahmed Shaikh",
+    name: "Dr. Mohammed Ahmed Shaikh",
     role: "Vice Chairperson",
     image: "/assets/faculty/ahmed.png",
     department: "Computer Engineering",

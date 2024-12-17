@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
-import { HomeIcon, Calendar, Users, Info, X, Menu } from 'lucide-react'
+import { HomeIcon, Calendar, Users, Info, X, Menu, BookOpen } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
 
@@ -33,6 +33,7 @@ export function Navbar() {
     { href: "/about", icon: <Info className="w-6 h-6" />, label: "About Us" },
     { href: "/events", icon: <Calendar className="w-6 h-6" />, label: "Events" },
     { href: "/team", icon: <Users className="w-6 h-6" />, label: "Our Team" },
+    { href: "/magazines", icon: <BookOpen className="w-6 h-6" />, label: "Magazines" },
   ];
 
   return (
@@ -59,7 +60,7 @@ export function Navbar() {
             <Link 
               href="/" 
               className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/') ? 'text-[#4267B2] font-medium' : 'text-gray-600 hover:text-[#4267B2]'
+                isActive('/') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
               }`}
             >
               <HomeIcon className="w-4 h-4" />
@@ -68,7 +69,7 @@ export function Navbar() {
             <Link 
               href="/about" 
               className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/about') ? 'text-[#4267B2] font-medium' : 'text-gray-600 hover:text-[#4267B2]'
+                isActive('/about') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
               }`}
             >
               <Info className="w-4 h-4" />
@@ -77,7 +78,7 @@ export function Navbar() {
             <Link 
               href="/events" 
               className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/events') ? 'text-[#4267B2] font-medium' : 'text-gray-600 hover:text-[#4267B2]'
+                isActive('/events') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
               }`}
             >
               <Calendar className="w-4 h-4" />
@@ -86,11 +87,20 @@ export function Navbar() {
             <Link 
               href="/team" 
               className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/team') ? 'text-[#4267B2] font-medium' : 'text-gray-600 hover:text-[#4267B2]'
+                isActive('/team') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
               }`}
             >
               <Users className="w-4 h-4" />
               Our Team
+            </Link>
+            <Link 
+              href="/magazines" 
+              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
+                isActive('/magazines') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
+              }`}
+            >
+              <BookOpen className="w-4 h-4" />
+              Magazines
             </Link>
           </div>
           <Sheet>

@@ -189,3 +189,95 @@ html {
   pointer-events: none;
   mix-blend-mode: overlay;
 }
+
+@media print {
+  /* Banner gradient for print */
+  [class*="print-gradient"] img {
+    filter: brightness(50%);
+  }
+
+  /* Ensure banner text remains visible */
+  [class*="print-gradient"] h1 {
+    color: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  [class*="print-gradient"] .flex.flex-wrap.gap-1\.5 {
+    display: none !important;
+  }
+
+  /* Hide UI elements */
+  nav, footer, button, .print\:hidden {
+    display: none !important;
+  }
+
+  /* Basic page setup */
+  @page {
+    margin: 1cm;
+  }
+
+  /* Main content */
+  .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Sections as tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+
+  /* Table headers */
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
+  }
+
+  /* Table cells */
+  td {
+    padding: 8px;
+    border: 1px solid black;
+    vertical-align: top;
+  }
+
+  /* Section headers */
+  .section-header {
+    font-weight: bold;
+    font-size: 14pt;
+    margin: 20px 0 10px 0;
+  }
+
+  /* Event Details table */
+  .event-details {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .event-details td:first-child {
+    width: 30%;
+    font-weight: bold;
+  }
+
+  /* Remove all backgrounds and decorative elements */
+  * {
+    background: none !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  /* Keep poster image */
+  img[alt*="poster"],
+  img[alt*="Poster"] {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    display: block;
+  }
+}

@@ -4,128 +4,148 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { committeeMembers } from "../data/faculty"
 
-interface FacultyMember {
-  name: string
-  role: string
-  department: string
-  qualification: string
-  email: string
-  description: string
-  image: string
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
 }
 
 export const FacultySection = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-      className="mb-10"
+      initial="initial"
+      animate="animate"
+      variants={{
+        initial: { opacity: 0 },
+        animate: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.1
+          }
+        }
+      }}
     >
-      {/* Decorative Faculty Header */}
-      <div className="relative flex flex-col items-center mb-10">
-        {/* Background Decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-[#4267b2]/5 to-[#40E0D0]/5 rounded-full blur-xl" />
-        
-        {/* Title with Icon */}
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-[#4267b2] to-[#40E0D0] rounded-xl flex items-center justify-center transform -rotate-6">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-[#4267b2] to-[#40E0D0] bg-clip-text text-transparent">
-            Our Faculty
-          </h2>
+      {/* Faculty Title Section */}
+      <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-6">
+        <div className="w-10 h-10 bg-[#40E0D0]/10 rounded-lg flex items-center justify-center">
+          <svg className="w-6 h-6 text-[#40E0D0]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
         </div>
+        <h2 className="text-2xl font-semibold text-[#4267b2]">Our Faculty</h2>
+      </motion.div>
 
-        {/* Decorative Line */}
-        <div className="w-48 h-1 bg-gradient-to-r from-transparent via-[#4267b2]/20 to-transparent" />
-        
-        {/* Decorative Dots */}
-        <div className="flex gap-1 mt-2">
-          <div className="w-1 h-1 rounded-full bg-[#4267b2]/40" />
-          <div className="w-1 h-1 rounded-full bg-[#4267b2]/40" />
-          <div className="w-1 h-1 rounded-full bg-[#4267b2]/40" />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Faculty Cards Grid */}
+      <motion.div variants={fadeInUp} className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {committeeMembers.map((member, index) => (
           <FacultyCard key={member.name} member={member} index={index} />
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   )
 }
 
-const FacultyCard = ({ member, index }: { member: FacultyMember, index: number }) => {
+// Separate Card Component
+interface FacultyCardProps {
+  member: {
+    name: string;
+    role: string;
+    department: string;
+    qualification: string;
+    email: string;
+    description: string;
+    image: string;
+  };
+  index: number;
+}
+
+const FacultyCard = ({ member, index }: FacultyCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 * index }}
-      className="bg-white/95 rounded-xl shadow-sm hover:bg-gradient-to-br hover:from-[#4267b2]/5 hover:to-white/90 transition-all duration-300 border border-gray-100 hover:border-[#4267b2]/20 group relative overflow-hidden"
+      transition={{ delay: index * 0.2 }}
+      className="bg-white rounded-xl shadow-sm relative overflow-hidden group"
     >
-      {/* Decorative Corner Gradients */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#4267b2]/10 to-transparent rounded-bl-[100px]" />
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-[#4267b2]/10 to-transparent rounded-tr-[100px]" />
-      
-      <div className="flex flex-col sm:flex-row items-center p-6 sm:p-8 relative">
+      <div className="p-4 sm:p-6 relative">
         {/* Role Badge */}
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 px-3 py-1 bg-[#4267b2]/10 rounded-full z-10">
-          <p className="text-xs font-medium text-[#4267b2]">{member.role}</p>
+        <div className="mb-3 relative z-10">
+          <span className="inline-block px-3 sm:px-4 py-1 bg-[#4267b2]/10 text-[#4267b2] rounded-full text-xs sm:text-sm font-medium">
+            {member.role}
+          </span>
         </div>
 
-        {/* Image Section */}
-        <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 mb-4 sm:mb-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#4267b2]/20 to-[#40E0D0]/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-          <Image
-            src={member.image}
-            alt={member.name}
-            fill
-            className="rounded-xl object-cover relative ring-2 ring-white/50 group-hover:ring-[#4267b2]/30 transition-all duration-300"
-          />
-        </div>
+        {/* Main Content */}
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          {/* Image */}
+          <div className="w-32 h-32 sm:w-40 sm:h-40 relative rounded-lg overflow-hidden flex-shrink-0 mx-auto sm:mx-0">
+            <Image
+              src={member.image}
+              alt="Faculty member"
+              fill
+              className="object-cover"
+            />
+          </div>
 
-        {/* Content Section */}
-        <div className="sm:ml-6 text-center sm:text-left flex-1">
-          <div className="space-y-1 mb-4">
-            <h3 className="font-bold text-xl sm:text-2xl text-[#4267b2]">
+          {/* Text Content */}
+          <div className="flex-1 relative z-10 text-center sm:text-left">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-1 sm:mb-2 bg-gradient-to-r from-[#4267b2] to-[#40E0D0] bg-clip-text text-transparent">
               {member.name}
             </h3>
-            <p className="text-gray-500 text-sm">{member.department}</p>
-          </div>
-          
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-gray-600">
-              <div className="w-8 h-8 rounded-full bg-[#4267b2]/10 flex items-center justify-center flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#4267b2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-              </div>
-              <p className="text-sm">{member.qualification}</p>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-gray-600">
-              <div className="w-8 h-8 rounded-full bg-[#4267b2]/10 flex items-center justify-center flex-shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#4267b2]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <a href={`mailto:${member.email}`} className="text-sm hover:text-[#4267b2] transition-colors">
-                {member.email}
-              </a>
-            </div>
-          </div>
+            <p className="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">
+              {member.department}
+            </p>
 
-          <p className="text-gray-600 text-sm border-t border-gray-100 pt-4">
-            {member.description}
-          </p>
+            {/* Info Items */}
+            <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
+              <InfoItem icon="qualification" text={member.qualification} />
+              <InfoItem icon="email" text={member.email} isEmail />
+            </div>
+
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+              {member.description}
+            </p>
+          </div>
         </div>
+
+        {/* Bottom Decoration */}
+        <div className="mt-4 -mx-4 sm:-mx-6 -mb-4 sm:-mb-6 bg-blue-50/50 h-8 border-t border-blue-100/50" />
       </div>
     </motion.div>
-  )
-} 
+  );
+};
+
+// Info Item Component
+interface InfoItemProps {
+  icon: 'qualification' | 'email';
+  text: string;
+  isEmail?: boolean;
+}
+
+const InfoItem = ({ icon, text, isEmail = false }: InfoItemProps) => {
+  return (
+    <div className="flex items-center gap-2 sm:gap-3 group/item hover:translate-x-1 transition-transform duration-300 justify-center sm:justify-start">
+      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#4267b2]/10 flex items-center justify-center flex-shrink-0">
+        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#4267b2]" viewBox="0 0 24 24" fill="none">
+          {icon === "qualification" ? (
+            <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" 
+              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          ) : (
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          )}
+        </svg>
+      </div>
+      {isEmail ? (
+        <a href={`mailto:${text}`} className="text-gray-600 text-sm hover:text-[#4267b2] transition-colors break-all">
+          {text}
+        </a>
+      ) : (
+        <span className="text-gray-600 text-sm">{text}</span>
+      )}
+    </div>
+  );
+}; 

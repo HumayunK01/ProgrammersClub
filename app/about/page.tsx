@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="pt-16">
       <div className="container mx-auto px-4 py-6">
-        <motion.div className="w-full space-y-16">
+        <motion.div className="w-full space-y-7">
           <HeroSection />
           <FacultySection />
           <div className="grid md:grid-cols-2 gap-6">

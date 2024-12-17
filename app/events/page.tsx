@@ -1,8 +1,5 @@
-'use client'
-
-import { Navbar } from "@/components/layout/navbar"
-import { Footer } from "@/components/layout/footer"
-import { motion } from "framer-motion"
+import { eventsData } from "@/constants/events-data"
+import { EventsGrid } from "./components/events-grid"
 
 export default function EventsPage() {
   return (
@@ -19,24 +16,11 @@ export default function EventsPage() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Navbar />
         <main>
           <div className="container mx-auto px-[30px] md:px-[50px] py-16 md:py-24">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">
-                Our Events
-              </h1>
-              
-              {/* We'll add event content sections here */}
-              
-            </motion.div>
+            <EventsGrid events={eventsData} />
           </div>
         </main>
-        <Footer />
       </div>
     </div>
   )

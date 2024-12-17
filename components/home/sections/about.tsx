@@ -17,7 +17,27 @@ export function AboutSection() {
         transition={{ duration: 0.7 }}
         className="container mx-auto px-[30px] md:px-[50px] overflow-hidden"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">About Us</h2>
+        <div className="flex items-center justify-center gap-3 mb-12">
+          <div className="w-10 h-10 bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-lg flex items-center justify-center">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6 text-white" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+              />
+            </svg>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#3D52A0] to-[#7091E6] inline-block text-transparent bg-clip-text">
+            About Us
+          </h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-8 py-2">
           {[
             { 

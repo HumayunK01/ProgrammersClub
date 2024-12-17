@@ -16,8 +16,28 @@ export function EventsSection() {
         transition={{ duration: 0.7 }}
         className="container mx-auto px-[30px] md:px-[50px] overflow-hidden"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Recent Events</h2>
-        <EventsCarousel events={eventsData} />
+        <div className="flex items-center justify-center gap-3 mb-12">
+          <div className="w-10 h-10 bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-lg flex items-center justify-center">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6 text-white" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#3D52A0] to-[#7091E6] inline-block text-transparent bg-clip-text">
+            Recent Events
+          </h2>
+        </div>
+        <EventsCarousel events={eventsData.slice(0, 5)} />
         <div className="mt-6 md:mt-8 text-center">
           <Button 
             size="lg" 

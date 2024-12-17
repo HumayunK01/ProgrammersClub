@@ -1,190 +1,239 @@
 'use client'
 
-import { motion } from "framer-motion"
+import { motion, PanInfo } from "framer-motion"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import Link from "next/link"
+import ReactMarkdown from 'react-markdown'
 
 interface Event {
+  id: string;
   title: string;
   date: string;
   description: string;
-  image: string;
+  thumbnailImage: string;
+  posterImage: string;
   tags: string[];
 }
 
 export function EventsCarousel({ events }: { events: Event[] }) {
   const [mounted, setMounted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [touchStart, setTouchStart] = useState(0)
-  const [touchEnd, setTouchEnd] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
 
-  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % events.length)
-  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + events.length) % events.length)
+  const nextSlide = () => {
+    if (currentIndex < events.length - 1) {
+      setCurrentIndex(prev => prev + 1)
+    }
+  }
+
+  const prevSlide = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1)
+    }
+  }
+
+  const handleDragStart = () => {
+    setIsDragging(true)
+  }
+
+  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    setIsDragging(false)
+    const dragDistance = info.offset.x
+    const swipeThreshold = 50
+
+    if (dragDistance > swipeThreshold && currentIndex > 0) {
+      prevSlide()
+    } else if (dragDistance < -swipeThreshold && currentIndex < events.length - 1) {
+      nextSlide()
+    }
+  }
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX)
-  const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.touches[0].clientX)
-  const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) nextSlide()
-    if (touchStart - touchEnd < -75) prevSlide()
-  }
-
   if (!mounted) {
-    return <div className="relative w-full max-w-4xl mx-auto h-[470px] md:h-[430px] bg-gray-100 animate-pulse rounded-lg" />
+    return <div className="relative w-full max-w-4xl mx-auto h-[430px] bg-gray-100 animate-pulse rounded-lg" />
   }
 
   return (
-    <>
-      {/* Mobile Stacked Version (hidden on desktop) */}
-      <div className="md:hidden">
-        <div 
-          className="relative w-full max-w-4xl mx-auto h-[470px]"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+    <div className="relative w-full mx-auto">
+      {/* Desktop Navigation Controls */}
+      <div className="absolute right-4 top-[-50px] hidden md:flex gap-2 z-10">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+          onClick={prevSlide}
+          disabled={currentIndex === 0}
         >
-          {/* Current stacked card implementation */}
-          <div className="relative h-full">
-            {events.map((event, index) => {
-              const position = (index - currentIndex + events.length) % events.length
-              const offset = position * 40
-              const scale = 1 - (position * 0.1)
-              const opacity = 1 - (position * 0.3)
+          <ChevronLeft className="h-6 w-6" />
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
+          onClick={nextSlide}
+          disabled={currentIndex === events.length - 1}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </Button>
+      </div>
 
-              return (
-                <motion.div
-                  key={index}
-                  className="absolute left-0 right-0"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ 
-                    opacity: opacity > 0 ? opacity : 0,
-                    scale: scale,
-                    y: offset,
-                    zIndex: events.length - position
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  style={{
-                    pointerEvents: position === 0 ? 'auto' : 'none',
-                  }}
-                >
-                  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      width={400}
-                      height={200}
-                      className="w-full h-48 object-cover"
-                    />
-                    <CardHeader>
-                      <CardTitle>{event.title}</CardTitle>
-                      <CardDescription>{event.date}</CardDescription>
+      {/* Mobile Carousel */}
+      <div className="md:hidden overflow-hidden relative">
+        <div 
+          className="flex transition-transform duration-300 ease-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {events.map((event, index) => (
+            <motion.div 
+              key={index} 
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              className={`min-w-full px-2 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+            >
+              <Link href={`/events/${event.id}`}>
+                <Card className="group overflow-hidden transition-all duration-300 relative bg-white rounded-xl border border-gray-100 hover:border-[#4267B2]/20 hover:bg-gradient-to-br hover:from-[#4267B2]/5 hover:to-white/90 h-[450px] cursor-pointer">
+                  <div className="relative flex flex-col h-full">
+                    {/* Image Container with Gradient Overlay */}
+                    <div className="relative h-48">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 group-hover:opacity-0 transition-opacity z-10" />
+                      <Image
+                        src={event.thumbnailImage}
+                        alt={event.title}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </div>
+                    
+                    <CardHeader className="relative">
+                      <CardTitle className="text-xl font-semibold text-gray-800 group-hover:text-[#4267B2] transition-colors">
+                        {event.title}
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground font-medium">
+                        {event.date}
+                      </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">{event.description}</p>
+
+                    <CardContent className="flex-grow">
+                      <p className="text-gray-600 text-sm line-clamp-4">
+                        <ReactMarkdown 
+                          components={{
+                            strong: ({children}) => <span className="font-bold">{children}</span>
+                          }}
+                        >
+                          {event.description}
+                        </ReactMarkdown>
+                      </p>
                     </CardContent>
-                    <CardFooter className="flex flex-wrap gap-2">
+
+                    <CardFooter className="flex flex-wrap gap-2 mt-auto">
                       {event.tags.map((tag, tagIndex) => (
-                        <Badge key={tagIndex} variant="secondary">{tag}</Badge>
+                        <Badge 
+                          key={tagIndex} 
+                          variant="secondary"
+                          className="bg-[#4267B2]/10 hover:bg-[#4267B2]/20 text-[#4267B2] border-none transition-colors duration-300"
+                        >
+                          {tag}
+                        </Badge>
                       ))}
                     </CardFooter>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop Horizontal Slider Version (hidden on mobile) */}
-      <div className="hidden md:block relative w-full mx-auto h-[430px]">
-        {/* Navigation Controls - Moved to top */}
-        <div className="absolute right-4 top-[-50px] flex gap-2 z-10"> {/* New container for arrows */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-            onClick={prevSlide}
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="bg-white/80 hover:bg-[#4267B2] text-[#4267B2] hover:text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-full"
-            onClick={nextSlide}
-          >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
-        </div>
-
-        <div className="overflow-visible relative h-full flex justify-start items-center">
-          {events.map((event, index) => {
-            const position = (index - currentIndex + events.length) % events.length
-            const isActive = position === 0
-
-            return (
-              <motion.div
-                key={index}
-                className="absolute w-full left-0"
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ 
-                  opacity: position <= 4 ? 1 - (position * 0.05) : 0,
-                  x: position * 310,
-                  y: 0,
-                  zIndex: events.length - position,
-                  rotateY: 0,
-                }}
-                transition={{
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                style={{
-                  pointerEvents: isActive ? 'auto' : 'none',
-                }}
-              >
-                <Card className={`
-                  overflow-hidden transition-all duration-300 hover:shadow-lg
-                  ${isActive ? 'opacity-100' : ''}
-                  transform-gpu w-[300px] h-[420px]
-                `}>
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    width={400}
-                    height={200}
-                    className="w-full h-48 object-cover"
-                  />
-                  <CardHeader>
-                    <CardTitle>{event.title}</CardTitle>
-                    <CardDescription>{event.date}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{event.description}</p>
-                  </CardContent>
-                  <CardFooter className="flex flex-wrap gap-2">
-                    {event.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary">{tag}</Badge>
-                    ))}
-                  </CardFooter>
+                  </div>
                 </Card>
-              </motion.div>
-            )
-          })}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Progress Indicators */}
+        <div className="flex justify-center gap-2 mt-4">
+          {events.map((_, index) => (
+            <div
+              key={index}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex 
+                  ? 'w-6 bg-[#4267B2]' 
+                  : 'w-1.5 bg-[#4267B2]/20'
+              }`}
+            />
+          ))}
         </div>
       </div>
-    </>
+
+      {/* Desktop Carousel */}
+      <div className="hidden md:block overflow-hidden relative">
+        <div 
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${currentIndex * 25}%)` }}
+        >
+          {events.map((event, index) => (
+            <div
+              key={index}
+              className="min-w-[25%] px-2"
+            >
+              <Link href={`/events/${event.id}`}>
+                <Card className="group overflow-hidden transition-all duration-300 relative bg-white rounded-xl border border-gray-100 hover:border-[#4267B2]/20 hover:bg-gradient-to-br hover:from-[#4267B2]/5 hover:to-white/90 h-[450px] cursor-pointer">
+                  <div className="relative flex flex-col h-full">
+                    {/* Image Container with Gradient Overlay */}
+                    <div className="relative h-48">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 group-hover:opacity-0 transition-opacity z-10" />
+                      <Image
+                        src={event.thumbnailImage}
+                        alt={`${event.title} Poster`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    
+                    <CardHeader className="relative">
+                      <CardTitle className="text-xl font-semibold text-gray-800 group-hover:text-[#4267B2] transition-colors">
+                        {event.title}
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground font-medium">
+                        {event.date}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="flex-grow">
+                      <p className="text-gray-600 text-sm line-clamp-4">
+                        <ReactMarkdown 
+                          components={{
+                            strong: ({children}) => <span className="font-bold">{children}</span>
+                          }}
+                        >
+                          {event.description}
+                        </ReactMarkdown>
+                      </p>
+                    </CardContent>
+
+                    <CardFooter className="flex flex-wrap gap-2 mt-auto">
+                      {event.tags.map((tag, tagIndex) => (
+                        <Badge 
+                          key={tagIndex} 
+                          variant="secondary"
+                          className="bg-[#4267B2]/10 hover:bg-[#4267B2]/20 text-[#4267B2] border-none transition-colors duration-300"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </CardFooter>
+                  </div>
+                </Card>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   )
 } 

@@ -18,10 +18,11 @@
     "embla-carousel-autoplay": "^8.0.0",
     "embla-carousel-react": "^8.0.0",
     "framer-motion": "^10.16.4",
-    "lucide-react": "^0.323.0",
+    "lucide-react": "latest",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-markdown": "^9.0.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
