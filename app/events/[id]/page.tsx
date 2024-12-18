@@ -1,10 +1,11 @@
-import ReactMarkdown from 'react-markdown'
 import { notFound } from "next/navigation"
 import { eventsData } from "@/constants/events-data"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import PosterModal from "./poster-modal"
-import PrintButton from "@/components/print-button"
+import { galleryData } from "@/constants/gallery-data"
+import EventGallery from "@/app/events/components/event-gallery"
+import ReactMarkdown from 'react-markdown'
+import EventSponsors from "@/app/events/components/event-sponsors"
 
 export default function EventPage({ params }: { params: { id: string } }) {
   const event = eventsData.find(e => e.id === params.id)
@@ -16,9 +17,8 @@ export default function EventPage({ params }: { params: { id: string } }) {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20 md:pt-24">
       <div className="mx-auto max-w-[1400px]">
-
         {/* Hero Banner */}
-        <div className="relative h-[150px] sm:h-[200px] md:h-[300px] rounded-xl overflow-hidden mb-4 md:mb-8 print-gradient">
+        <div className="relative h-[150px] sm:h-[200px] md:h-[300px] rounded-xl overflow-hidden mb-4 print-gradient">
           {/* Decorative Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#4267B2]/20 via-transparent to-[#40E0D0]/20" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#7091E6_1px,transparent_1px),linear-gradient(to_bottom,#7091E6_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.1]" />
@@ -51,40 +51,16 @@ export default function EventPage({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-
+        {/* Event Sponsors - Moved directly below thumbnail */}
+        {event.sponsors && event.sponsors.length > 0 && (
+          <EventSponsors 
+            sponsors={event.sponsors}
+          />
+        )}
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-            {/* Event Poster Card */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex justify-between items-center mb-4 sm:mb-6">
-                <div className="flex items-center gap-2 sm:gap-4">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                    <Image 
-                      src="/assets/images/partypopper.png"
-                      alt="Party Popper Icon" 
-                      width={100}
-                      height={100}
-                      className="w-6 h-6 sm:w-8 sm:h-8"
-                    />
-                  </div>
-                  <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
-                    Event Poster
-                  </h2>
-                </div>
-                <PosterModal posterImage={event.posterImage} title={event.title} />
-              </div>
-              <div className="relative h-[300px] rounded-xl overflow-hidden">
-                <Image
-                  src={event.posterImage}
-                  alt={`${event.title} Poster`}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-
             {/* Description Card */}
             <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
               <div className="flex items-center gap-4 mb-6">
@@ -295,11 +271,20 @@ export default function EventPage({ params }: { params: { id: string } }) {
               </div>
             </div>
             {/* Print Button */}
-            <div className="flex justify-end mb-4 print:hidden">
+            {/* <div className="flex justify-end mb-4 print:hidden">
             <PrintButton />
-            </div>
+            </div> */}
           </div>
         </div>
+
+        {/* Event Gallery - Only show if images exist */}
+        {galleryData[event.id] && galleryData[event.id].length > 0 && (
+          <EventGallery 
+            eventId={event.id}
+            eventTitle={event.title}
+            images={galleryData[event.id]}
+          />
+        )}
       </div>
     </div>
   )

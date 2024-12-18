@@ -25,6 +25,12 @@ export interface Event {
     provided: boolean;
     type?: string;
   };
+  galleryImages?: string[];
+  sponsors?: {
+    name: string
+    logo: string
+    website?: string
+  }[]
 }
 
 export const eventsData: Event[] = [
@@ -478,7 +484,74 @@ ERR_404 is a 2-days National level Hackathon organized by the Computer Departmen
     certification: {
       provided: true,
       type: "Participation + Merit Certificates"
-    }
+    },
+    sponsors: [
+      {
+        name: "Sogolytics",
+        logo: "/assets/sponsors/sogolytics.png",
+        website: "https://www.sogolytics.com"
+      },
+      {
+        name: "Devfolio",
+        logo: "/assets/sponsors/devfolio.png",
+        website: "https://devfolio.co"
+      },
+      {
+        name: "Polygon",
+        logo: "/assets/sponsors/polygon.png",
+        website: "https://polygon.technology"
+      },
+      {
+        name: "Hell Energy Drink",
+        logo: "/assets/sponsors/hell.png",
+        website: "https://www.hellenergy.com/in/"
+      },
+      {
+        name: "Replit",
+        logo: "/assets/sponsors/replit.png",
+        website: "https://replit.com"
+      },
+      {
+        name: "Solana",
+        logo: "/assets/sponsors/solana.png",
+        website: "https://solana.com"
+      },
+      {
+        name: "Filecoin",
+        logo: "/assets/sponsors/filecoin.png",
+        website: "https://filecoin.com"
+      },
+      {
+        name: "Digital Ocean",
+        logo: "/assets/sponsors/digitalocean.png",
+        website: "https://digitalocean.com"
+      },
+      {
+        name: "Bitkraft",
+        logo: "/assets/sponsors/bitkraft.png",
+        website: "https://bitkraft.io"
+      },
+      {
+        name: "HoverRobotix",
+        logo: "/assets/sponsors/hoverrobotix.png",
+        website: "https://hoverrobotix.com"
+      },
+      {
+        name: "MentorX",
+        logo: "/assets/sponsors/mentorx.png",
+        website: "https://thementorx.com/"
+      },
+      {
+        name: "Give My Certificate",
+        logo: "/assets/sponsors/givemycertificate.png",
+        website: "https://givemycertificate.com/"
+      },
+      {
+        name: "Verbwire",
+        logo: "/assets/sponsors/verbwire.png",
+        website: "https://verbwire.com/"
+      }
+    ]
   },
   // Quiz Mania
   {
@@ -524,7 +597,7 @@ A quiz competition for students of F.E, S.E., T.E. and B.E. organized by Program
 📌 Special Elements:
 • Power-ups for assistance
 • Freeze time options
-• Real-time scoring system
+��� Real-time scoring system
 
 This activity provides students with valuable experience similar to placement aptitude tests, helping them prepare for their future career opportunities.`,
     thumbnailImage: "/assets/events/quizmania.png",
