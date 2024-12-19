@@ -35,10 +35,10 @@ export default function EventGallery({ eventId, eventTitle, images }: EventGalle
             <div 
               key={index} 
               className="relative h-[200px] rounded-xl overflow-hidden cursor-pointer group"
-              onClick={() => setSelectedImage(`/assets/gallery/${eventId}/${image}`)}
+              onClick={() => setSelectedImage(`/gallery/${eventId}/${image}`)}
             >
               <Image
-                src={`/assets/gallery/${eventId}/${image}`}
+                src={`/gallery/${eventId}/${image}`}
                 alt={`${eventTitle} Gallery Image ${index + 1}`}
                 fill
                 className="object-cover transition-all duration-300 group-hover:scale-110"
