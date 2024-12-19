@@ -94,14 +94,14 @@ export function Navbar() {
               Our Team
             </Link>
             <Link 
-              href="/magazines" 
-              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/magazines') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              Magazines
-            </Link>
+             href="/magazines" 
+             className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
+               isActive('/magazines') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
+             }`}
+           >
+             <BookOpen className="w-4 h-4" />
+             Magazines
+           </Link>
           </div>
           <Sheet>
             <SheetTrigger asChild>
