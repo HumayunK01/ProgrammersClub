@@ -90,7 +90,7 @@ export function HackathonAlert() {
                       ERR_404 6.0 is Coming! 🚀
                     </h3>
                     <p className="text-xs sm:text-sm text-white/70 mt-0.5 sm:mt-1 max-w-2xl mx-auto">
-                      Join us for a 48-hour International Hackathon. Register now to secure your spot!
+                      Join us for a 36-hour International Hackathon. Register now to secure your spot!
                     </p>
                   </div>
                 </div>

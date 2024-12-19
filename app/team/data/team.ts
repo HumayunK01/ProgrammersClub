@@ -121,6 +121,20 @@ export const teamData: TeamSection[] = [
               linkedin: "https://www.linkedin.com/in/talha-ansari-05982b241/",
               instagram: "https://www.instagram.com/_talhaansari_08"
             },
+            {
+              id: "maryamafzallokhandwala",
+              name: "Maryam Afzal Lokhandwala ",
+              position: "Member",
+              image: "/assets/team/lokhandwala.png",
+              section: "Book Keeping",
+              rollNumber: "231730",
+              email: "maryam.231730.cs@mhssce.ac.in",
+              year: "S.E",
+              branch: "AIML",
+              quote: "The Expert in anything was once a beginner.",
+              linkedin: "https://www.linkedin.com/in/talha-ansari-05982b241/",
+              instagram: "https://www.instagram.com/_talhaansari_08"
+            },
         ]
     },
     {
@@ -182,6 +196,20 @@ export const teamData: TeamSection[] = [
               linkedin: "https://www.linkedin.com/in/inshiraah-khan-323aba291/",
               instagram: "https://www.instagram.com/inshu_0227"
             },
+            {
+              id: "shaikhzehra",
+              name: "Shaikh Zehra",
+              position: "Member",
+              image: "/assets/team/zehra.png",
+              section: "Creative Team",
+              rollNumber: "231757",
+              email: "zehra.231757.cs@mhssce.ac.in",
+              year: "S.E",
+              branch: "AIML",
+              quote: "The future is not something we wait for ,  it's something we create.",
+              linkedin: "https://www.linkedin.com/in/zehra-shaikh-13aa35319/",
+              instagram: "https://www.instagram.com/_zehrashk_"
+            }, 
         ]
     },
     {

@@ -40,7 +40,7 @@ export const eventsData: Event[] = [
     title: "Err_404 6.0",
     date: "January 18-19, 2025",
     description: `
-ERR_404 6.0 is a hybrid 48-hour International Hackathon dedicated to fostering innovation and collaboration among students. This prestigious event challenges participants to develop creative and practical solutions for pressing societal issues, aligning with national initiatives of innovation.
+ERR_404 6.0 is a hybrid 36-hour International Hackathon dedicated to fostering innovation and collaboration among students. This prestigious event challenges participants to develop creative and practical solutions for pressing societal issues, aligning with national initiatives of innovation.
 
 🎯 **Hackathon Objectives:**
 📌 Innovation & Impact:
@@ -52,8 +52,8 @@ ERR_404 6.0 is a hybrid 48-hour International Hackathon dedicated to fostering i
 • Continue the college's legacy of technological innovation
 • Strengthen reputation as an innovation hub
 • Enhance institutional visibility internationally
-📌 Community & Collaboration:
 
+📌 Community & Collaboration:
 • Foster strong local and global community connections
 • Engage alumni for mentorship and networking
 • Create meaningful sponsor relationships

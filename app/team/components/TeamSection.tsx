@@ -41,8 +41,18 @@ export function TeamSection({ section }: TeamSectionProps) {
         viewport={{ once: true, margin: "-100px" }}
         className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto px-4"
       >
-        {section.members.map((member) => (
-          <motion.div key={member.id} variants={item}>
+        {section.members.map((member, index) => (
+          <motion.div 
+            key={member.id} 
+            variants={item}
+            className={
+              section.members.length === 2 
+                ? index === 0 
+                  ? 'lg:col-start-2 xl:col-start-2' 
+                  : 'lg:col-start-3 xl:col-start-3'
+                : '' // For other cases: use default grid positioning
+            }
+          >
             <TeamCard member={member} />
           </motion.div>
         ))}

@@ -128,13 +128,13 @@ export default function TeamMemberPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="group bg-transparent backdrop-blur-md rounded-lg p-4 border-2 border/80 hover:border/90 transition-colors duration-300"
+                  className="group bg-transparent backdrop-blur-md rounded-lg p-3 sm:p-4 border-2 border/80 hover:border/90 transition-colors duration-300"
                 >
-                  <p className="text-gray-700 text-sm font-medium flex items-center gap-1.5 mb-1">
-                    <Star className="w-4 h-4" />
+                  <p className="text-gray-700 text-xs sm:text-sm font-medium flex items-center gap-1.5 mb-1">
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4" />
                     Team
                   </p>
-                  <p className="text-gray-700 font-medium">{member.section}</p>
+                  <p className="text-gray-700 font-medium text-sm sm:text-base">{member.section}</p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
