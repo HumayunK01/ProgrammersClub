@@ -91,7 +91,7 @@ export const teamData: TeamSection[] = [
               branch: "Computer Engineering",
               quote: "Remember why you started.",
               linkedin: "https://www.linkedin.com/in/iayeshakoder/",
-              instagram: "https://www.instagram.com/mohammad_ali1465?igsh=dHFhMXljNDB3b2Fm"
+              instagram: "https://www.instagram.com/ayeshakhalilk"
             },
             {
               id: "sakharkarshaan",
@@ -132,8 +132,8 @@ export const teamData: TeamSection[] = [
               year: "S.E",
               branch: "AIML",
               quote: "The Expert in anything was once a beginner.",
-              linkedin: "https://www.linkedin.com/in/talha-ansari-05982b241/",
-              instagram: "https://www.instagram.com/_talhaansari_08"
+              linkedin: "",
+              instagram: ""
             },
         ]
     },
@@ -193,8 +193,8 @@ export const teamData: TeamSection[] = [
               year: "S.E",
               branch: "Computer Engineering",
               quote: "An engineer with compassion and mercy designs creative solutions that uplift humanity.",
-              linkedin: "https://www.linkedin.com/in/inshiraah-khan-323aba291/",
-              instagram: "https://www.instagram.com/inshu_0227"
+              linkedin: "https://www.linkedin.com/in/hannan-shemle-8779a227b/",
+              instagram: "https://www.instagram.com/_hannan_shemle_"
             },
             {
               id: "shaikhzehra",
@@ -254,8 +254,8 @@ export const teamData: TeamSection[] = [
             year: "S.E.",
             branch: "Computer Engineering",
             quote: "Turn errors in lesson and compile your dreams into reality.",
-            linkedin: "https://linkedin.com/in/alexjohnson",
-            instagram: "https://instagram.com/alexjohnson"
+            linkedin: "",
+            instagram: ""
         },
         {
             id: "khanamanjamal",
@@ -282,8 +282,8 @@ export const teamData: TeamSection[] = [
             year: "T.E",
             branch: "CSE IOT",
             quote: "Great things are never done by one person; they're done by a team of people.",
-            linkedin: "https://www.linkedin.com/in/fouzan-khan-7275a3324",
-            instagram: "https://www.instagram.com/fouzank66/"
+            linkedin: "https://www.linkedin.com/in/rahil-khan-191aa722a/",
+            instagram: "https://www.instagram.com/altrahilll"
         },
         {
             id: "fouzanmaksoodkhan",
@@ -432,8 +432,8 @@ export const teamData: TeamSection[] = [
                 year: "S.E",
                 branch: "CSE IOT",
                 quote: "Success is not merely a destination but a journey of relentless effort, steady determination, and the courage to overcome every obstacle.",
-                linkedin: "https://www.linkedin.com/in/gulamnabi-moinuddin-mundas-78992b213/",
-                instagram: "https://www.instagram.com/heyy.gulamnabi/"
+                linkedin: "",
+                instagram: ""
             }
         ]
     },
