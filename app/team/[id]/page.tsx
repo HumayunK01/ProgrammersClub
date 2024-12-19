@@ -216,7 +216,15 @@ export default function TeamMemberPage() {
             {/* Footer */}
             <div className="bg-transparent backdrop-blur-md p-3 sm:p-4 border-t-2 border/80">
               <p className="text-gray-600 text-xs sm:text-sm text-center font-medium">
-                This card is non-transferable and property of Programmers' Club
+                Want to update or add details?{' '}
+                <a 
+                  href="https://forms.gle/yfLUFsadrfe9qkW7A" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  Click here
+                </a>
               </p>
             </div>
           </div>
