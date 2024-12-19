@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Calendar } from "lucide-react"
 import { MainCarousel } from "../carousel/main-carousel"
 
 export function HeroSection() {
@@ -20,7 +20,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-6 md:space-y-8 text-center lg:text-left relative"
+          className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
           <div className="space-y-4 md:space-y-5">
             <motion.div
@@ -50,7 +50,7 @@ export function HeroSection() {
             className="flex flex-wrap gap-3 md:gap-4 justify-center lg:justify-start"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.6 }}
           >
             <Button 
               size="lg" 

@@ -34,6 +34,72 @@ export interface Event {
 }
 
 export const eventsData: Event[] = [
+  // Err_404 6.0
+  {
+    id: "err_404_6_0",
+    title: "Err_404 6.0",
+    date: "January 18-19, 2025",
+    description: `
+ERR_404 6.0 is a hybrid 48-hour International Hackathon dedicated to fostering innovation and collaboration among students. This prestigious event challenges participants to develop creative and practical solutions for pressing societal issues, aligning with national initiatives of innovation.
+
+🎯 **Hackathon Objectives:**
+📌 Innovation & Impact:
+• Develop technology-driven solutions for global challenges
+• Align with international initiatives and sustainable development goals
+• Bridge theoretical knowledge with practical applications
+
+📌 Institutional Excellence:
+• Continue the college's legacy of technological innovation
+• Strengthen reputation as an innovation hub
+• Enhance institutional visibility internationally
+📌 Community & Collaboration:
+
+• Foster strong local and global community connections
+• Engage alumni for mentorship and networking
+• Create meaningful sponsor relationships
+
+🎯 **Key Features:**
+
+⭕ Learning Environment:
+• Hands-on problem-solving experience
+• Real-world challenge applications
+• Cutting-edge technology exploration
+
+⭕ Professional Development:
+• Industry mentor guidance
+• Networking opportunities
+• Skill enhancement workshops
+
+⭕ Global Platform:
+• International participation
+• Cross-cultural collaboration
+• Worldwide visibility
+
+This edition focuses on addressing pressing global challenges while providing participants with a dynamic platform to showcase their technical expertise and innovative thinking.`,
+    thumbnailImage: "/assets/events/err_404_6.png",
+    posterImage: "/assets/poster/codefeastposter.png",
+    tags: ["Upcoming", "Hackathon"],
+    startDate: "Sat, Jan 18, 2025 7:00 AM",
+    registrationEnd: "Jan 13, 2025 11:59 PM",
+    entryFees: "Free",
+    venue: {
+      name: "Alma Latifi, Computer Department Labs, Hybrid",
+      note: "M. H. Saboo Siddik College"
+    },
+    incharges: [
+      { name: "Dr. Mohammed Ahmed Shaikh" },
+      { name: "Er. Ahlam Ansari" }
+    ],
+    registrationLink: {
+      url: "https://err-404-6.vercel.app/",
+      isOpen: true
+    },
+    teamSize: "4 - 5 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    }
+  },
   // CodeFeast
   {
     id: "codefeast-3-2024",
@@ -597,7 +663,7 @@ A quiz competition for students of F.E, S.E., T.E. and B.E. organized by Program
 📌 Special Elements:
 • Power-ups for assistance
 • Freeze time options
-��� Real-time scoring system
+• Real-time scoring system
 
 This activity provides students with valuable experience similar to placement aptitude tests, helping them prepare for their future career opportunities.`,
     thumbnailImage: "/assets/events/quizmania.png",
