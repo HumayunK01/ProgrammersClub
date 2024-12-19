@@ -102,10 +102,25 @@ export function EventsCarousel({ events }: { events: Event[] }) {
               className={`min-w-full px-2 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
             >
               <Link href={`/events/${event.id}`}>
-                <Card className="group overflow-hidden transition-all duration-300 relative bg-white rounded-xl border border-gray-100 hover:border-[#4267B2]/20 hover:bg-gradient-to-br hover:from-[#4267B2]/5 hover:to-white/90 h-[450px] cursor-pointer">
-                  <div className="relative flex flex-col h-full">
-                    {/* Image Container with Gradient Overlay */}
+                <Card className={`group overflow-hidden transition-all duration-300 relative rounded-xl border 
+                  ${event.tags.includes('Upcoming') 
+                    ? 'border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.2)] bg-gradient-to-bl from-cyan-200/40 via-cyan-100/30 to-cyan-50/20' 
+                    : 'border-gray-100 bg-white'} 
+                  hover:border-[#4267B2]/20 hover:bg-gradient-to-br hover:from-[#4267B2]/5 hover:to-white/90 h-[450px] cursor-pointer`}>
+                  <div className={`relative flex flex-col h-full ${event.tags.includes('Upcoming') 
+                    ? 'bg-gradient-to-bl from-cyan-200/30 via-cyan-100/20 to-cyan-50/10' 
+                    : ''}`}>
+                    {/* Image Container */}
                     <div className="relative h-48">
+                      {event.tags.includes('Upcoming') && (
+                        <div className="absolute top-2 right-2 z-20">
+                          <Badge 
+                            className="bg-gradient-to-bl from-cyan-400 via-cyan-300 to-cyan-200 text-white border-none px-3 py-1"
+                          >
+                            Upcoming
+                          </Badge>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 group-hover:opacity-0 transition-opacity z-10" />
                       <Image
                         src={event.thumbnailImage}
@@ -182,10 +197,25 @@ export function EventsCarousel({ events }: { events: Event[] }) {
               className="min-w-[25%] px-2"
             >
               <Link href={`/events/${event.id}`}>
-                <Card className="group overflow-hidden transition-all duration-300 relative bg-white rounded-xl border border-gray-100 hover:border-[#4267B2]/20 hover:bg-gradient-to-br hover:from-[#4267B2]/5 hover:to-white/90 h-[450px] cursor-pointer">
-                  <div className="relative flex flex-col h-full">
-                    {/* Image Container with Gradient Overlay */}
+                <Card className={`group overflow-hidden transition-all duration-300 relative rounded-xl border 
+                  ${event.tags.includes('Upcoming') 
+                    ? 'border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.2)] bg-gradient-to-bl from-cyan-200/40 via-cyan-100/30 to-cyan-50/20' 
+                    : 'border-gray-100 bg-white'} 
+                  hover:border-[#4267B2]/20 hover:bg-gradient-to-br hover:from-[#4267B2]/5 hover:to-white/90 h-[450px] cursor-pointer`}>
+                  <div className={`relative flex flex-col h-full ${event.tags.includes('Upcoming') 
+                    ? 'bg-gradient-to-bl from-cyan-200/30 via-cyan-100/20 to-cyan-50/10' 
+                    : ''}`}>
+                    {/* Image Container */}
                     <div className="relative h-48">
+                      {event.tags.includes('Upcoming') && (
+                        <div className="absolute top-2 right-2 z-20">
+                          <Badge 
+                            className="bg-gradient-to-bl from-cyan-400 via-cyan-300 to-cyan-200 text-white border-none px-3 py-1"
+                          >
+                            Upcoming
+                          </Badge>
+                        </div>
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30 group-hover:opacity-0 transition-opacity z-10" />
                       <Image
                         src={event.thumbnailImage}
