@@ -24,8 +24,7 @@ export function TeamCard({ member }: TeamCardProps) {
 
   return (
     <Link href={`/team/${member.id}`}>
-      <motion.div
-        whileHover={{ y: -5 }}
+      <div
         className="bg-white rounded-lg shadow-sm overflow-hidden duration-300 group"
       >
         <div className="aspect-square relative overflow-hidden">
@@ -47,7 +46,7 @@ export function TeamCard({ member }: TeamCardProps) {
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   )
 } 

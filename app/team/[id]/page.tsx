@@ -66,6 +66,8 @@ export default function TeamMemberPage() {
                     alt={member.name}
                     width={192}
                     height={192}
+                    quality={100}
+                    priority
                     className="object-cover w-full h-full md:hover:scale-105 transition-transform duration-300"
                   />
                 </motion.div>
@@ -218,7 +220,7 @@ export default function TeamMemberPage() {
               <p className="text-gray-600 text-xs sm:text-sm text-center font-medium">
                 Want to update or add details?{' '}
                 <a 
-                  href="https://forms.gle/yfLUFsadrfe9qkW7A" 
+                  href="https://forms.gle/yfLUFsadrfe9qkW7A"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline"

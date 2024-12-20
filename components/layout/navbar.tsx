@@ -93,7 +93,7 @@ export function Navbar() {
               <Users className="w-4 h-4" />
               Our Team
             </Link>
-            <Link 
+            {/* <Link 
              href="/magazines" 
              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
                isActive('/magazines') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
@@ -101,7 +101,7 @@ export function Navbar() {
            >
              <BookOpen className="w-4 h-4" />
              Magazines
-           </Link>
+           </Link> */}
           </div>
           <Sheet>
             <SheetTrigger asChild>
