@@ -157,27 +157,38 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     icon: "/assets/images/trophy.png",
                     label: "Event Status:",
                     value: (() => {
-                      // Normalize dates to start of day
-                      const eventDate = new Date(event.startDate);
-                      eventDate.setHours(0, 0, 0, 0);
-                      
+                      // Parse the event date string properly
+                      const eventDate = new Date(event.startDate.replace(/\s+/g, ' '));
                       const today = new Date();
-                      today.setHours(0, 0, 0, 0);
                       
-                      const isUpcoming = eventDate.getTime() > today.getTime();
+                      // Set both dates to midnight for accurate day comparison
+                      const eventDay = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
+                      const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                      
+                      // Calculate the day after the event
+                      const dayAfterEvent = new Date(eventDay);
+                      dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
+                      
+                      const isLive = todayDay >= eventDay && todayDay <= dayAfterEvent;
+                      const isUpcoming = eventDay > todayDay;
                       
                       return (
                         <div className="space-y-1">
-                          <span className={isUpcoming ? "text-green-600" : "text-red-600"}>
-                            {isUpcoming ? "Live" : "Ended"}
+                          <span className={isUpcoming || isLive ? "text-green-600" : "text-red-600"}>
+                            {isLive ? "Live" : isUpcoming ? "Upcoming" : "Ended"}
                           </span>
                           <p className="text-xs text-gray-500">
                             {(() => {
-                              const diffTime = Math.abs(eventDate.getTime() - today.getTime());
+                              const diffTime = Math.abs(eventDay.getTime() - todayDay.getTime());
                               const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                              return eventDate.getTime() > today.getTime() 
-                                ? `${diffDays} days to go`
-                                : `${diffDays} days ago`;
+                              
+                              if (isLive) {
+                                return todayDay.getTime() === eventDay.getTime() ? 
+                                  "Today" : "Last day";
+                              }
+                              return isUpcoming 
+                                ? `${diffDays} day${diffDays !== 1 ? 's' : ''} to go`
+                                : `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
                             })()}
                           </p>
                         </div>

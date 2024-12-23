@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export function HackathonAlert() {
   const [isVisible, setIsVisible] = useState(true)
   const [progress, setProgress] = useState(100)
+  const pathname = usePathname()
   const DISPLAY_DURATION = 8000 // 8 seconds total display time
 
   useEffect(() => {
@@ -30,6 +32,8 @@ export function HackathonAlert() {
     return () => clearInterval(timer)
   }, [isVisible])
 
+  // Move conditional returns after all hooks
+  if (pathname !== '/') return null
   if (!isVisible) return null
 
   // Calculate the progress for each side

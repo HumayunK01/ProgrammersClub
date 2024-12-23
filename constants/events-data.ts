@@ -1,6 +1,7 @@
 export interface Event {
   id: string;
   title: string;
+  type: string;
   date: string;
   description: string;
   thumbnailImage: string;
@@ -38,6 +39,7 @@ export const eventsData: Event[] = [
   {
     id: "err_404_6_0",
     title: "Err_404 6.0",
+    type: "Hackathon",
     date: "January 18-19, 2025",
     description: `
 ERR_404 6.0 is a hybrid 36-hour National Hackathon dedicated to fostering innovation and collaboration among students. This prestigious event challenges participants to develop creative and practical solutions for pressing societal issues, aligning with national initiatives of innovation.
@@ -104,6 +106,7 @@ This edition focuses on addressing pressing global challenges while providing pa
   {
     id: "codefeast-3-2024",
     title: "CodeFeast 3.0",
+    type: "All",
     date: "September 27, 2024",
     description: `
 The goal of CodeFeast 3.0 is to provide students with a platform to apply their knowledge of Data Structures and Algorithms (DSA) learned in the recent workshop. This coding competition will test participants' problem-solving capabilities, promote the importance of competitive programming, and enhance their coding proficiency in a real-time environment.
@@ -163,6 +166,7 @@ The goal of CodeFeast 3.0 is to provide students with a platform to apply their 
   {
     id: "dsa-workshop-2024",
     title: "DSA Workshop",
+    type: "Workshop",
     date: "September 23-25, 2024",
     description: `
 The workshop aims to deepen participants' expertise in Data Structures and Algorithms, equipping students with essential skills for solving complex problems, ace technical interviews, and excelling in competitive programming. Through focused sessions and interactive problem-solving, the workshop will bridge the gap between theory and practical application, preparing students for success in both academic and professional settings.
@@ -219,6 +223,7 @@ The workshop aims to deepen participants' expertise in Data Structures and Algor
   {
     id: "womensday-2024",
     title: "Women's Day",
+    type: "All",
     date: "March 11, 2024",
     description: `
 The Women's Day Celebration Games Gala aims to create an inclusive and empowering environment that celebrates women's achievements while fostering teamwork, cooperation, and joy through interactive games and activities.
@@ -288,6 +293,7 @@ The Women's Day Celebration Games Gala aims to create an inclusive and empowerin
   {
     id: "valorant-tournament-2024",
     title: "Valorant Tournament",
+    type: "All",
     date: "March 9, 2024",
     description: `
 The Computer Society of India and Programmers' Club, in collaboration with Abrosia Fest, organized an exciting Valorant Tournament, bringing together skilled gamers to compete in this popular first-person shooter game.
@@ -354,6 +360,7 @@ The Computer Society of India and Programmers' Club, in collaboration with Abros
   {
     id: "halloween-hunt-2024",
     title: "Halloween Hunt",
+    type: "All",
     date: "March 6, 2024",
     description: `
 As part of the annual college fest SACE, the Computer Society of India (CSI) and Programmer's Club (PC) hosted an enthralling and innovative event titled "Halloween Hunt". This event, themed around the spooky and mystical elements of Halloween, offered a unique twist on the traditional treasure hunt.
@@ -423,6 +430,7 @@ As part of the annual college fest SACE, the Computer Society of India (CSI) and
   {
     id: "three-90-challenge-2024",
     title: "Three 90 Challenge",
+    type: "All",
     date: "January 26, 2024",
     description: `
 GeeksforGeeks has launched Three 90 Campaign to address the challenge of students losing motivation in coding after initial weeks. The campaign offers an exciting incentive: complete 90% of your chosen course in 90 days to receive a 90% refund.
@@ -482,10 +490,11 @@ GeeksforGeeks has launched Three 90 Campaign to address the challenge of student
       type: "Participation Certificates"
     }
   },
-  // Err_404
+  // Err_404 5.0
   {
     id: "err-404-5",
     title: "Err_404 5.0",
+    type: "Hackathon",
     date: "March 18-19, 2023",
     description: `
 ERR_404 is a 2-days National level Hackathon organized by the Computer Department of Anjuman-I-Islam M.H. Saboo Siddik College of Engineering, embodying the motto "Error no More, Innovation Forever."
@@ -623,6 +632,7 @@ ERR_404 is a 2-days National level Hackathon organized by the Computer Departmen
   {
     id: "quizmania-2023",
     title: "Quiz Mania",
+    type: "All",
     date: "September 17, 2023",
     description: `
 A quiz competition for students of F.E, S.E., T.E. and B.E. organized by Programmers' Club and Computer Society Of India, bringing together participants from all branches.
@@ -690,10 +700,248 @@ This activity provides students with valuable experience similar to placement ap
       type: "Participation + Merit Certificates"
     }
   },
+  // Err 404 4.0
+  {
+    id: "err-404-4",
+    title: "Err_404 4.0",
+    type: "Hackathon",
+    date: "March 20-21, 2021",
+    description: 
+    `ERR_404 is a 2-days National Level Hackathon organized by the Computer Department of Anjuman-I-Islam M.H. Saboo Siddik College of Engineering, dedicated to the motto "Error no More, Innovation Forever."
+
+🎯 **Event Highlights:**
+
+📌 Participant Opportunities:
+• Showcase exceptional technical skills
+• Innovate and bring ideas to life
+• Build functional prototypes in a highly competitive environment
+• Engage with top industry professionals
+
+📌 Skill Development Focus:
+• Enhance teamwork and leadership abilities
+• Foster attention to detail
+• Improve adaptability and problem-solving techniques
+• Boost brainstorming and ideation skills
+
+🎯 **Event Details:**
+
+⭕ **Prize Pool:** 
+• Total Worth: ₹2,00,000 in cash prizes
+• Additional rewards from multiple sponsor companies, including software credits and goodies
+
+⭕ **Prestigious Sponsors:** 
+• Title Sponsor: Sogolytics
+• Platinum Sponsors: Devfolio, Polygon
+• Gold Sponsors: DigitalOcean, Replit, Solana, Verbwire, Filecoin
+• And more leading industry partners
+
+⭕ **Participation Guidelines:** 
+• Team Size: 4-5 members
+• Registration: Free
+• Mode: Virtual
+• Open to all college students
+
+🎁 **Additional Perks:** 
+• Certificates of Participation
+• Refreshments for all participants
+• Networking opportunities with industry experts
+• Learning resources and mentorship support`,
+    thumbnailImage: "/assets/events/err_404_4.png",
+    posterImage: "/assets/poster/err_404_4.png",
+    tags: ["Hackathon", "Coding"],
+    startDate: "Sat, March 20, 2021",
+    registrationEnd: "March 18, 2021",
+    entryFees: "Free",
+    venue: {
+      name: "Alma Latifi",
+      note: "M. H. Saboo Siddik College"
+    },
+    incharges: [
+      { name: "Dr. Mohammed Ahmed Shaikh" },
+      { name: "Er. Ahlam Ansari" }
+    ],
+    registrationLink: {
+      url: "https://err-404-6.vercel.app/",
+      isOpen: false
+    },
+    teamSize: "4 - 5 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    },
+    sponsors: [
+      {
+        name: "Sogolytics",
+        logo: "/assets/sponsors/sogo.png",
+        website: "https://www.sogolytics.com/"
+      },
+      {
+        name: "Pinc Insurance",
+        logo: "/assets/sponsors/pinc.png",
+        website: "https://www.pincinsurance.com/"
+      },
+      {
+        name: "Koshex",
+        logo: "/assets/sponsors/koshex.png",
+        website: "https://www.koshex.com/"
+      }
+    ]
+  },
+  // Err_404 3.0
+  {
+    id: "err-404-3",
+    title: "Err_404 3.0",
+    type: "Hackathon",
+    date: "February 29 - March 1, 2020",
+    description: 
+    `The much-anticipated Err_404 3.0 Hackathon marked a milestone in technical innovation by hosting a thrilling 48-hour coding marathon. This state-level event brought together bright minds from across Maharashtra, providing participants with an opportunity to brainstorm, innovate, and develop impactful solutions to pressing problems. With continuous guidance from expert mentors and a highly competitive yet collaborative environment, the hackathon set the stage for technological brilliance.
+
+🎯 **Event Highlights:**
+
+📌 **Participant Opportunities:**
+Showcase advanced technical skills.
+Develop innovative solutions to real-world problems.
+Build and present working prototypes in a competitive environment.
+Collaborate and network with peers and industry leaders.
+
+📌 **Skill Development Focus:**
+Enhanced problem-solving and ideation.
+Team coordination and leadership.
+Adapting to challenging scenarios.
+Effective presentation and communication.
+
+⭕ **Prize Pool:**
+Total Worth: ₹2,00,000 in cash prizes.
+Additional rewards from sponsors, including software credits and goodies.
+
+⭕ **Title Sponsor:**
+Sogosurvey
+
+⭕ **Gold Sponsors:**
+Mobicule, Aiolos Solutions
+
+⭕ **Supporters:**
+Neebal Technologies, Programmer's Club, CSI-MHSS Chapter
+
+⭕ **Knowledge Partners:**
+Difference-engine.ai, Ubisoft
+
+⭕ **Participation Guidelines:**
+Team Size: 4-5 members
+Registration: Free
+Mode: Offline
+Open to undergraduate students across Maharashtra.
+
+🎁 **Additional Perks:**
+Certificates for participation and merit.
+Refreshments and accommodation for participants.
+Access to mentorship sessions by industry professionals.
+Networking opportunities with experts.
+
+⭕ **Domains:**
+Machine Learning
+Blockchain
+IoT-enabled Solutions
+Big Data
+Computer Vision
+Social Impact Solutions
+
+⭕ **Judging Criteria:**
+Practical application and real-world relevance.
+Technical innovation and coding proficiency.
+Domain-specific creativity.
+Presentation skills and teamwork.`,
+    thumbnailImage: "/assets/events/err_404_3.png",
+    posterImage: "/assets/poster/err_404_3.png",
+    tags: ["Hackathon", "Coding"],
+    startDate: "Sat, February 29, 2020",
+    registrationEnd: "Feb 27, 2020",
+    entryFees: "Free",
+    venue: {
+      name: "Alma Latifi",
+      note: "M. H. Saboo Siddik College"
+    },
+    incharges: [
+      { name: "Dr. Mohammed Ahmed Shaikh" },
+      { name: "Er. Ahlam Ansari" }
+    ],
+    registrationLink: {
+      url: "https://err-404-6.vercel.app/",
+      isOpen: false
+    },
+    teamSize: "4 - 5 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    },
+    sponsors: [
+      {
+        name: "Oh Campus",
+        logo: "/assets/sponsors/ohcampus.png",
+        website: "https://ohcampus.in/"
+      },
+      {
+        name: "Sogosurvey",
+        logo: "/assets/sponsors/sogo.png",
+        website: "https://www.sogolytics.com/"
+      },
+      {
+        name: "No Escape",
+        logo: "/assets/sponsors/noescape.png",
+        website: "https://noescape.in/"
+      },
+      {
+        name: "Lokmat",
+        logo: "/assets/sponsors/lokmat.png",
+        website: "https://lokmat.com/"
+      },
+      {
+        name: "IIDE",
+        logo: "/assets/sponsors/iide.png",
+        website: "https://iide.in/"
+      },
+      {
+        name: "Hell Energy Drink",
+        logo: "/assets/sponsors/hell.png",
+        website: "https://www.hellenergy.com/in/"
+      },
+      {
+        name: "Digital Ocean",
+        logo: "/assets/sponsors/digitalocean.png",
+        website: "https://digitalocean.com/"
+      },
+      {
+        name: "CrowdSource",
+        logo: "/assets/sponsors/crowdsource.png",
+        website: "https://www.crowdsource.in/"
+      },
+      {
+        name: "Acxiom",
+        logo: "/assets/sponsors/acxiom.png",
+        website: "https://acxiom.com/"
+      },
+      {
+        name: "Creative Tim",
+        logo: "/assets/sponsors/creativetim.png",
+        website: "https://www.creative-tim.com/"
+      },
+      {
+        name: "Bugsee",
+        logo: "/assets/sponsors/bugsee.png",
+        website: "https://bugsee.com/"
+      },
+      {
+        name: "Ahtesaab",
+        logo: "/assets/sponsors/ahtesaab.png",
+        website: "https://ahtesaab.com/"
+      }
+    ]
+  },
   // Codentine
   {
     id: "codentine-2023",
     title: "Codentine",
+    type: "All",
     date: "April 13, 2020",
     description: `
 A competitive programming competition organized in association with "Code Chef", designed during quarantine to bring together talented programmers to compete and learn in an engaging way. The event focused on enhancing problem-solving skills through progressively challenging problems in live contests.
@@ -771,10 +1019,122 @@ This event successfully combined competitive programming with learning, providin
       type: "Merit Certificates"
     }
   },
+  // Err_404 2.0
+  {
+    id: "err-404-2",
+    title: "Err_404 2.0",
+    type: "Hackathon",
+    date: "Match 16-17, 2019",
+    description: 
+    `ERR_404 2.0 Hack Not Found built on the success of its predecessor, delivering an engaging 24-hour hackathon hosted by the M.H. Saboo Siddik College of Engineering (MHSSCOE) on March 16-17, 2019. This event provided a vibrant platform for collaboration, innovation, and technical problem-solving among 208 participants, representing 56 teams from across Maharashtra.
+
+🎯 **Key Highlights:**
+
+📌 Focus Areas: • Foster innovation aligned with "Digital India" initiatives
+• Address pressing real-world challenges through domains like Machine Learning, Blockchain, IoT, and more
+• Promote female developers through a special "Female Cup" award
+📌 Event Details: • Date: March 16-17, 2019
+• Participants: 208, from 56 selected teams
+• Venue: MHSSCOE campus
+📌 Prizes & Recognition: • Top 3 teams awarded for their exceptional solutions
+• Special recognition for the best female hacker team
+
+🎯 **Judging & Evaluation:**
+⭕ Judges Panel: Renowned industry professionals like **Mr. Zaid Lakdawala (Sogosurvey)**, **Dr. Rayomand Vatcha (UNC)**, and **Mr. Irshad Shaikh (Neebal Technologies)**.
+⭕ Mentors: Experts from organizations like Ubisoft, Zycus, and Difference-engine.ai provided continuous guidance during the event.
+
+⭐ **Evaluation Parameters:**
+Real-world application
+Domain relevance
+Technical execution
+Presentation quality
+
+🎯 **Achievements:**
+
+🏆 **Winning Teams:**
+**CSP22 (MHSSCOE)** - First Place
+**ImagiNation (Vidyavardhini College of Engineering)** - Runner-up
+**InoApk.ai (SIES Graduate School of Technology)** - 2nd Runner-up
+🌟 Special Recognition: • Best Female Hacker Team: House Stack (Fr. Conceicao Rodrigues College of Engineering)
+
+🎯 **Social Media Impact:**
+🌐 Extensive engagement via hashtags like #err404hacknotfound and #hackathon2019 on Instagram, Twitter, and Facebook.
+📈 Metrics:
+• Instagram: 324 followers, 33 posts
+• Twitter: 181 tweets, 160 page likes
+• Facebook: 100+ followers, 119 page likes
+
+🎯 **Participant Feedback:**
+The feedback highlighted an overwhelmingly positive experience, with participants praising the event's organization and mentoring support. Minor suggestions included enhancing technical infrastructure and logistics.
+
+🎯 **Conclusion:**
+ERR_404 2.0 successfully built a thriving ecosystem for aspiring developers, with a vision to scale future editions into even larger, more impactful events. By fostering a culture of creativity and technological advancement, MHSSCOE continues to contribute to the development of India's tech-savvy youth.`,
+    thumbnailImage: "/assets/events/err_404_2.png",
+    posterImage: "/assets/poster/err_404_2.png",
+    tags: ["Hackathon", "Coding"],
+    startDate: "Sat, March 16, 2019",
+    registrationEnd: "March 14, 2019",
+    entryFees: "Free",
+    venue: {
+      name: "Alma Latifi",
+      note: "M. H. Saboo Siddik College"
+    },
+    incharges: [
+      { name: " Er. Shabana Tadvi" },
+      { name: "Dr. Zainab Pirani" }
+    ],
+    registrationLink: {
+      url: "https://err-404-6.vercel.app/",
+      isOpen: false
+    },
+    teamSize: "4 - 5 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    },
+    sponsors: [
+      {
+        name: "Sogolytics",
+        logo : "/assets/sponsors/sogo.png",
+        website: "https://www.sogolytics.com/"
+      },
+      {
+        name: "Mobicule",
+        logo : "/assets/sponsors/mobicule.png",
+        website: "https://www.mobicule.com/"
+      },
+      {
+        name: "Intel",
+        logo: "/assets/sponsors/intel.png",
+        website: "https://www.intel.com/content/www/us/en/homepage.html"
+      },
+      {
+        name: "Internshala",
+        logo: "/assets/sponsors/internshala.png",
+        website: "https://internshala.com/"
+      },
+      {
+        name: "Neebal Technologies",
+        logo: "/assets/sponsors/neebal.png",
+        website: "https://neebal.com/"
+      },
+      {
+        name: "Ubisoft",
+        logo: "/assets/sponsors/ubisoft.png",
+        website: "https://ubisoft.com/"
+      },
+      {
+        name: "Aiolos",
+        logo: "/assets/sponsors/aiolos.png",
+        website: "https://aiolos.cloud/"
+      },
+    ]
+  },
   // Workshop on Git
   {
     id: "workshop-git-2023",
     title: "Workshop on Git",
+    type: "Workshop",
     date: "March 7, 2018",
     description: `
 A hands-on workshop focused on Git version control system, organized by the Programmer's Club in association with CSI. The workshop covered essential Git commands, collaborative development workflows, and best practices for modern software development.
@@ -845,10 +1205,117 @@ This workshop equipped participants with essential version control skills, prepa
       type: "Participation Certificates"
     }
   },
+  // Err_404 1.0
+  {
+    id: "err-404",
+    title: "Err_404 1.0",
+    type: "Hackathon",
+    date: "October 7-8, 2017",
+    description: 
+    `Err_404: Hack Not Found is a dynamic 24-hour State Level Hackathon organized by the M.H. Saboo Siddik College of Engineering, held on October 7th and 8th, 2017. This event, in collaboration with the Computer Society of India and the Programmer's Club, embodies the spirit of innovation and encourages participants to bring their tech ideas to life.
+
+🎯 **Event Highlights:**
+📌 Participant Opportunities: • Compete in a challenging, time-constrained environment • Work on cutting-edge technology solutions in Machine Learning, IoT, Big Data, Blockchain, and more • Collaborate with peers to innovate and create impactful solutions • Present ideas to industry-leading judges and mentors
+📌 Skill Development Focus: • Creativity and ideation • Technical execution and problem-solving • Collaboration and teamwork • Presentation and communication
+
+🎯 **Event Details:**
+⭕ Prize Pool: • Total worth: ₹1.2 Lakhs • Multiple prizes for winners, including special recognition for the best female developer team
+⭕ Prestigious Judges & Mentors: • Industry experts such as **Mr. Tabish Sangrar (CIO, Wellness Forever)**, **Dr. Rayomand Vatcha (Robotics, UNC)**, and others, providing guidance and evaluations during the even
+⭕ Participation Guidelines: • Team Size: 3-5 members • Registration: Free • Mode: Offline • Open to students across various colleges
+
+🎁 **Additional Perks:**
+• Certificates for all participants 
+• Networking opportunities with industry professionals and fellow developers 
+�� Refreshments and meals provided throughout the event 
+• Mentorship support from industry veterans and faculty members
+
+Err_404 served as a platform for students to showcase their skills, build innovative solutions, and network with experts, while also addressing key real-world issues. The event saw participation from over 100 teams, with top-performing teams recognized and awarded for their impressive work.`,
+    thumbnailImage: "/assets/events/err_404_1.png",
+    posterImage: "/assets/poster/err_404_1.png",
+    tags: ["Hackathon", "Coding"],
+    startDate: "Sat, Oct 7, 2017",
+    registrationEnd: "Oct 6, 2017 11:59 PM",
+    entryFees: "Free",
+    venue: {
+      name: "Alma Latifi",
+      note: "M. H. Saboo Siddik College"
+    },
+    incharges: [
+      { name: " Er. Shabana Tadvi" },
+      { name: "Dr. Zainab Pirani" }
+    ],
+    registrationLink: {
+      url: "https://err-404-6.vercel.app/",
+      isOpen: false
+    },
+    teamSize: "4 - 5 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    },
+    sponsors: [
+      {
+        name: "Tata Consultancy Services",
+        logo : "/assets/sponsors/tcs.png",
+        website: "https://www.tcs.com/"
+      },
+      {
+        name: "Intel",
+        logo: "/assets/sponsors/intel.png",
+        website: "https://www.intel.com/content/www/us/en/homepage.html"
+      },
+      {
+        name: "Internshala",
+        logo: "/assets/sponsors/internshala.png",
+        website: "https://internshala.com/"
+      },
+      {
+        name: "Frapp",
+        logo: "/assets/sponsors/frapp.png",
+        website: "https://frapp.com/"
+      },
+      {
+        name: "O'ceans",
+        logo: "/assets/sponsors/o'cean.png",
+        website: "https://oceanbeverages.in/"
+      },
+      {
+        name: "McDonald's",
+        logo: "/assets/sponsors/mcdonald.png",
+        website: "https://www.mcdonalds.com/us/en-us.html"
+      },
+      {
+        name: "GDG Mumbai",
+        logo: "/assets/sponsors/gdgmumbai.png",
+        website: "https://gdg.community.dev/gdg-cloud-mumbai/"
+      },
+      {
+        name: "GBG Mumbai",
+        logo: "/assets/sponsors/gbgmumbai.png",
+        website: "https://x.com/gbgmumbai"
+      },
+      {
+        name: "Chunkies",
+        logo: "/assets/sponsors/chunkies.png",
+        website: "https://www.zomato.com/mumbai/chunkies-burgers-fried-chicken-bandra-talao-bandra-west"
+      },
+      {
+        name: "Balaji",
+        logo: "/assets/sponsors/balaji.png",
+        website: "https://www.balajiwafers.com/"
+      },
+      {
+        name: "Wellness Forever",
+        logo: "/assets/sponsors/wellnessforever.png",
+        website: "https://www.wellnessforever.com/"
+      },
+    ]
+  },
   // Java Workshop
   {
     id: "java-workshop-2023",
     title: "Java Workshop",
+    type: "Workshop",
     date: "September 11, 2017",
     description: `
 A comprehensive 2-day workshop focused on Object-Oriented Programming concepts in Java, organized by the Programmer's Club in association with CSI. This workshop provided hands-on experience with core OOP principles and their practical implementation.
@@ -924,6 +1391,7 @@ This workshop equipped participants with essential Object-Oriented Programming c
   {
     id: "triwizard-tournament-2023",
     title: "Triwizard Tournament",
+    type: "All",
     date: "August 28, 2017",
     description: `
 A magical coding competition open to all colleges, designed to challenge participants with enchanting problem-solving tasks. This tournament brought together aspiring programmers to test their skills across various difficulty levels, from novice spells to advanced wizardry.

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, Calendar } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 import { MainCarousel } from "../carousel/main-carousel"
 
 export function HeroSection() {

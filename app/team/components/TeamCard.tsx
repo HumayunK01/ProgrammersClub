@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { TeamMember } from '@/app/team/types/team'
 import { Crown, Trophy, Star } from 'lucide-react'
 
