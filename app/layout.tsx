@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google'
 import "./globals.css";
 import { HackathonAlert } from "@/components/notifications/HackathonAlert"
+import { BackToTop } from '@/components/BackToTop'
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body>
         <HackathonAlert />
         {children}
+        <BackToTop />
       </body>
     </html>
   );
