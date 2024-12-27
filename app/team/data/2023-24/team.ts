@@ -1,7 +1,8 @@
-import { TeamSection } from "../types/team"
+import { TeamSection } from "../../types/team"
 
-export const teamData: TeamSection[] = [
+export const teamData2023_24: (TeamSection & { academicYear: string })[] = [
     {
+        academicYear: '2023-24',
         title: "Coordinators",
         members: [
             {
@@ -35,6 +36,7 @@ export const teamData: TeamSection[] = [
         ]
     },
     {
+        academicYear: '2023-24',
         title: "Book Keeping",
         members: [
             {
@@ -138,6 +140,7 @@ export const teamData: TeamSection[] = [
         ]
     },
     {
+        academicYear: '2023-24',
         title: "Creative Team",
         members: [
             {
@@ -213,6 +216,7 @@ export const teamData: TeamSection[] = [
         ]
     },
     {
+        academicYear: '2023-24',
         title: "Event Management",
         members: [
         {
@@ -302,6 +306,7 @@ export const teamData: TeamSection[] = [
         ]
     },
     {
+        academicYear: '2023-24',
         title: "Public Relations",
         members: [
             {
@@ -363,6 +368,7 @@ export const teamData: TeamSection[] = [
         ]
     },
     {
+        academicYear: '2023-24',
         title: "Technical Team",
         members: [
             {
@@ -437,4 +443,46 @@ export const teamData: TeamSection[] = [
             }
         ]
     },
+    {
+        academicYear: '2024-25',
+        title: "Coordinators",
+        members: [
+            // Next year's team members (if any)
+        ]
+    },
+    {
+        academicYear: '2024-25',
+        title: "Book Keeping",
+        members: [
+            // Next year's team members (if any)
+        ]
+    },
+    {
+        academicYear: '2024-25',
+        title: "Creative Team",
+        members: [
+            // Next year's team members (if any)
+        ]
+    },
+    {
+        academicYear: '2024-25',
+        title: "Event Management",
+        members: [
+            // Next year's team members (if any)
+        ]
+    },
+    {
+        academicYear: '2024-25',
+        title: "Public Relations",
+        members: [
+            // Next year's team members (if any)
+        ]
+    },
+    {
+        academicYear: '2024-25',
+        title: "Technical Team",
+        members: [
+            // Next year's team members (if any)
+        ]
+    }
 ] 

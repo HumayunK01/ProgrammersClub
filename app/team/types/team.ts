@@ -17,3 +17,6 @@ export interface TeamSection {
   title: string
   members: TeamMember[]
 }
+
+// Add a type for academic years | '2024-25'
+export type AcademicYear = '2023-24' | '2024-25'

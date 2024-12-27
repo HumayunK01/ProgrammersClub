@@ -1,15 +1,40 @@
 'use client'
 
-import { useParams } from 'next/navigation'
-import Image from 'next/image'
-import { teamData } from "../data/team"
-import { Mail, GraduationCap, BookOpen, Quote, Hash, Crown, Star, Linkedin, Instagram, Trophy } from 'lucide-react'
+import { 
+  Mail, 
+  GraduationCap, 
+  BookOpen, 
+  Quote, 
+  Hash, 
+  Crown, 
+  Star, 
+  Trophy,
+  Linkedin as LinkedinIcon,  // Renamed to avoid conflict
+  Instagram as InstagramIcon // Renamed to avoid conflict
+} from 'lucide-react'
+import { teamData } from "../data"
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
-export default function TeamMemberPage() {
-  const { id } = useParams()
+// Add type for params
+type Props = {
+  params: {
+    id: string
+  }
+}
+
+// Change from useParams() to receiving params as props
+export default function TeamMemberPage({ params }: Props) {
+  const { id } = params
   
-  const member = teamData.flatMap(section => section.members)
+  // Find member and their section
+  const member = Object.values(teamData)
+    .flatMap(yearSections => yearSections.flatMap(section => 
+      section.members.map(member => ({
+        ...member,
+        academicYear: section.academicYear
+      }))
+    ))
     .find(member => member.id === id)
 
   if (!member) {
@@ -20,19 +45,25 @@ export default function TeamMemberPage() {
     )
   }
 
+  // Get member's academic year
+  const memberYear = member?.academicYear
+
+  // Only show sections from the member's academic year
+  const yearSections = teamData[memberYear as keyof typeof teamData] || []
+
   const isHead = member.position.toLowerCase() === 'head'
   const isCoordinator = member.position.toLowerCase() === 'coordinator'
 
   const socialLinks = [
     {
       id: 'linkedin',
-      icon: Linkedin,
+      icon: LinkedinIcon,
       url: member.linkedin,
       label: 'LinkedIn Profile',
     },
     {
       id: 'instagram',
-      icon: Instagram,
+      icon: InstagramIcon,
       url: member.instagram,
       label: 'Instagram Profile',
     }
@@ -105,7 +136,7 @@ export default function TeamMemberPage() {
                           aria-label={label}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
-                          className="p-2 sm:p-2.5 rounded-lg border-2 border hover:border-gray-400"
+                          className="p-2 sm:p-2.5 rounded-lg border hover:border-gray-400"
                         >
                           <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 transition-colors duration-300" />
                         </motion.a>
@@ -113,7 +144,7 @@ export default function TeamMemberPage() {
                         <motion.div
                           key={id}
                           aria-label={label}
-                          className="p-2 sm:p-2.5 rounded-lg border-2 border opacity-40 cursor-not-allowed"
+                          className="p-2 sm:p-2.5 rounded-lg border opacity-40 cursor-not-allowed"
                         >
                           <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 transition-colors duration-300" />
                         </motion.div>
