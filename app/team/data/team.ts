@@ -386,7 +386,7 @@ export const teamData: TeamSection[] = [
                 image: "/assets/team/humayun.png",
                 section: "Technical Team",
                 rollNumber: "232821",
-                email: "humayun.232821.ci@mhssce.ac.in",
+                email: "humayun.232863.ci@mhssce.ac.in",
                 year: "T.E",
                 branch: "CSE IOT",
                 quote: "Code is like humor. When you have to explain it, it's bad!.",
