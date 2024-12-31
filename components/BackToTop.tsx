@@ -24,13 +24,13 @@ export function BackToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed right-8 bottom-8 bg-[#7091E6] text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#3D52A0] z-50 ${
+      className={`fixed md:right-8 md:bottom-8 right-4 bottom-4 bg-[#7091E6] text-white md:p-3 p-2 rounded-full shadow-lg transition-all duration-300 hover:bg-[#3D52A0] z-50 ${
         showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
       }`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
+        className="md:h-6 md:w-6 h-5 w-5"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
