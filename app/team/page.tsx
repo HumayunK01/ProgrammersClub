@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react"
 import { useState, useEffect } from "react"
 import type { AcademicYear } from "./types/team"
 
-const academicYears: AcademicYear[] = ['2023-24']
+const academicYears: AcademicYear[] = ['2019-20', '2023-24', '2024-25']
 
 export default function TeamPage() {
   const router = useRouter()

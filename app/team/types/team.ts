@@ -19,4 +19,4 @@ export interface TeamSection {
 }
 
 // Add a type for academic years | '2024-25'
-export type AcademicYear = '2023-24' | '2024-25'
+export type AcademicYear = '2019-20' | '2023-24' | '2024-25'

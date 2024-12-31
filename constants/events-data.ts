@@ -100,7 +100,44 @@ This edition focuses on addressing pressing global challenges while providing pa
     certification: {
       provided: true,
       type: "Participation + Merit Certificates"
-    }
+    },
+    sponsors: [
+      {
+        name: "Devfolio",
+        logo: "/assets/sponsors/devfolio.png",
+        website: "https://devfolio.co"
+      },
+      {
+        name: "Interview Buddy",
+        logo: "/assets/sponsors/interviewbuddy.png",
+        website: "https://interviewbuddy.net/"
+      },
+      {
+        name: 'Meta Craftlab',
+        logo: '/assets/sponsors/craftlab.png',
+        website: 'https://craftlab.ai/'
+      },
+      {
+        name: 'Beeceptor',
+        logo: '/assets/sponsors/beeceptor.png',
+        website: 'https://beeceptor.com/'
+      },
+      {
+        name: 'Tech Bairn',
+        logo: '/assets/sponsors/techbairn.png',
+        website: 'https://www.techbairn.com/'
+      },
+      {
+        name: 'MentorX',
+        logo: '/assets/sponsors/mentorx.png',
+        website: 'https://thementorx.com/'
+      },
+      {
+        name: 'Hover Robotix',
+        logo: '/assets/sponsors/hoverrobotix.png',
+        website: 'https://hoverrobotix.com/'
+      }
+    ]
   },
   // CodeFeast
   {
