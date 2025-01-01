@@ -6,6 +6,7 @@ import { galleryData } from "@/constants/gallery-data"
 import EventGallery from "@/app/events/components/event-gallery"
 import ReactMarkdown from 'react-markdown'
 import EventSponsors from "@/app/events/components/event-sponsors"
+import { Globe } from "lucide-react"
 
 export default function EventPage({ params }: { params: { id: string } }) {
   const event = eventsData.find(e => e.id === params.id)
@@ -35,9 +36,25 @@ export default function EventPage({ params }: { params: { id: string } }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
             <div className="max-w-4xl">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 md:mb-4">
-                {event.title}
-              </h1>
+              <div className="flex items-center gap-2 mb-2 md:mb-4">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+                  {event.title}
+                </h1>
+                {event.tags.includes('Hackathon') && event.officialWebsite && (
+                  <a 
+                    href={event.officialWebsite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 ease-in-out"
+                    title="Visit Official Website"
+                  >
+                    <Globe 
+                      className="w-3.5 h-3.5 md:w-4 md:h-4 text-white group-hover:scale-110 transition-transform duration-300" 
+                      strokeWidth={1.5}
+                    />
+                  </a>
+                )}
+              </div>
               <div className="flex flex-wrap gap-1.5 md:gap-2">
                 {event.tags.map((tag, index) => (
                   <Badge 

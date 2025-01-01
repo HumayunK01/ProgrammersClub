@@ -32,6 +32,7 @@ export interface Event {
     logo: string
     website?: string
   }[]
+  officialWebsite?: string;
 }
 
 export const eventsData: Event[] = [
@@ -152,7 +153,8 @@ This edition focuses on addressing pressing global challenges while providing pa
         logo: '/assets/sponsors/hoverrobotix.png',
         website: 'https://hoverrobotix.com/'
       }
-    ]
+    ],
+    officialWebsite: "https://err-404-6.vercel.app"
   },
   // CodeFeast
   {
@@ -678,7 +680,8 @@ ERR_404 is a 2-days National level Hackathon organized by the Computer Departmen
         logo: "/assets/sponsors/verbwire.png",
         website: "https://verbwire.com/"
       }
-    ]
+    ],
+    officialWebsite: ""
   },
   // Quiz Mania
   {
@@ -837,7 +840,8 @@ This activity provides students with valuable experience similar to placement ap
         logo: "/assets/sponsors/koshex.png",
         website: "https://www.koshex.com/"
       }
-    ]
+    ],
+    officialWebsite: ""
   },
   // Err_404 3.0
   {
@@ -987,7 +991,8 @@ Presentation skills and teamwork.`,
         logo: "/assets/sponsors/ahtesaab.png",
         website: "https://ahtesaab.com/"
       }
-    ]
+    ],
+    officialWebsite: ""
   },
   // Codentine
   {
@@ -1180,7 +1185,8 @@ ERR_404 2.0 successfully built a thriving ecosystem for aspiring developers, wit
         logo: "/assets/sponsors/aiolos.png",
         website: "https://aiolos.cloud/"
       },
-    ]
+    ],
+    officialWebsite: ""
   },
   // Workshop on Git
   {
@@ -1278,7 +1284,7 @@ This workshop equipped participants with essential version control skills, prepa
 🎁 **Additional Perks:**
 • Certificates for all participants 
 • Networking opportunities with industry professionals and fellow developers 
-�� Refreshments and meals provided throughout the event 
+• Refreshments and meals provided throughout the event 
 • Mentorship support from industry veterans and faculty members
 
 Err_404 served as a platform for students to showcase their skills, build innovative solutions, and network with experts, while also addressing key real-world issues. The event saw participation from over 100 teams, with top-performing teams recognized and awarded for their impressive work.`,
@@ -1361,7 +1367,8 @@ Err_404 served as a platform for students to showcase their skills, build innova
         logo: "/assets/sponsors/wellnessforever.png",
         website: "https://www.wellnessforever.com/"
       },
-    ]
+    ],
+    officialWebsite: ""
   },
   // Java Workshop
   {
