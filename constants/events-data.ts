@@ -82,7 +82,7 @@ This edition focuses on addressing pressing global challenges while providing pa
     posterImage: "/assets/poster/codefeastposter.png",
     tags: ["Upcoming", "Hackathon"],
     startDate: "Sat, Jan 18, 2025 7:00 AM",
-    registrationEnd: "Jan 13, 2025 11:59 PM",
+    registrationEnd: "Jan 13, 2025 10:00 PM",
     entryFees: "Free",
     venue: {
       name: "Alma Latifi, Computer Department Labs, Hybrid",
@@ -93,7 +93,7 @@ This edition focuses on addressing pressing global challenges while providing pa
       { name: "Er. Ahlam Ansari" }
     ],
     registrationLink: {
-      url: "https://err-404-6.vercel.app/",
+      url: "https://err-11.devfolio.co/overview",
       isOpen: true
     },
     teamSize: "4 - 5 Members",
@@ -108,14 +108,24 @@ This edition focuses on addressing pressing global challenges while providing pa
         website: "https://devfolio.co"
       },
       {
-        name: "Interview Buddy",
-        logo: "/assets/sponsors/interviewbuddy.png",
-        website: "https://interviewbuddy.net/"
+        name: "Polygon",
+        logo: "/assets/sponsors/polygon.png",
+        website: "https://polygon.technology"
+      },
+      {
+        name: "ETH India",
+        logo: "/assets/sponsors/ethindia.png",
+        website: "https://ethindia2024.devfolio.co/"
       },
       {
         name: 'Meta Craftlab',
         logo: '/assets/sponsors/craftlab.png',
         website: 'https://craftlab.ai/'
+      },
+      {
+        name: "Interview Buddy",
+        logo: "/assets/sponsors/interviewbuddy.png",
+        website: "https://interviewbuddy.net/"
       },
       {
         name: 'Beeceptor',
@@ -126,6 +136,11 @@ This edition focuses on addressing pressing global challenges while providing pa
         name: 'Tech Bairn',
         logo: '/assets/sponsors/techbairn.png',
         website: 'https://www.techbairn.com/'
+      },
+      {
+        name: 'NetCredential',
+        logo: '/assets/sponsors/netcredential.png',
+        website: 'https://netcredential.com/'
       },
       {
         name: 'MentorX',
