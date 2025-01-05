@@ -6,7 +6,7 @@ import { galleryData } from "@/constants/gallery-data"
 import EventGallery from "@/app/events/components/event-gallery"
 import ReactMarkdown from 'react-markdown'
 import EventSponsors from "@/app/events/components/event-sponsors"
-import { Globe } from "lucide-react"
+import { Info, Globe, Calendar, MapPin, Users, Award, Clock, ExternalLink, User, DollarSign, Trophy } from 'lucide-react'
 
 export default function EventPage({ params }: { params: { id: string } }) {
   const event = eventsData.find(e => e.id === params.id)
@@ -81,16 +81,13 @@ export default function EventPage({ params }: { params: { id: string } }) {
             {/* Description Card */}
             <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 flex items-center justify-center">
-                  <Image 
-                    src="/assets/images/about.png"
-                    alt="About Icon" 
-                    width={100}
-                    height={100}
-                    className="w-8 h-8"
+                <div className="w-9 h-9 flex items-center justify-center">
+                  <Info 
+                    className="w-6 h-6 text-[#4267B2] group-hover:scale-110 transition-all duration-200" 
+                    strokeWidth={1.5}
                   />
                 </div>
-                <h2 className="text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
+                <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
                   About Event
                 </h2>
               </div>
@@ -111,51 +108,42 @@ export default function EventPage({ params }: { params: { id: string } }) {
           <div className="space-y-4 sm:space-y-6">
             {/* Event Details Card */}
             <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                  <Image 
-                    src="/assets/images/link.png"
-                    alt="Event Details Icon" 
-                    width={100}
-                    height={100}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
-                  />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
+              <div className="flex items-center gap-4 mb-6">
+                <h2 className="text-lg sm:text-xl font-bold">
                   Event Details
-                </h3>
+                </h2>
               </div>
               <div className="space-y-4 sm:space-y-6">
                 {[
                   { 
-                    icon: "/assets/images/calender.png",
+                    icon: Calendar,
                     label: "Event Date:", 
                     value: event.startDate 
                   },
                   { 
-                    icon: "/assets/images/moneybag.png",
+                    icon: DollarSign,
                     label: "Entry Fees:", 
                     value: `${event.entryFees}` 
                   },
                   { 
-                    icon: "/assets/images/certificate.png",
+                    icon: Award,
                     label: "Certification:", 
                     value: event.certification.provided 
-                      ? event.certification.type || "Participation Certificates Provided"
+                      ? event.certification.type 
                       : "No Certification"
                   },
                   { 
-                    icon: "/assets/images/handshake.png",
+                    icon: Users,
                     label: "Team Size:", 
-                    value: event.teamSize || "Individual / Team of 2-3"
+                    value: event.teamSize 
                   },
                   ...(event.registrationLink?.isOpen ? [{
-                    icon: "/assets/images/clock.png",
+                    icon: Clock,
                     label: "Last Date to Register:", 
                     value: event.registrationEnd || "Not Specified"
                   }] : []),
                   { 
-                    icon: "/assets/images/link.png",
+                    icon: ExternalLink,
                     label: "Registration:", 
                     value: event.registrationLink?.isOpen ? (
                       <a 
@@ -171,7 +159,7 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     )
                   },
                   {
-                    icon: "/assets/images/trophy.png",
+                    icon: Trophy,
                     label: "Event Status:",
                     value: (() => {
                       // Parse the event date string properly
@@ -213,17 +201,14 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     })()
                   }
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-2 sm:gap-4 group">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#4267B2]/10 flex items-center justify-center text-[#4267B2] group-hover:scale-110 transition-transform">
-                      <Image 
-                        src={item.icon}
-                        alt={`${item.label} Icon`} 
-                        width={100}
-                        height={100}
-                        className="w-4 h-4 sm:w-5 sm:h-5"
+                  <div key={index} className="flex items-start gap-3 group">
+                    <div className="w-9 h-9 flex items-center justify-center">
+                      <item.icon 
+                        className="w-6 h-6 text-[#4267B2] group-hover:scale-110 transition-all duration-200" 
+                        strokeWidth={1.5}
                       />
                     </div>
-                    <div>
+                    <div className="flex-1 border-b border-gray-100 pb-3">
                       <p className="text-xs sm:text-sm text-gray-500">{item.label}</p>
                       <div className="text-sm sm:text-base font-medium text-gray-900">{item.value}</div>
                     </div>
@@ -234,65 +219,43 @@ export default function EventPage({ params }: { params: { id: string } }) {
 
             {/* Venue Card */}
             <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                  <Image 
-                    src="/assets/images/pin.png"
-                    alt="Venue Icon" 
-                    width={100}
-                    height={100}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-9 h-9 flex items-center justify-center">
+                  <MapPin 
+                    className="w-6 h-6 text-[#4267B2]" 
+                    strokeWidth={1.5}
                   />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
+                <h2 className="text-lg font-bold">
                   Venue
-                </h3>
+                </h2>
               </div>
-              <div className="flex items-start gap-2 sm:gap-4 group">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#4267B2]/10 flex items-center justify-center text-[#4267B2] group-hover:scale-110 transition-transform">
-                  <Image 
-                    src="/assets/images/map.png"
-                    alt="Map Icon" 
-                    width={100}
-                    height={100}
-                    className="w-4 h-4 sm:w-5 sm:h-5"
-                  />
-                </div>
-                <div>
-                  <p className="text-sm sm:text-base font-medium text-gray-900">{event.venue.name}</p>
-                  <p className="text-xs sm:text-sm text-gray-500">{event.venue.note}</p>
-                </div>
+              <div className="pl-8 border-l border-gray-100">
+                <p className="text-sm sm:text-base font-medium text-gray-900">{event.venue.name}</p>
+                <p className="text-xs sm:text-sm text-gray-500 mt-1">{event.venue.note}</p>
               </div>
             </div>
 
             {/* Incharges Card */}
             <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-                  <Image 
-                    src="/assets/images/incharge.png"
-                    alt="Incharges Icon" 
-                    width={100}
-                    height={100}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-9 h-9 flex items-center justify-center">
+                  <Users 
+                    className="w-6 h-6 text-[#4267B2]" 
+                    strokeWidth={1.5}
                   />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
+                <h2 className="text-lg font-bold">
                   Incharges
-                </h3>
+                </h2>
               </div>
-              <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-3">
                 {event.incharges.map((incharge, index) => (
-                  <div key={index} className="flex items-center gap-2 sm:gap-4 group">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#4267B2]/10 flex items-center justify-center text-[#4267B2] group-hover:scale-110 transition-transform">
-                      <Image 
-                        src="/assets/images/person.png"
-                        alt="Person Icon" 
-                        width={100}
-                        height={100}
-                        className="w-4 h-4 sm:w-5 sm:h-5"
-                      />
-                    </div>
+                  <div key={index} className="flex items-center gap-3 group pl-8">
+                    <User 
+                      className="w-5 h-5 text-gray-400" 
+                      strokeWidth={1.5}
+                    />
                     <p className="text-sm sm:text-base font-medium text-gray-900">{incharge.name}</p>
                   </div>
                 ))}

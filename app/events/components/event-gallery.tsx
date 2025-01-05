@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { ImageIcon } from 'lucide-react'
 import Image from 'next/image'
 
 interface EventGalleryProps {
@@ -15,13 +16,10 @@ export default function EventGallery({ eventId, eventTitle, images }: EventGalle
     <div className="mt-6 lg:mt-8 bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
       <div className="flex justify-between items-center mb-4 sm:mb-6">
         <div className="flex items-center gap-2 sm:gap-4">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center">
-            <Image 
-              src="/assets/images/partypopper.png"
-              alt="Gallery Icon" 
-              width={100}
-              height={100}
-              className="w-6 h-6 sm:w-8 sm:h-8"
+          <div className="w-9 h-9 flex items-center justify-center">
+            <ImageIcon 
+              className="w-6 h-6 text-[#4267B2] group-hover:scale-110 transition-all duration-200" 
+              strokeWidth={1.5}
             />
           </div>
           <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
