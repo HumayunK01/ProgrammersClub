@@ -103,7 +103,7 @@ export function Footer() {
               </li>
               <li className="flex justify-center sm:justify-start">
                 <Link 
-                  href="https://maps.google.com"
+                  href="https://www.google.com/maps/dir//M.H.+Saboo+Siddik+College+of+Engineering+8,+Shepherd+Rd+Police+Colony,+Nagpada,+Byculla+Mumbai,+Maharashtra+400008/@18.9681438,72.8308653,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x3be7ce40ffcfcacd:0x5d71ff22760f8e77"
                   target="_blank"
                   className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
                     flex items-start gap-2 group max-w-[250px]"
