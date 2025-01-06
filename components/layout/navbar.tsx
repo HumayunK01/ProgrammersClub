@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { HomeIcon, Calendar, Users, Info, X, Menu, BookOpen } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
+import * as React from "react"
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,11 +30,31 @@ export function Navbar() {
   const isActive = (path: string) => pathname === path
 
   const menuItems = [
-    { href: "/", icon: <HomeIcon className="w-6 h-6" />, label: "Home" },
-    { href: "/about", icon: <Info className="w-6 h-6" />, label: "About Us" },
-    { href: "/events", icon: <Calendar className="w-6 h-6" />, label: "Events" },
-    { href: "/team", icon: <Users className="w-6 h-6" />, label: "Our Team" },
-    { href: "/magazines", icon: <BookOpen className="w-6 h-6" />, label: "Magazines" },
+    { 
+      href: "/", 
+      icon: <HomeIcon size={15} strokeWidth={2} />, 
+      label: "Home" 
+    },
+    { 
+      href: "/about", 
+      icon: <Info size={15} strokeWidth={2} />, 
+      label: "About Us" 
+    },
+    { 
+      href: "/events", 
+      icon: <Calendar size={15} strokeWidth={2} />, 
+      label: "Events" 
+    },
+    { 
+      href: "/team", 
+      icon: <Users size={15} strokeWidth={2} />, 
+      label: "Our Team" 
+    },
+    // { 
+    //   href: "/magazines", 
+    //   icon: <BookOpen size={15} strokeWidth={2} />, 
+    //   label: "Magazines" 
+    // },
   ];
 
   return (
@@ -57,93 +78,108 @@ export function Navbar() {
             />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
-              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
-              }`}
-            >
-              <HomeIcon className="w-4 h-4" />
-              Home
-            </Link>
-            <Link 
-              href="/about" 
-              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/about') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
-              }`}
-            >
-              <Info className="w-4 h-4" />
-              About Us
-            </Link>
-            <Link 
-              href="/events" 
-              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/events') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
-              }`}
-            >
-              <Calendar className="w-4 h-4" />
-              Events
-            </Link>
-            <Link 
-              href="/team" 
-              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isActive('/team') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
-              }`}
-            >
-              <Users className="w-4 h-4" />
-              Our Team
-            </Link>
-            {/* <Link 
-             href="/magazines" 
-             className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-               isActive('/magazines') ? 'text-[#4267B2] font-medium' : 'text-black hover:text-[#4267B2]'
-             }`}
-           >
-             <BookOpen className="w-4 h-4" />
-             Magazines
-           </Link> */}
+            {menuItems.map((item) => (
+              <Link 
+                key={item.href}
+                href={item.href} 
+                className={`
+                  group
+                  flex items-center gap-2
+                  text-[15px] font-medium 
+                  transition-colors duration-300
+                  relative
+                  ${isActive(item.href) 
+                    ? 'text-[#4267B2]' 
+                    : 'text-gray-600 hover:text-[#4267B2]'
+                  }
+                `}
+              >
+                <div className={`
+                  transition-colors duration-300
+                  ${isActive(item.href) 
+                    ? 'text-[#4267B2]' 
+                    : 'text-gray-600 group-hover:text-[#4267B2]'
+                  }
+                `}>
+                  {item.icon}
+                </div>
+                <span className="relative">
+                  {item.label}
+                  <span className={`
+                    absolute -bottom-1 left-0 
+                    h-[2px] bg-[#4267B2] 
+                    transition-all duration-300 ease-out
+                    ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}
+                  `}/>
+                </span>
+              </Link>
+            ))}
           </div>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-6 w-6" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden h-9 w-9 hover:bg-blue-50"
+              >
+                <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent 
               side="right" 
-              className="w-full border-0 bg-gradient-to-br from-white via-blue-50/90 to-blue-100/80 backdrop-blur-lg [&>div>[data-radix-collection-item]]:hidden [&>[data-radix-dialog-close]]:hidden [&>[data-radix-collection-item]]:hidden [&>button[type=button]]:first:hidden [&>button]:first:hidden [&>[data-radix-dialog-close]]:!hidden [&>button[type=button]]:hidden [&>button[type=button]]:first:hidden"
+              className="w-full border-0 bg-gradient-to-br from-white via-blue-50/90 to-blue-100/80 backdrop-blur-lg [&>div>[data-radix-collection-item]]:hidden [&>[data-radix-dialog-close]]:hidden [&>[data-radix-collection-item]]:hidden [&>button[type=button]]:hidden [&>button]:first:hidden"
             >
               <SheetClose className="!block absolute right-7 top-5 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100">
-                <X className="h-6 w-6" />
+                <X className="h-5 w-5" />
                 <span className="sr-only">Close</span>
               </SheetClose>
 
               <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col items-center justify-center h-full space-y-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center justify-center h-full space-y-6"
               >
                 {menuItems.map((item, index) => (
                   <motion.div
                     key={item.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ 
+                      delay: index * 0.1,
+                      duration: 0.3
+                    }}
                   >
                     <SheetClose asChild>
                       <Link 
                         href={item.href}
-                        className={`relative text-xl font-medium flex items-center gap-3 py-3 px-6 rounded-lg transition-all duration-300 group ${
-                          isActive(item.href) ? 'text-[#4267B2]' : 'text-gray-600'
-                        }`}
+                        className={`
+                          group
+                          flex items-center gap-3 
+                          py-2 px-4
+                          rounded-lg 
+                          text-lg font-medium 
+                          transition-all duration-300
+                          ${isActive(item.href) 
+                            ? 'text-[#4267B2] bg-blue-50/50' 
+                            : 'text-gray-600 hover:text-[#4267B2] hover:bg-blue-50/30'
+                          }
+                        `}
                       >
-                        {item.icon}
-                        <span className="relative">
-                          {item.label}
-                          <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#4267B2] group-hover:w-full transition-all duration-300"></span>
-                        </span>
+                        <div className={`
+                          transition-colors duration-300
+                          ${isActive(item.href) 
+                            ? 'text-[#4267B2]' 
+                            : 'text-gray-600 group-hover:text-[#4267B2]'
+                          }
+                        `}>
+                          {React.cloneElement(item.icon as React.ReactElement, {
+                            size: 18,
+                            strokeWidth: 2
+                          })}
+                        </div>
+                        {item.label}
                       </Link>
                     </SheetClose>
                   </motion.div>

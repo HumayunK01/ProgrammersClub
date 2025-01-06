@@ -68,32 +68,34 @@ export function AboutSection() {
                 stiffness: 100
               }}
               whileHover={{ 
-                scale: 1.05,
+                scale: 1.02,
                 transition: { duration: 0.2 }
               }}
               className="relative group perspective-1000 h-full"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-lg transform -skew-y-3 md:group-hover:skew-y-0 transition-transform duration-300" />
-              <div className="relative bg-background border border-primary/20 p-4 sm:p-6 md:p-8 rounded-lg shadow-lg transform transition-transform duration-300 md:group-hover:translate-y-2 h-full flex flex-col">
-                <div className="flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-xl transform -skew-y-2 group-hover:skew-y-0 transition-transform duration-300 opacity-90 group-hover:opacity-100" />
+              <div className="relative bg-background border border-primary/10 p-6 sm:p-8 rounded-xl shadow-lg transform transition-all duration-300 group-hover:translate-y-1 group-hover:shadow-xl h-full flex flex-col">
+                <div className="flex-shrink-0 mb-5">
                   <Image 
                     src={value.icon} 
                     alt={value.title} 
-                    width={48} 
-                    height={48} 
-                    className="mb-2 sm:mb-4"
+                    width={40} 
+                    height={40} 
+                    className="transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">{value.title}</h3>
-                <p className="text-sm sm:text-base text-muted-foreground flex-grow">
+                <h3 className="text-xl sm:text-2xl font-semibold mb-3 transition-colors duration-300 group-hover:text-[#4267B2]">
+                  {value.title}
+                </h3>
+                <p className="text-base text-muted-foreground/90 flex-grow leading-relaxed">
                   {value.description}
                 </p>
               </div>
             </motion.div>
           ))}
         </div>
-        <div className="mt-12 md:mt-16 text-center">
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mt-14 md:mt-16 text-center">
+          <p className="text-lg md:text-xl text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed">
             The Programmer's Club at Saboo Siddik College of Engineering fosters tech skills through hackathons, workshops, and networking, creating a collaborative community. (Since 2016)
           </p>
           <Button 
@@ -102,7 +104,6 @@ export function AboutSection() {
               bg-[#4267B2] hover:bg-[#3b5998] 
               text-white 
               shadow-md hover:shadow-lg 
-              transform hover:-translate-y-0.5 
               transition-all duration-300 
               font-medium 
               px-8 py-2 
@@ -113,7 +114,7 @@ export function AboutSection() {
             onClick={() => router.push('/about')}
           >
             Learn More About Us
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-2">
               →
             </span>
           </Button>

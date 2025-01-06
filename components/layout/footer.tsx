@@ -11,6 +11,7 @@ export function Footer() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <div className="absolute top-1/4 -left-10 w-32 h-32 bg-[#4267B2] rounded-full blur-3xl animate-blob" />
         <div className="absolute bottom-1/4 -right-10 w-32 h-32 bg-[#7091E6] rounded-full blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute top-3/4 left-1/3 w-32 h-32 bg-[#4267B2] rounded-full blur-3xl animate-blob animation-delay-4000" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
@@ -38,8 +39,10 @@ export function Footer() {
                   key={index}
                   href={social.href} 
                   target="_blank"
-                  className="bg-[#2a4270]/50 p-2.5 rounded-full hover:bg-[#4267B2] group transition-all duration-300
-                    transform hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30"
+                  className="bg-[#2a4270]/50 p-2.5 rounded-full 
+                    hover:bg-[#4267B2] group transition-all duration-300
+                    transform hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30
+                    hover:ring-2 hover:ring-[#4267B2]/20"
                 >
                   <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
                 </Link>
@@ -47,7 +50,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Enhanced Quick Links */}
           <div className="text-center sm:text-left">
             <h3 className="text-lg md:text-xl font-semibold text-gray-200 flex items-center gap-3 
               justify-center sm:justify-start mb-8">
@@ -65,11 +68,15 @@ export function Footer() {
                 <li key={index}>
                   <Link 
                     href={item.path}
-                    className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
-                      flex items-center gap-2 group justify-center sm:justify-start"
+                    className="text-sm md:text-base text-gray-400 transition-all duration-300 
+                      flex items-center gap-2 group justify-center sm:justify-start
+                      hover:text-white relative overflow-hidden"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4267B2]/50 group-hover:w-2.5 transition-all duration-300"></span>
-                    {item.name}
+                    <span className="relative">
+                      {item.name}
+                      <span className="absolute left-0 -bottom-0.5 w-full h-px bg-white transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -112,18 +119,21 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Enhanced Bottom Bar */}
         <div className="border-t border-gray-700/50 py-4 sm:py-6">
-          <div className="text-center text-xs sm:text-sm text-gray-400">
-            <p className="flex items-center justify-center gap-2 flex-wrap px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-gray-400">
+            <p className="flex items-center gap-2 text-xs sm:text-sm">
               © {new Date().getFullYear()} 
               <span className="text-[#4267B2] font-medium">Programmer's Club</span>
               All rights reserved.
             </p>
-            <p className="flex items-center justify-center gap-2 flex-wrap px-4 py-2">
-              Developed By
-              <a href="https://devhumayun.vercel.app/" target="_blank">
-                <span className="text-[#4267B2] font-medium">Humayun Khan</span>
+            <p className="flex items-center gap-2 text-xs sm:text-sm">
+              Developed By:
+              <a href="https://devhumayun.vercel.app/" 
+                target="_blank"
+                className="text-[#4267B2] font-medium hover:text-[#5b7bc2] transition-colors"
+              >
+                Humayun Khan
               </a>
             </p>
           </div>
