@@ -257,15 +257,16 @@ export default function TeamMemberPage({ params }: Props) {
 
             {/* Footer */}
             <div className="bg-transparent backdrop-blur-md p-3 sm:p-4 border-t-2 border/80">
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-gray-600 text-xs sm:text-sm font-medium">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                <span className="text-gray-600 text-xs sm:text-sm font-medium text-center sm:text-left">
                   Want to update or add details?
                 </span>
                 <a 
                   href="https://forms.gle/yfLUFsadrfe9qkW7A"
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-1.5 text-xs sm:text-sm font-medium 
+                  className="w-full sm:w-auto inline-flex items-center justify-center 
+                    px-4 py-2 text-xs sm:text-sm font-medium 
                     text-blue-600 bg-transparent backdrop-blur-md 
                     border-2 border-blue-600/80 hover:border-blue-600 
                     rounded-lg transition-colors duration-300 
