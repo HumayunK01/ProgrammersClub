@@ -290,6 +290,20 @@ export const teamData2023_24: (TeamSection & { academicYear: string })[] = [
             instagram: "https://www.instagram.com/altrahilll"
         },
         {
+            id: "mominmohammedarfatmujeeb",
+            name: "Momin Mohammed Arfat Mohammed Mujeeb",
+            position: "Member",
+            image: "/assets/team/arfat.png",
+            section: "Event Management",
+            rollNumber: "232868",
+            email: "arfat.232868.ci@mhssce.ac.in",
+            year: "T.E",
+            branch: "CSE IOT",
+            quote: "Success is not a destination, but a journey painted with the bold strokes of creativity, resilience, and self-belief.",
+            linkedin: "https://www.linkedin.com/in/arfatmomin",
+            instagram: "https://www.instagram.com/_arfat__momin"
+        },
+        {
             id: "fouzanmaksoodkhan",
             name: "Fouzan Maksood Khan ",
             position: "Member",
