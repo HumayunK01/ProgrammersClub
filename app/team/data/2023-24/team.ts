@@ -391,7 +391,7 @@ export const teamData2023_24: (TeamSection & { academicYear: string })[] = [
                 position: "Member",
                 image: "/assets/team/humayun.png",
                 section: "Technical Team",
-                rollNumber: "232821",
+                rollNumber: "232860",
                 email: "humayun.232863.ci@mhssce.ac.in",
                 year: "T.E",
                 branch: "CSE IOT",
