@@ -20,9 +20,9 @@ export default function EventPage({ params }: { params: { id: string } }) {
       <div className="mx-auto max-w-[1400px]">
         {/* Hero Banner */}
         <div className="relative h-[150px] sm:h-[200px] md:h-[300px] rounded-xl overflow-hidden mb-4 print-gradient">
-          {/* Decorative Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#4267B2]/20 via-transparent to-[#40E0D0]/20" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#7091E6_1px,transparent_1px),linear-gradient(to_bottom,#7091E6_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.1]" />
+          {/* Decorative Background - Adjusted opacity and gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#4267B2]/30 via-transparent to-[#40E0D0]/30" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#7091E6_1px,transparent_1px),linear-gradient(to_bottom,#7091E6_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.15]" />
           
           <Image
             src={event.thumbnailImage}
@@ -32,12 +32,12 @@ export default function EventPage({ params }: { params: { id: string } }) {
             priority
           />
           
-          {/* Content Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          {/* Content Overlay - Enhanced gradient for better contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
             <div className="max-w-4xl">
               <div className="flex items-center gap-2 mb-2 md:mb-4">
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
                   {event.title}
                 </h1>
                 {event.tags.includes('Hackathon') && event.officialWebsite && (
@@ -59,7 +59,7 @@ export default function EventPage({ params }: { params: { id: string } }) {
                 {event.tags.map((tag, index) => (
                   <Badge 
                     key={index}
-                    className="bg-white/10 backdrop-blur-md text-white border-white/20 border px-2 md:px-4 py-1 md:py-1.5 rounded-full text-[10px] md:text-xs print-gradient"
+                    className="bg-white/15 backdrop-blur-md text-white border-white/25 border px-2 md:px-4 py-1 md:py-1.5 rounded-full text-[10px] md:text-xs print-gradient shadow-sm"
                   >
                     {tag}
                   </Badge>
@@ -79,15 +79,15 @@ export default function EventPage({ params }: { params: { id: string } }) {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Description Card */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-9 h-9 flex items-center justify-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
+              <div className="flex items-center gap-4 mb-6 border-b border-gray-100 pb-4">
+                <div className="w-9 h-9 flex items-center justify-center bg-blue-50 rounded-lg">
                   <Info 
-                    className="w-6 h-6 text-[#4267B2] group-hover:scale-110 transition-all duration-200" 
+                    className="w-6 h-6 text-[#4267B2]" 
                     strokeWidth={1.5}
                   />
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-[#4267B2] to-[#40E0D0] bg-clip-text text-transparent">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900">
                   About Event
                 </h2>
               </div>
@@ -107,9 +107,9 @@ export default function EventPage({ params }: { params: { id: string } }) {
           {/* Sidebar */}
           <div className="space-y-4 sm:space-y-6">
             {/* Event Details Card */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-4 mb-6">
-                <h2 className="text-lg sm:text-xl font-bold">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
+              <div className="flex items-center gap-4 mb-6 border-b border-gray-100 pb-4">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900">
                   Event Details
                 </h2>
               </div>
@@ -218,34 +218,34 @@ export default function EventPage({ params }: { params: { id: string } }) {
             </div>
 
             {/* Venue Card */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-9 h-9 flex items-center justify-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
+              <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                <div className="w-9 h-9 flex items-center justify-center bg-blue-50 rounded-lg">
                   <MapPin 
                     className="w-6 h-6 text-[#4267B2]" 
                     strokeWidth={1.5}
                   />
                 </div>
-                <h2 className="text-lg font-bold">
+                <h2 className="text-lg font-bold text-gray-900">
                   Venue
                 </h2>
               </div>
-              <div className="pl-8 border-l border-gray-100">
+              <div className="pl-8 border-l-2 border-gray-100">
                 <p className="text-sm sm:text-base font-medium text-gray-900">{event.venue.name}</p>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1">{event.venue.note}</p>
               </div>
             </div>
 
             {/* Incharges Card */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-9 h-9 flex items-center justify-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 lg:p-8 shadow-sm border border-gray-100">
+              <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                <div className="w-9 h-9 flex items-center justify-center bg-blue-50 rounded-lg">
                   <Users 
                     className="w-6 h-6 text-[#4267B2]" 
                     strokeWidth={1.5}
                   />
                 </div>
-                <h2 className="text-lg font-bold">
+                <h2 className="text-lg font-bold text-gray-900">
                   Incharges
                 </h2>
               </div>

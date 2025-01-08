@@ -31,7 +31,17 @@ export function TeamSection({ section }: TeamSectionProps) {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className="text-gray-700 text-3xl font-bold mb-8 text-center italic">
+      <h2 className="text-xl md:text-2xl font-semibold 
+        mb-4 md:mb-8 
+        px-4 md:px-24 lg:px-24
+        relative after:absolute after:bottom-0 
+        after:left-4 after:right-[calc(100%-12rem)] md:after:right-[calc(100%-24rem)]
+        after:h-[2px] after:bg-gradient-to-r after:from-[#7091E6] after:to-transparent 
+        after:md:left-24 after:lg:left-24 
+        pb-2
+        bg-gradient-to-r from-[#7091E6]/5 to-transparent
+        inline-block rounded-lg 
+        py-1 md:py-2">
         {section.title}
       </h2>
       <motion.div 
