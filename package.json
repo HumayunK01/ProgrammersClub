@@ -11,6 +11,7 @@
     "deploy": "next build && next export"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/react-google-recaptcha": "^2.1.9",
