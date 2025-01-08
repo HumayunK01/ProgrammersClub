@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/home/sections/hero"
 import { AboutSection } from "@/components/home/sections/about"
 import { EventsSection } from "@/components/home/sections/events"
 import { TeamSection } from "@/components/home/sections/team"
+import { ContactSection } from "@/components/home/sections/contact"
 
 export default function Home() {
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function Home() {
             <AboutSection />
             <EventsSection />
             <TeamSection />
+            <ContactSection />
           </div>
         </main>
         <Footer />
