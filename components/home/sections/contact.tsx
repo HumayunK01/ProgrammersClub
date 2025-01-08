@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ export function ContactSection() {
   })
   const [fieldDisabled, setFieldDisabled] = useState(false)
   const [formValid, setFormValid] = useState(false)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleCopyEmail = async () => {
     try {
@@ -102,9 +104,10 @@ export function ContactSection() {
       formData.name.trim() !== '' &&
       formData.email.trim() !== '' &&
       formData.message.trim() !== '' &&
-      formData.email.endsWith('@mhssce.ac.in')
+      formData.email.endsWith('@mhssce.ac.in') &&
+      captchaToken !== null
     setFormValid(isValid)
-  }, [formData])
+  }, [formData, captchaToken])
 
   return (
     <section id="contact" className="min-h-screen py-6 md:py-12 px-4 sm:px-6 lg:px-8 flex items-center relative">
@@ -225,7 +228,7 @@ export function ContactSection() {
           >
             <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3 md:space-y-4">
               <div className="group">
-                <label htmlFor="name" className="block text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">
+                <label htmlFor="name" className="text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#4267b2] transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
@@ -242,7 +245,7 @@ export function ContactSection() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">
+                <label htmlFor="email" className="text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#4267b2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -268,7 +271,7 @@ export function ContactSection() {
                 )}
               </div>
               <div>
-                <label htmlFor="message" className="block text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">
+                <label htmlFor="message" className="text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#4267b2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-4l-4 4z" />
                   </svg>
@@ -282,8 +285,17 @@ export function ContactSection() {
                   rows={3}
                   className="block w-full rounded-lg border-[#e5edff] border px-3 py-2 sm:px-4 sm:py-2.5 focus:border-[#4267b2] focus:ring-[#4267b2] transition-colors bg-white/70 text-gray-600 placeholder:text-gray-400 resize-none text-sm sm:text-base"
                   required
+                  maxLength={500}
                 />
+                <div className="mt-1 text-xs text-gray-500 flex justify-end">
+                  {formData.message.length}/500 characters
+                </div>
               </div>
+              <ReCAPTCHA
+                sitekey="6LflubEqAAAAAB7RLe26-aV25lq7r1ggLkGZ6T4L"
+                onChange={(token) => setCaptchaToken(token)}
+                className="mt-4"
+              />
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
