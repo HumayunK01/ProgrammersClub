@@ -19,7 +19,6 @@ export function ContactSection() {
   })
   const [fieldDisabled, setFieldDisabled] = useState(false)
   const [formValid, setFormValid] = useState(false)
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const handleCopyEmail = async () => {
     try {
@@ -104,10 +103,9 @@ export function ContactSection() {
       formData.name.trim() !== '' &&
       formData.email.trim() !== '' &&
       formData.message.trim() !== '' &&
-      formData.email.endsWith('@mhssce.ac.in') &&
-      captchaToken !== null
+      formData.email.endsWith('@mhssce.ac.in')
     setFormValid(isValid)
-  }, [formData, captchaToken])
+  }, [formData])
 
   return (
     <section id="contact" className="min-h-screen py-6 md:py-12 px-4 sm:px-6 lg:px-8 flex items-center relative">
@@ -291,11 +289,6 @@ export function ContactSection() {
                   {formData.message.length}/500 characters
                 </div>
               </div>
-              <ReCAPTCHA
-                sitekey="6LflubEqAAAAAB7RLe26-aV25lq7r1ggLkGZ6T4L"
-                onChange={(token) => setCaptchaToken(token)}
-                className="mt-4"
-              />
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
