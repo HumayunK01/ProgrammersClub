@@ -162,6 +162,14 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     icon: Trophy,
                     label: "Event Status:",
                     value: (() => {
+                      if (event.startDate === "Not Disclosed") {
+                        return (
+                          <div className="space-y-1">
+                            <span className="text-green-600">Upcoming</span>
+                          </div>
+                        );
+                      }
+
                       // Parse the event date string properly
                       const eventDate = new Date(event.startDate.replace(/\s+/g, ' '));
                       const today = new Date();
