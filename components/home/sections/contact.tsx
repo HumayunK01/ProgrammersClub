@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import ReCAPTCHA from "react-google-recaptcha";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({

@@ -7,7 +7,6 @@ import {
   Quote, 
   Hash, 
   Star, 
-  Trophy,
   LinkedinIcon,
   InstagramIcon
 } from 'lucide-react'
@@ -43,12 +42,6 @@ export default function TeamMemberPage({ params }: Props) {
       </div>
     )
   }
-
-  // Get member's academic year
-  const memberYear = member?.academicYear
-
-  // Only show sections from the member's academic year
-  const yearSections = teamData[memberYear as keyof typeof teamData] || []
 
   const isHead = member.position.toLowerCase() === 'head'
   const isCoordinator = member.position.toLowerCase() === 'coordinator'

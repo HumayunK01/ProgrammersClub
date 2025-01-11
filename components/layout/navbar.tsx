@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
-import { HomeIcon, Calendar, Users, Info, X, Menu, BookOpen } from 'lucide-react'
+import { HomeIcon, Calendar, Users, Info, X, Menu } from 'lucide-react' //BookOpen
 import { usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
 import * as React from "react"
