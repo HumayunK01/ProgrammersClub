@@ -10,11 +10,8 @@ export const trackEventView = (eventId: string, eventTitle: string) => {
 }
 
 // Event filter tracking
-export const trackEventFilter = (filterType: string) => {
-  track('event_filter', {
-    filterType,
-    timestamp: new Date().toISOString()
-  })
+export const trackEventFilter = (filter: string) => {
+  console.log(`Event filter used: ${filter}`)
 }
 
 // Event registration tracking
@@ -24,4 +21,9 @@ export const trackEventRegistration = (eventId: string, eventTitle: string) => {
     eventTitle,
     timestamp: new Date().toISOString()
   })
+}
+
+// New functions
+export const trackPageView = (pageName: string) => {
+  console.log(`Page view: ${pageName}`)
 } 

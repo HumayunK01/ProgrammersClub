@@ -2,11 +2,15 @@
 
 import { eventsData } from "@/constants/events-data"
 import { EventsGrid } from "./components/events-grid"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { trackEventFilter } from '@/utils/analytics'
+import { trackPageView, trackEventFilter } from '@/utils/analytics'
 
 export default function EventsPage() {
+  useEffect(() => {
+    trackPageView('events_list')
+  }, [])
+
   const [filter, setFilter] = useState("All")
 
   const handleFilterChange = (value: string) => {

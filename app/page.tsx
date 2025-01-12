@@ -8,8 +8,13 @@ import { AboutSection } from "@/components/home/sections/about"
 import { EventsSection } from "@/components/home/sections/events"
 import { TeamSection } from "@/components/home/sections/team"
 import { ContactSection } from "@/components/home/sections/contact"
+import { trackPageView } from '@/utils/analytics'
 
 export default function Home() {
+  useEffect(() => {
+    trackPageView('home')
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => {
     };
