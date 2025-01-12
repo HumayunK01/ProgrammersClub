@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect } from 'react'
+import { trackEventView, trackEventRegistration } from '@/utils/analytics'
 import { notFound } from "next/navigation"
 import { eventsData } from "@/constants/events-data"
 import Image from "next/image"
@@ -10,6 +14,18 @@ import { Info, Globe, Calendar, MapPin, Users, Award, Clock, ExternalLink, User,
 
 export default function EventPage({ params }: { params: { id: string } }) {
   const event = eventsData.find(e => e.id === params.id)
+
+  useEffect(() => {
+    if (event) {
+      trackEventView(event.id, event.title)
+    }
+  }, [event])
+
+  const handleRegistrationClick = () => {
+    if (event) {
+      trackEventRegistration(event.id, event.title)
+    }
+  }
 
   if (!event) {
     notFound()
@@ -151,6 +167,7 @@ export default function EventPage({ params }: { params: { id: string } }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[#4267B2] hover:underline"
+                        onClick={handleRegistrationClick}
                       >
                         Click to Register
                       </a>
@@ -287,10 +304,4 @@ export default function EventPage({ params }: { params: { id: string } }) {
       </div>
     </div>
   )
-}
-
-export async function generateStaticParams() {
-  return eventsData.map((event) => ({
-    id: event.id,
-  }))
 } 

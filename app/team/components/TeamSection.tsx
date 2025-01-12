@@ -3,12 +3,14 @@
 import { motion } from 'framer-motion'
 import { TeamCard } from './TeamCard'
 import { TeamSection as TeamSectionType } from '../types/team'
+import Link from 'next/link'
 
 interface TeamSectionProps {
   section: TeamSectionType
+  onMemberClick?: (memberId: string) => void
 }
 
-export function TeamSection({ section }: TeamSectionProps) {
+export function TeamSection({ section, onMemberClick }: TeamSectionProps) {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -63,7 +65,13 @@ export function TeamSection({ section }: TeamSectionProps) {
                 : '' // For other cases: use default grid positioning
             }
           >
-            <TeamCard member={member} />
+            <Link
+              href={`/team/${member.id}`}
+              onClick={() => onMemberClick?.(member.id)}
+              className="..."
+            >
+              <TeamCard member={member} />
+            </Link>
           </motion.div>
         ))}
       </motion.div>

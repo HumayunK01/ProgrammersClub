@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
+import { track } from '@vercel/analytics/react'
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -7,8 +9,32 @@ import { EventsCarousel } from "@/components/home/carousel/events-carousel"
 import { eventsData } from "@/constants/events-data"
 
 export function EventsSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            track('section_view', {
+              section: 'events',
+              timestamp: new Date().toISOString()
+            })
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="events" className="py-10 md:py-16">
+    <section ref={sectionRef} id="events" className="py-10 md:py-16">
       <motion.div 
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}

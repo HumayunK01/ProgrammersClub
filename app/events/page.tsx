@@ -4,9 +4,15 @@ import { eventsData } from "@/constants/events-data"
 import { EventsGrid } from "./components/events-grid"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { trackEventFilter } from '@/utils/analytics'
 
 export default function EventsPage() {
   const [filter, setFilter] = useState("All")
+
+  const handleFilterChange = (value: string) => {
+    setFilter(value)
+    trackEventFilter(value)
+  }
 
   // Updated filter logic to handle both Hackathon and Workshop types
   const filteredEvents = filter === "All" 
@@ -49,7 +55,7 @@ export default function EventsPage() {
               </motion.span>
               <select
                 value={filter}
-                onChange={(e) => setFilter(e.target.value)}
+                onChange={(e) => handleFilterChange(e.target.value)}
                 className="w-full sm:w-48 px-4 py-2.5 rounded-lg 
                           border border-gray-200 
                           bg-white/80 backdrop-blur-sm 
