@@ -32,19 +32,29 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
               {[
-                { icon: Instagram, href: "https://www.instagram.com/programmers.club/" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/programmersclubmhssce/" },
+                { 
+                  icon: Instagram, 
+                  href: "https://www.instagram.com/programmers.club/",
+                  hoverColor: "hover:bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-500"
+                },
+                { 
+                  icon: Linkedin, 
+                  href: "https://www.linkedin.com/in/programmersclubmhssce/",
+                  hoverColor: "hover:bg-[#0077b5]"
+                },
               ].map((social, index) => (
                 <Link 
                   key={index}
                   href={social.href} 
                   target="_blank"
-                  className="bg-[#2a4270]/50 p-2.5 rounded-full 
-                    hover:bg-[#4267B2] group transition-all duration-300
+                  className={`bg-[#2a4270]/50 p-2.5 rounded-full 
+                    ${social.hoverColor} group transition-all duration-300
                     transform hover:-translate-y-1 hover:shadow-lg hover:shadow-black/30
-                    hover:ring-2 hover:ring-[#4267B2]/20"
+                    hover:ring-2 hover:ring-[#4267B2]/20
+                    hover:rotate-6`}
                 >
-                  <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" />
+                  <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white 
+                    transition-colors duration-300" />
                 </Link>
               ))}
             </div>
@@ -95,9 +105,11 @@ export function Footer() {
                 <Link 
                   href="mailto:contact@programmersclub.com"
                   className="text-sm md:text-base text-gray-400 hover:text-gray-200 transition-all duration-300 
-                    flex items-center gap-2 group justify-center sm:justify-start"
+                    flex items-center gap-2 group justify-center sm:justify-start
+                    hover:translate-x-1"
                 >
-                  <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#4267B2] group-hover:scale-110 transition-transform duration-300" />
+                  <Mail className="w-4 h-4 md:w-5 md:h-5 text-[#4267B2] 
+                    group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                   programmersclub@mhssce.ac.in
                 </Link>
               </li>
