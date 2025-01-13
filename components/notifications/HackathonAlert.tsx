@@ -2,57 +2,74 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
-import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import Link from "next/link"
 
 export function HackathonAlert() {
   const [isVisible, setIsVisible] = useState(true)
   const pathname = usePathname()
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false)
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   if (pathname !== '/') return null
-  if (!isVisible) return null
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/60 backdrop-blur-sm"
-      >
-        <motion.div 
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="relative w-full h-[calc(100vh-1rem)] sm:h-[calc(100vh-2rem)] max-h-[95vh] sm:max-h-[90vh] max-w-[90vw] sm:max-w-5xl mx-auto rounded-lg sm:rounded-xl overflow-hidden"
+    <AnimatePresence mode="wait">
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="fixed top-2 right-2 sm:top-4 sm:right-4 z-50 w-[calc(100%-1rem)] sm:w-full max-w-[95vw] sm:max-w-md"
         >
-          <div className="relative w-full h-full">
-            <Image
-              src="/assets/poster/delay.png"
-              alt="ERR_404 6.0 Poster"
-              fill
-              className="object-contain"
-              sizes="(max-width: 640px) 95vw, (max-width: 1024px) 90vw, 1024px"
-              priority
-              quality={100}
-            />
-            <motion.button 
-              onClick={() => setIsVisible(false)}
-              className="absolute top-8 sm:top-1 right-0 sm:right-4 p-2 rounded-full 
-                bg-black/50 hover:bg-black/70 
-                transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Close notification"
+          <Link href="/events/err_404_6_0">
+            <motion.div 
+              className="relative backdrop-blur-lg bg-white/80 text-black p-3 sm:p-4 rounded-lg sm:rounded-xl shadow-lg 
+                border border-white/20 hover:bg-white/90 transition-all duration-300"
             >
-              <X size={24} className="text-white" />
-            </motion.button>
-          </div>
+              <div className="absolute -top-1.5 -left-1.5">
+                <span className="flex h-3 w-3 sm:h-4 sm:w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-full w-full bg-red-500"></span>
+                </span>
+              </div>
+              <div className="pr-7 sm:pr-8">
+                <h3 className="font-semibold text-[14px] sm:text-[15px] flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                  ERR_404 6.0 Hackathon 🚀
+                  <span className="bg-blue-100 text-blue-800 text-[10px] sm:text-[11px] font-medium px-1.5 sm:px-2 py-0.5 rounded-full">
+                    Coming Soon
+                  </span>
+                </h3>
+                <p className="text-gray-600 mt-0.5 sm:mt-1 text-[12px] sm:text-[13px]">
+                  Get ready for 24 hours of coding, innovation, and excitement. 
+                  <span className="text-blue-600 font-medium ml-1 group-hover:underline">
+                    Click to learn more →
+                  </span>
+                </p>
+              </div>
+              <button 
+                onClick={(e) => {
+                  e.preventDefault()
+                  setIsVisible(false)
+                }}
+                className="absolute top-2.5 sm:top-3 right-2.5 sm:right-3 text-gray-400 hover:text-gray-600
+                  transition-colors duration-300 rounded-full p-1"
+                aria-label="Close notification"
+              >
+                <X size={14} className="sm:w-4 sm:h-4" />
+              </button>
+            </motion.div>
+          </Link>
         </motion.div>
-      </motion.div>
+      )}
     </AnimatePresence>
   )
 } 

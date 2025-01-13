@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { trackEventView, trackEventRegistration } from '@/utils/analytics'
 import { notFound } from "next/navigation"
 import { eventsData } from "@/constants/events-data"
@@ -26,6 +26,39 @@ export default function EventPage({ params }: { params: { id: string } }) {
       trackEventRegistration(event.id, event.title)
     }
   }
+
+  const [timeDiff, setTimeDiff] = useState<string>('')
+
+  useEffect(() => {
+    const updateTimeDiff = () => {
+      if (!event || event.startDate === "Not Disclosed") return;
+
+      const eventDate = new Date(event.startDate.replace(/\s+/g, ' '));
+      const today = new Date();
+      
+      const eventDay = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
+      const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      
+      const dayAfterEvent = new Date(eventDay);
+      dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
+      
+      const diffTime = Math.abs(eventDay.getTime() - todayDay.getTime());
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      
+      const isLive = todayDay >= eventDay && todayDay <= dayAfterEvent;
+      const isUpcoming = eventDay > todayDay;
+      
+      if (isLive) {
+        setTimeDiff(todayDay.getTime() === eventDay.getTime() ? 'Today' : 'Last day');
+      } else {
+        setTimeDiff(`${diffDays} day${diffDays !== 1 ? 's' : ''} ${isUpcoming ? 'to go' : 'ago'}`);
+      }
+    };
+
+    updateTimeDiff();
+    const interval = setInterval(updateTimeDiff, 60000);
+    return () => clearInterval(interval);
+  }, [event]);
 
   if (!event) {
     notFound()
@@ -187,15 +220,12 @@ export default function EventPage({ params }: { params: { id: string } }) {
                         );
                       }
 
-                      // Parse the event date string properly
                       const eventDate = new Date(event.startDate.replace(/\s+/g, ' '));
                       const today = new Date();
                       
-                      // Set both dates to midnight for accurate day comparison
                       const eventDay = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
                       const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
                       
-                      // Calculate the day after the event
                       const dayAfterEvent = new Date(eventDay);
                       dayAfterEvent.setDate(dayAfterEvent.getDate() + 1);
                       
@@ -208,18 +238,7 @@ export default function EventPage({ params }: { params: { id: string } }) {
                             {isLive ? "Live" : isUpcoming ? "Upcoming" : "Ended"}
                           </span>
                           <p className="text-xs text-gray-500">
-                            {(() => {
-                              const diffTime = Math.abs(eventDay.getTime() - todayDay.getTime());
-                              const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-                              
-                              if (isLive) {
-                                return todayDay.getTime() === eventDay.getTime() ? 
-                                  "Today" : "Last day";
-                              }
-                              return isUpcoming 
-                                ? `${diffDays} day${diffDays !== 1 ? 's' : ''} to go`
-                                : `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-                            })()}
+                            {timeDiff}
                           </p>
                         </div>
                       );

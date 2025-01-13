@@ -41,7 +41,7 @@ export const eventsData: Event[] = [
     id: "err_404_6_0",
     title: "Err_404 6.0",
     type: "Hackathon",
-    date: "Not Disclosed",
+    date: "February 15-16, 2025",
     description: `
 ERR_404 6.0 is a hybrid 36-hour National Hackathon dedicated to fostering innovation and collaboration among students. This prestigious event challenges participants to develop creative and practical solutions for pressing societal issues, aligning with national initiatives of innovation.
 
@@ -82,7 +82,7 @@ This edition focuses on addressing pressing global challenges while providing pa
     thumbnailImage: "/assets/events/err_404_6.png",
     posterImage: "/assets/poster/codefeastposter.png",
     tags: ["Upcoming", "Hackathon"],
-    startDate: "Not Disclosed",
+    startDate: "Sat, Feb 15, 2025",
     registrationEnd: "Jan 26, 2025",
     entryFees: "Free",
     venue: {
@@ -137,6 +137,11 @@ This edition focuses on addressing pressing global challenges while providing pa
         name: 'Tech Bairn',
         logo: '/assets/sponsors/techbairn.png',
         website: 'https://www.techbairn.com/'
+      },
+      {
+        name: "Mindflix Holidays",
+        logo: "/assets/sponsors/mindflix.png",
+        website: "https://www.mindflixholidays.com/"
       },
       {
         name: 'NetCredential',
