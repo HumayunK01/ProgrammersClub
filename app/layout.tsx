@@ -4,6 +4,7 @@ import "./globals.css";
 import { HackathonAlert } from "@/components/notifications/HackathonAlert"
 import { BackToTop } from '@/components/BackToTop'
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const montserrat = Montserrat({ 
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
         {children}
         <BackToTop />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
