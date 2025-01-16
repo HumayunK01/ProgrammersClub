@@ -119,6 +119,11 @@ This edition focuses on addressing pressing global challenges while providing pa
         website: "https://ethindia2024.devfolio.co/"
       },
       {
+        name: "Aptos",
+        logo: "/assets/sponsors/aptos.png",
+        website: "https://aptosfoundation.org/"
+      },
+      {
         name: 'Meta Craftlab',
         logo: '/assets/sponsors/craftlab.png',
         website: 'https://craftlab.ai/'

@@ -85,7 +85,7 @@ export const HeroSection = () => {
             <span className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium 
               bg-white shadow-sm border border-gray-100 text-[#40C9CE]"
             >
-              Welcome to GFG MHSSCOE
+              Welcome to Programmers' Club
             </span>
           </motion.div>
 
@@ -93,7 +93,7 @@ export const HeroSection = () => {
           <p className="mx-auto max-w-xl sm:max-w-2xl text-base sm:text-lg
             leading-relaxed text-gray-600 font-light"
           >
-            The GFG student chapter of MHSSCOE where we innovate, learn and create constantly 
+            The student community of MHSSCE where we innovate, learn and create constantly 
             to empower our student community!
           </p>
 
