@@ -12,19 +12,20 @@ export default function EventsPage() {
   }, [])
 
   const [filter, setFilter] = useState("All")
+  const [searchQuery, setSearchQuery] = useState("")
 
   const handleFilterChange = (value: string) => {
     setFilter(value)
     trackEventFilter(value)
   }
 
-  // Updated filter logic to handle both Hackathon and Workshop types
-  const filteredEvents = filter === "All" 
-    ? eventsData 
-    : eventsData.filter(event => {
-        // Check if event type matches filter exactly or contains the filter word
-        return event.type === filter || event.type.includes(filter)
-      })
+  // Updated filter logic to handle both type filtering and search
+  const filteredEvents = eventsData
+    .filter(event => {
+      const matchesFilter = filter === "All" || event.type === filter || event.type.includes(filter)
+      const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase())
+      return matchesFilter && matchesSearch
+    })
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#7091E6]/20 via-white to-[#3D52A0]/20">
@@ -41,43 +42,71 @@ export default function EventsPage() {
       {/* Content */}
       <div className="relative z-10">
         <main>
-          <div className="container mx-auto px-[30px] md:px-[50px] py-16 md:py-24">
-            {/* Filter Dropdown Container with Tip */}
+          <div className="container mx-auto px-[30px] md:px-[50px] py-16 md:py-16">
+            {/* Search and Filter Container */}
             <motion.div 
-              className="flex justify-end mb-8 items-center gap-3 group"
+              className="flex flex-col sm:flex-row justify-between gap-3 mb-8 items-stretch sm:items-center w-full bg-white/70 backdrop-blur-md p-2.5 rounded-lg shadow-sm border border-slate-100/80"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.span 
-                className="text-sm text-gray-400 hidden sm:block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                Filter by type
-              </motion.span>
-              <select
-                value={filter}
-                onChange={(e) => handleFilterChange(e.target.value)}
-                className="w-full sm:w-48 px-4 py-2.5 rounded-lg 
-                          border border-gray-200 
-                          bg-white/80 backdrop-blur-sm 
-                          text-gray-600 text-sm font-medium
-                          shadow-sm
-                          appearance-none cursor-pointer
-                          bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%236B7280%22%20d%3D%22M7%207l3-3%203%203m0%206l-3%203-3-3%22%2F%3E%3C%2Fsvg%3E')] 
-                          bg-[length:20px] bg-[right_12px_center] bg-no-repeat
-                          hover:border-[#7091E6] hover:bg-white
-                          focus:outline-none focus:ring-2 
-                          focus:ring-[#7091E6]/30 focus:border-[#7091E6]
-                          transition-all duration-200"
-                aria-label="Filter events by type"
-              >
-                <option value="All">All Events</option>
-                <option value="Hackathon">Hackathons</option>
-                <option value="Workshop">Workshops</option>
-              </select>
+              {/* Search Input */}
+              <div className="w-full sm:w-2/3 relative">
+                <div className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 text-slate-400">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M7.333 12.667A5.333 5.333 0 1 0 7.333 2a5.333 5.333 0 0 0 0 10.667ZM14 14l-2.9-2.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search events..."
+                  className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-3.5 rounded-lg
+                            border border-slate-100
+                            bg-white/90
+                            text-slate-600 text-[14px] sm:text-[15px] tracking-[-0.1px]
+                            placeholder:text-slate-400 
+                            placeholder:font-normal
+                            placeholder:tracking-[-0.1px]
+                            placeholder:text-[14px] sm:placeholder:text-[15px]
+                            focus:outline-none focus:ring-0
+                            focus:border-slate-200
+                            focus:bg-white
+                            transition-all duration-200"
+                />
+              </div>
+
+              {/* Filter Section */}
+              <div className="flex items-stretch w-full sm:w-1/3">
+                <div className="relative w-full">
+                  <div className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 text-slate-400">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                  <select
+                    value={filter}
+                    onChange={(e) => handleFilterChange(e.target.value)}
+                    className="w-full pl-10 sm:pl-12 pr-8 sm:pr-10 py-3 sm:py-3.5 rounded-lg
+                              border border-slate-100
+                              bg-white/90
+                              text-slate-600 text-[14px] sm:text-[15px] tracking-[-0.1px] font-normal
+                              appearance-none cursor-pointer
+                              bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M4%206.5l4%204%204-4%22%20stroke%3D%22%2394A3B8%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')] 
+                              bg-[length:16px] bg-[right_12px_center] sm:bg-[right_16px_center] bg-no-repeat
+                              focus:outline-none focus:ring-0
+                              focus:border-slate-200
+                              focus:bg-white
+                              transition-all duration-200"
+                    aria-label="Filter events by type"
+                  >
+                    <option value="All">All Events</option>
+                    <option value="Hackathon">Hackathons</option>
+                    <option value="Workshop">Workshops</option>
+                  </select>
+                </div>
+              </div>
             </motion.div>
 
             <AnimatePresence mode="wait">
