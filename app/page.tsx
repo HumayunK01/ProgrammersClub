@@ -5,10 +5,20 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/home/sections/hero"
 import { AboutSection } from "@/components/home/sections/about"
-import { EventsSection } from "@/components/home/sections/events"
-import { TeamSection } from "@/components/home/sections/team"
 import { ContactSection } from "@/components/home/sections/contact"
 import { trackPageView } from '@/utils/analytics'
+import dynamic from 'next/dynamic'
+import { LoadingSkeleton } from '@/components/ui/loading-skeleton'
+
+// Dynamically import non-critical sections
+const TeamSection = dynamic(() => import('@/components/home/sections/team').then(mod => mod.TeamSection), {
+  loading: () => <LoadingSkeleton />,
+  ssr: false
+})
+
+const EventsSection = dynamic(() => import('@/components/home/sections/events').then(mod => mod.EventsSection), {
+  loading: () => <LoadingSkeleton />
+})
 
 export default function Home() {
   useEffect(() => {

@@ -10,6 +10,7 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
+  preload: true,
   variable: '--font-montserrat',
 })
 
@@ -26,6 +27,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable}`}>
+      <head>
+        {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Preload critical assets */}
+        <link 
+          rel="preload" 
+          href="/assets/carousel/event1.png" 
+          as="image"
+        />
+      </head>
       <body className={montserrat.className}>
         <HackathonAlert />
         {children}

@@ -64,11 +64,11 @@ export function MainCarousel() {
                   alt={`Event ${index + 1}`}
                   width={1200}
                   height={900}
-                  quality={100}
-                  className="w-full h-auto aspect-[5/4] object-cover rounded-lg transition-transform duration-300"
-                  priority={index === 0}
+                  quality={85}
+                  priority={index === 0 || index === 1}
+                  loading={index <= 1 ? "eager" : "lazy"}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  loading={index === 0 ? "eager" : "lazy"}
+                  className="w-full h-auto aspect-[5/4] object-cover rounded-lg transition-transform duration-300"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
