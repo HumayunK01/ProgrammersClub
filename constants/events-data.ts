@@ -9,6 +9,7 @@ export interface Event {
   tags: string[];
   startDate: string;
   registrationEnd?: string;
+  registrationEndTime?: string;
   entryFees: string;
   venue: {
     name: string;
@@ -83,7 +84,8 @@ This edition focuses on addressing pressing global challenges while providing pa
     posterImage: "/assets/poster/codefeastposter.png",
     tags: ["Upcoming", "Hackathon"],
     startDate: "Sat, Feb 15, 2025",
-    registrationEnd: "Jan 26, 2025",
+    registrationEnd: "Jan 26, 2025, 10:00 PM",
+    registrationEndTime: "2025-01-26T22:00:00",
     entryFees: "Free",
     venue: {
       name: "Alma Latifi, Computer Department Labs, Hybrid",
@@ -207,6 +209,7 @@ The goal of CodeFeast 3.0 is to provide students with a platform to apply their 
     tags: ["Contest", "Coding"],
     startDate: "Fri, Sept 27, 2024",
     registrationEnd: "September 25, 2024",
+    registrationEndTime: "2024-09-25T22:00:00",
     entryFees: "Free",
     venue: {
       name: "Computer Center (CC) Lab",
@@ -263,7 +266,8 @@ The workshop aims to deepen participants' expertise in Data Structures and Algor
     posterImage: "/assets/events/event1.png",
     tags: ["DSA", "Workshop", "Tech"],
     startDate: "Mon, Sept 23, 2024",
-    registrationEnd: "Fri, Sept 20, 2024",
+    registrationEnd: "September 23, 2024",
+    registrationEndTime: "2024-09-23T22:00:00",
     entryFees: "₹100",
     venue: {
       name: "Seminar Hall",

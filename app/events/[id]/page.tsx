@@ -12,6 +12,41 @@ import ReactMarkdown from 'react-markdown'
 import EventSponsors from "@/app/events/components/event-sponsors"
 import { Info, Globe, Calendar, MapPin, Users, Award, Clock, ExternalLink, User, DollarSign, Trophy } from 'lucide-react'
 
+const CountdownTimer = ({ endDate }: { endDate: string }) => {
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+  }>({ days: 0, hours: 0, minutes: 0 });
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const difference = new Date(endDate).getTime() - new Date().getTime();
+      
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0 });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, [endDate]);
+
+  return (
+    <div className="text-xs sm:text-sm md:text-base font-medium text-gray-900">
+      {`${String(timeLeft.days).padStart(2, '0')}d : ${String(timeLeft.hours).padStart(2, '0')}h : ${String(timeLeft.minutes).padStart(2, '0')}m`}
+    </div>
+  );
+};
+
 export default function EventPage({ params }: { params: { id: string } }) {
   const event = eventsData.find(e => e.id === params.id)
 
@@ -190,24 +225,32 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     icon: Clock,
                     label: "Last Date to Register:", 
                     value: event.registrationEnd || "Not Specified"
-                  }] : []),
-                  { 
+                  }, {
                     icon: ExternalLink,
-                    label: "Registration:", 
-                    value: event.registrationLink?.isOpen ? (
-                      <a 
-                        href={event.registrationLink.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#4267B2] hover:underline"
-                        onClick={handleRegistrationClick}
-                      >
-                        Click to Register
-                      </a>
+                    label: new Date(event.registrationEndTime ?? event.registrationEnd ?? '').getTime() > new Date().getTime() 
+                      ? "Applications close in:" 
+                      : "Registration:",
+                    value: new Date(event.registrationEndTime ?? event.registrationEnd ?? '').getTime() > new Date().getTime() ? (
+                      <div className="space-y-2 sm:space-y-3">
+                        <CountdownTimer endDate={event.registrationEndTime ?? event.registrationEnd ?? new Date().toISOString()} />
+                        <a 
+                          href={event.registrationLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block text-white bg-[#4267B2] hover:bg-[#4267B2]/90 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200"
+                          onClick={handleRegistrationClick}
+                        >
+                          Register Now
+                        </a>
+                      </div>
                     ) : (
                       <span className="text-red-600">Applications Closed</span>
                     )
-                  },
+                  }] : [{
+                    icon: ExternalLink,
+                    label: "Registration:", 
+                    value: <span className="text-red-600">Applications Closed</span>
+                  }]),
                   {
                     icon: Trophy,
                     label: "Event Status:",
