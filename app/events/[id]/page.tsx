@@ -224,7 +224,8 @@ export default function EventPage({ params }: { params: { id: string } }) {
                   ...(event.registrationLink?.isOpen ? [{
                     icon: Clock,
                     label: "Last Date to Register:", 
-                    value: event.registrationEnd || "Not Specified"
+                    value: event.registrationEnd || "Not Specified",
+                    hidden: new Date(event.registrationEndTime ?? event.registrationEnd ?? '').getTime() <= new Date().getTime()
                   }, {
                     icon: ExternalLink,
                     label: new Date(event.registrationEndTime ?? event.registrationEnd ?? '').getTime() > new Date().getTime() 
@@ -288,18 +289,20 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     })()
                   }
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-3 group">
-                    <div className="w-9 h-9 flex items-center justify-center">
-                      <item.icon 
-                        className="w-6 h-6 text-[#4267B2] group-hover:scale-110 transition-all duration-200" 
-                        strokeWidth={1.5}
-                      />
+                  !item.hidden && (
+                    <div key={index} className="flex items-start gap-3 group">
+                      <div className="w-9 h-9 flex items-center justify-center">
+                        <item.icon 
+                          className="w-6 h-6 text-[#4267B2] group-hover:scale-110 transition-all duration-200" 
+                          strokeWidth={1.5}
+                        />
+                      </div>
+                      <div className="flex-1 border-b border-gray-100 pb-3">
+                        <p className="text-xs sm:text-sm text-gray-500">{item.label}</p>
+                        <div className="text-sm sm:text-base font-medium text-gray-900">{item.value}</div>
+                      </div>
                     </div>
-                    <div className="flex-1 border-b border-gray-100 pb-3">
-                      <p className="text-xs sm:text-sm text-gray-500">{item.label}</p>
-                      <div className="text-sm sm:text-base font-medium text-gray-900">{item.value}</div>
-                    </div>
-                  </div>
+                  )
                 ))}
               </div>
             </div>
