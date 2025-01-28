@@ -141,14 +141,24 @@ This edition focuses on addressing pressing global challenges while providing pa
         website: 'https://beeceptor.com/'
       },
       {
+        name: 'Learn With Travelling',
+        logo: '/assets/sponsors/lwt.png',
+        website: 'https://www.instagram.com/learningwhiletravelling/'
+      },
+      {
         name: 'Tech Bairn',
         logo: '/assets/sponsors/techbairn.png',
         website: 'https://www.techbairn.com/'
       },
       {
-        name: "Mindflix Holidays",
-        logo: "/assets/sponsors/mindflix.png",
-        website: "https://www.mindflixholidays.com/"
+        name: "Mojoco",
+        logo: "/assets/sponsors/mojoco.png",
+        website: ""
+      },
+      {
+        name: 'Aixplain',
+        logo: '/assets/sponsors/aixplain.png',
+        website: 'https://aixplain.com/'
       },
       {
         name: 'NetCredential',

@@ -102,26 +102,26 @@ export default function EventPage({ params }: { params: { id: string } }) {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20 md:pt-24">
       <div className="mx-auto max-w-[1400px]">
-        {/* Hero Banner */}
-        <div className="relative h-[150px] sm:h-[200px] md:h-[300px] rounded-xl overflow-hidden mb-4 print-gradient">
-          {/* Decorative Background - Adjusted opacity and gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#4267B2]/30 via-transparent to-[#40E0D0]/30" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#7091E6_1px,transparent_1px),linear-gradient(to_bottom,#7091E6_1px,transparent_1px)] bg-[size:48px_48px] opacity-[0.15]" />
+        {/* Hero Banner - Refined */}
+        <div className="relative h-[180px] rounded-xl overflow-hidden mb-4 group">
+          {/* Decorative Elements */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#4267B2]/30 to-[#40E0D0]/20" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#7091E6_1px,transparent_1px),linear-gradient(to_bottom,#7091E6_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)] opacity-10" />
           
           <Image
             src={event.thumbnailImage}
             alt={event.title}
             fill
-            className="object-cover"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
             priority
           />
           
-          {/* Content Overlay - Enhanced gradient for better contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
+          {/* Content Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
+          <div className="absolute inset-0 flex flex-col justify-end p-4">
             <div className="max-w-4xl">
-              <div className="flex items-center gap-2 mb-2 md:mb-4">
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+              <div className="flex items-center gap-3 mb-2">
+                <h1 className="text-xl font-bold text-white">
                   {event.title}
                 </h1>
                 {event.tags.includes('Hackathon') && event.officialWebsite && (
@@ -129,21 +129,20 @@ export default function EventPage({ params }: { params: { id: string } }) {
                     href={event.officialWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 ease-in-out"
-                    title="Visit Official Website"
+                    className="group/btn flex items-center justify-center w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
                   >
                     <Globe 
-                      className="w-3.5 h-3.5 md:w-4 md:h-4 text-white group-hover:scale-110 transition-transform duration-300" 
+                      className="w-4 h-4 text-white group-hover/btn:scale-110 transition-transform duration-300" 
                       strokeWidth={1.5}
                     />
                   </a>
                 )}
               </div>
-              <div className="flex flex-wrap gap-1.5 md:gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {event.tags.map((tag, index) => (
                   <Badge 
                     key={index}
-                    className="bg-white/15 backdrop-blur-md text-white border-white/25 border px-2 md:px-4 py-1 md:py-1.5 rounded-full text-[10px] md:text-xs print-gradient shadow-sm"
+                    className="bg-white/10 hover:bg-white/15 text-white text-xs px-2.5 py-0.5 rounded-full transition-colors duration-200"
                   >
                     {tag}
                   </Badge>
@@ -152,11 +151,13 @@ export default function EventPage({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        {/* Event Sponsors - Moved directly below thumbnail */}
+        {/* Event Sponsors - Minimal */}
         {event.sponsors && event.sponsors.length > 0 && (
-          <EventSponsors 
-            sponsors={event.sponsors}
-          />
+          <div className="mb-4">
+            <EventSponsors 
+              sponsors={event.sponsors}
+            />
+          </div>
         )}
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
