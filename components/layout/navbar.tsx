@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
-import { HomeIcon, Calendar, Users, Info, X, Menu } from 'lucide-react' //BookOpen
+import { HomeIcon, Calendar, Users, Info, X, Menu, BookOpen } from 'lucide-react' //BookOpen
 import { usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
 import * as React from "react"
@@ -50,11 +50,11 @@ export function Navbar() {
       icon: <Users size={15} strokeWidth={2} />, 
       label: "Our Team" 
     },
-    // { 
-    //   href: "/magazines", 
-    //   icon: <BookOpen size={15} strokeWidth={2} />, 
-    //   label: "Magazines" 
-    // },
+    { 
+      href: "/magazines", 
+      icon: <BookOpen size={15} strokeWidth={2} />, 
+      label: "Magazines" 
+    },
   ];
 
   return (
