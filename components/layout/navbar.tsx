@@ -103,15 +103,7 @@ export function Navbar() {
                 `}>
                   {item.icon}
                 </div>
-                <span className="relative">
-                  {item.label}
-                  <span className={`
-                    absolute -bottom-1 left-0 
-                    h-[2px] bg-[#4267B2] 
-                    transition-all duration-300 ease-out
-                    ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}
-                  `}/>
-                </span>
+                <span>{item.label}</span>
               </Link>
             ))}
           </div>
