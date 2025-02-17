@@ -39,7 +39,7 @@ export interface Event {
 export const eventsData: Event[] = [
   // Err_404 6.0
   {
-    id: "err_404_6_0",
+    id: "err-404-6",
     title: "Err_404 6.0",
     type: "Hackathon",
     date: "February 15-16, 2025",
