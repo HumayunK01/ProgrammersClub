@@ -28,6 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.variable}`}>
       <head>
+        {/* Set Site Name for Google */}
+        <meta name="application-name" content="Programmers' Club MHSSCE" />
+        <meta property="og:site_name" content="Programmers' Club MHSSCE" />
+        <meta property="og:title" content="Programmers' Club MHSSCE" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://programmersclub.vercel.app" />
+        
         {/* Preconnect to critical domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
