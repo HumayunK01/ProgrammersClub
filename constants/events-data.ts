@@ -82,13 +82,13 @@ ERR_404 6.0 is a hybrid 36-hour National Hackathon dedicated to fostering innova
 This edition focuses on addressing pressing global challenges while providing participants with a dynamic platform to showcase their technical expertise and innovative thinking.`,
     thumbnailImage: "/assets/events/err_404_6.png",
     posterImage: "/assets/poster/codefeastposter.png",
-    tags: ["Upcoming", "Hackathon"],
+    tags: ["Coding", "Hackathon"],
     startDate: "Sat, Feb 15, 2025",
     registrationEnd: "Jan 26, 2025, 10:00 PM",
     registrationEndTime: "2025-01-26T22:00:00",
     entryFees: "Free",
     venue: {
-      name: "Alma Latifi, Computer Department Labs, Hybrid",
+      name: "Alma Latifi Hall",
       note: "M. H. Saboo Siddik College"
     },
     incharges: [

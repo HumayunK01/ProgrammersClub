@@ -40,7 +40,7 @@ export default function RootLayout({
         />
       </head>
       <body className={montserrat.className}>
-        <HackathonAlert />
+        {/* <HackathonAlert /> */}
         {children}
         <BackToTop />
         <Analytics />
