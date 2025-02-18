@@ -705,7 +705,7 @@ ERR_404 is a 2-days National level Hackathon organized by the Computer Departmen
         website: "https://verbwire.com/"
       }
     ],
-    officialWebsite: ""
+    officialWebsite: "https://programmersclub-mhssce.github.io/Error_404_5.0/"
   },
   // Quiz Mania
   {
@@ -865,7 +865,7 @@ This activity provides students with valuable experience similar to placement ap
         website: "https://www.koshex.com/"
       }
     ],
-    officialWebsite: ""
+    officialWebsite: "https://theprogrammersclub.github.io/ERR_404_4.0/"
   },
   // Err_404 3.0
   {
