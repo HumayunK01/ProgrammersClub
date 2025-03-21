@@ -59,15 +59,15 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 w-full z-[50] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 w-full z-[50] transition-all duration-500 ease-in-out ${
         isScrolled 
-          ? 'bg-white/20 backdrop-blur-lg shadow-sm border-b border-white/40 supports-[backdrop-filter]:bg-white/10' 
+          ? 'bg-white/80 backdrop-blur-lg shadow-sm border-b border-white/40 supports-[backdrop-filter]:bg-white/60' 
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-[30px] md:px-[50px]">
         <nav className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center space-x-2 transition-transform duration-300 hover:scale-105">
+          <Link href="/" className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:opacity-80">
             <Image
               src="/assets/images/logo.png"
               alt="Programmer's Club Logo"
@@ -86,14 +86,22 @@ export function Navbar() {
                   group
                   flex items-center gap-2
                   text-[15px] font-medium 
-                  transition-colors duration-300
+                  transition-all duration-300
                   relative
+                  py-2
                   ${isActive(item.href) 
                     ? 'text-[#4267B2]' 
                     : 'text-black hover:text-[#4267B2]'
                   }
                 `}
               >
+                {isActive(item.href) && (
+                  <motion.div
+                    layoutId="activeIndicatorDesktop"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#4267B2] rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
                 <div className={`
                   transition-colors duration-300
                   ${isActive(item.href) 
@@ -112,7 +120,7 @@ export function Navbar() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="md:hidden h-9 w-9 hover:bg-blue-50"
+                className="md:hidden h-9 w-9 hover:bg-blue-50 transition-colors duration-300"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
@@ -120,7 +128,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent 
               side="right" 
-              className="w-full border-0 bg-gradient-to-br from-white via-blue-50/90 to-blue-100/80 backdrop-blur-lg [&>div>[data-radix-collection-item]]:hidden [&>[data-radix-dialog-close]]:hidden [&>[data-radix-collection-item]]:hidden [&>button[type=button]]:hidden [&>button]:first:hidden"
+              className="w-full border-0 bg-gradient-to-br from-white via-blue-50/90 to-blue-100/80 backdrop-blur-xl [&>div>[data-radix-collection-item]]:hidden [&>[data-radix-dialog-close]]:hidden [&>[data-radix-collection-item]]:hidden [&>button[type=button]]:hidden [&>button]:first:hidden"
             >
               <SheetClose className="!block absolute right-7 top-5 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100">
                 <X className="h-5 w-5" />
@@ -130,17 +138,18 @@ export function Navbar() {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 className="flex flex-col items-center justify-center h-full space-y-6"
               >
                 {menuItems.map((item, index) => (
                   <motion.div
                     key={item.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ 
                       delay: index * 0.1,
-                      duration: 0.3
+                      duration: 0.4,
+                      ease: "easeOut"
                     }}
                   >
                     <SheetClose asChild>
@@ -155,14 +164,14 @@ export function Navbar() {
                           transition-all duration-300
                           relative
                           ${isActive(item.href) 
-                            ? 'text-[#4267B2] bg-blue-50/50' 
-                            : 'text-black hover:text-[#4267B2] hover:bg-blue-50/30'
+                            ? 'text-[#4267B2] bg-blue-50/70' 
+                            : 'text-black hover:text-[#4267B2] hover:bg-blue-50/50'
                           }
                         `}
                       >
                         {isActive(item.href) && (
                           <motion.div
-                            layoutId="activeIndicator"
+                            layoutId="activeIndicatorMobile"
                             className="absolute left-0 w-1 h-1 rounded-full bg-[#4267B2]"
                             transition={{ type: "spring", stiffness: 380, damping: 30 }}
                           />
