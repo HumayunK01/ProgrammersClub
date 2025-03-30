@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
 import { MainCarousel } from "../carousel/main-carousel"
+import { HeroPill } from "@/components/ui/hero-pill"
 
 export function HeroSection() {
   return (
@@ -23,6 +24,15 @@ export function HeroSection() {
           className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
           <div className="space-y-4 md:space-y-5">
+            <div className="flex justify-center lg:justify-start mb-4">
+              <HeroPill 
+                href="/events"
+                label="Photos has been uploaded"
+                announcement="🎉 Hackathon Ended"
+                className="bg-[#40C9CE]/20 ring-[#4267B2] [&_div]:bg-[#4267B2] [&_div]:text-[#40C9CE] [&_p]:text-[#4267B2] [&_svg_path]:fill-[#4267B2]"
+              />
+            </div>
+
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google'
 import "./globals.css";
-import { HackathonAlert } from "@/components/notifications/HackathonAlert"
+// import { HackathonAlert } from "@/components/notifications/HackathonAlert"
 import { BackToTop } from '@/components/BackToTop'
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from "@vercel/speed-insights/next"
