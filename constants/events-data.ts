@@ -37,6 +37,122 @@ export interface Event {
 }
 
 export const eventsData: Event[] = [
+  // Escape Room
+  {
+    id: "escape-room",
+    title: "Escape Room",
+    type: "Game",
+    date: "April 9, 2025",
+    description: `
+    💀 It Takes a Killer to Catch a Killer!
+The Programmers.Club at Anjuman-I-Islam's M. H. Saboo Siddik College of Engineering presents an intense and mind-bending Escape Room Challenge inspired by mystery novels! Step into a world of puzzles, deception, and suspense as you and your team race against time to uncover the truth and make your escape!
+
+🔐 **Event Details:**
+📅 **Date:** 9th April 2025
+⏰ **Time:** 11 AM onwards
+📍 **Venue:** Anjuman-I-Islam's M. H. Saboo Siddik College of Engineering
+💰 **Entry Fee:** ₹100 per person
+
+🕵️‍♂️ **Why Participate?**
+✅ Test your logic, teamwork, and problem-solving skills
+✅ Experience the thrill of a real-life mystery novel setting
+✅ Challenge yourself with intricate puzzles and hidden clues
+✅ Compete against other teams for ultimate bragging rights
+✅ Unravel a suspenseful storyline filled with unexpected twists
+
+🎭 **What Awaits You?**
+🔎 A fully immersive escape room experience
+🧩 Cryptic puzzles, secret codes, and mind-bending challenges
+⏳ A race against the clock - will you escape in time?
+🏆 Exciting rewards for the top teams who crack the mystery
+
+📢 **How to Register?**
+Dare to take on the challenge? Secure your spot now!
+
+🕵️ **Get ready to uncover secrets, solve mysteries, and escape before time runs out!** ⏳🔐
+    `,
+    thumbnailImage: "/assets/events/escaperoom.png",
+    posterImage: "/assets/poster/codefeastposter.png",
+    tags: ["Upcoming", "Puzzle"],
+    startDate: "Sat, Apr 9, 2025",
+    registrationEnd: "Apr 9, 2025, 10:00 AM",
+    registrationEndTime: "2025-04-09T10:00:00",
+    entryFees: "₹400",
+    venue: {
+      name: "College Premises",
+      note: "M. H. Saboo Siddik College"
+    },
+    incharges: [
+      { name: "Dr. Mohammed Ahmed Shaikh" },
+      { name: "Er. Ahlam Ansari" }
+    ],
+    registrationLink: {
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSdrDWb05tuaNcD51d8hD1eao-sKFhWnhFdnmduUdbslHtSy8A/viewform",
+      isOpen: true
+    },
+    teamSize: "4 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    },
+  },
+  // Valorant 2.0
+  {
+    id: "Valorant",
+    title: "Valorant",
+    type: "Game",
+    date: "April 5-6, 2025",
+    description: `
+    🎯 VALORANT SHOWDOWN 2025 - LOCK. AIM. DOMINATE. 🎯
+
+The Programmers.Club of Anjuman-I-Islam's M. H. Saboo Siddik College of Engineering is thrilled to present an electrifying Valorant Tournament – a battleground where strategy meets skill and only the best will emerge victorious! If you think you have what it takes to outplay, outmaneuver, and outshoot the competition, this is your chance to prove your mettle!
+
+🚀 **Tournament Details:**
+📅 **Date:** 5th April 2025
+⏰ **Time:** 11 AM onwards
+📍 **Venue:** Anjuman-I-Islam's M. H. Saboo Siddik College of Engineering
+💰 **Entry Fee:** ₹100 per person
+
+🔥 **Why Join?**
+🔹 Test your gaming prowess against top-tier players
+🔹 Experience the thrill of high-stakes competitive play
+🔹 Get recognized for your tactical brilliance and shooting accuracy
+🔹 Battle in a high-energy, immersive gaming atmosphere
+🔹 Engage with a passionate gaming community
+
+🎯 **Event Highlights:**
+✔ Professional-Grade Competitive Setup - Immerse yourself in a top-tier gaming experience with well-equipped infrastructure.
+✔ Tactical Showdown - Strategize, coordinate, and execute plays like the pros in a thrilling tournament format.
+✔ Recognition & Rewards - Win exciting prizes and earn recognition as one of the best Valorant players in the competition.
+✔ Community & Networking - Meet like-minded gaming enthusiasts, forge new alliances, and expand your esports network.
+
+💥 **Gear up, squad up, and get ready to leave your mark in Valorant history!** 💥
+    `,
+    thumbnailImage: "/assets/events/valorant2.png",
+    posterImage: "/assets/poster/codefeastposter.png",
+    tags: ["Upcoming", "Tournament"],
+    startDate: "Sat, Apr 5, 2025",
+    registrationEnd: "Apr 5, 2025, 10:00 AM",
+    registrationEndTime: "2025-04-05T10:00:00",
+    entryFees: "₹100",
+    venue: {
+      name: "Online",
+      note: "Valorant"
+    },
+    incharges: [
+      { name: "Dr. Mohammed Ahmed Shaikh" },
+      { name: "Er. Ahlam Ansari" }
+    ],
+    registrationLink: {
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSdstGDiFV0q_oM680tlks_HK9XlrA32W8hdyCnYZsJEPizu0g/viewform",
+      isOpen: true
+    },
+    teamSize: "4 - 5 Members",
+    certification: {
+      provided: true,
+      type: "Participation + Merit Certificates"
+    },
+  },
   // Err_404 6.0
   {
     id: "err-404-6",

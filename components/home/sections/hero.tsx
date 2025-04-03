@@ -27,8 +27,8 @@ export function HeroSection() {
             <div className="flex justify-center lg:justify-start mb-4">
               <HeroPill 
                 href="/events"
-                label="Photos has been uploaded"
-                announcement="🎉 Hackathon Ended"
+                label="Checkout our latest events!"
+                announcement="🎉 Ambrosia!"
                 className="bg-[#40C9CE]/20 ring-[#4267B2] [&_div]:bg-[#4267B2] [&_div]:text-[#40C9CE] [&_p]:text-[#4267B2] [&_svg_path]:fill-[#4267B2]"
               />
             </div>
