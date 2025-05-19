@@ -24,14 +24,14 @@ export function HeroSection() {
           className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
           <div className="space-y-4 md:space-y-5">
-            <div className="flex justify-center lg:justify-start mb-4">
+            {/* <div className="flex justify-center lg:justify-start mb-4">
               <HeroPill 
                 href="/events"
                 label="Checkout our latest events!"
                 announcement="🎉 Ambrosia!"
                 className="bg-[#40C9CE]/20 ring-[#4267B2] [&_div]:bg-[#4267B2] [&_div]:text-[#40C9CE] [&_p]:text-[#4267B2] [&_svg_path]:fill-[#4267B2]"
               />
-            </div>
+            </div> */}
 
             <motion.div
               initial={{ scale: 0.95 }}
