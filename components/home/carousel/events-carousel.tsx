@@ -141,7 +141,7 @@ export function EventsCarousel({ events }: { events: Event[] }) {
                     </CardHeader>
 
                     <CardContent className="flex-grow">
-                      <p className="text-gray-600 text-sm line-clamp-4">
+                      <div className="text-gray-600 text-sm line-clamp-4">
                         <ReactMarkdown 
                           components={{
                             strong: ({children}) => <span className="font-bold">{children}</span>
@@ -149,7 +149,7 @@ export function EventsCarousel({ events }: { events: Event[] }) {
                         >
                           {event.description}
                         </ReactMarkdown>
-                      </p>
+                      </div>
                     </CardContent>
 
                     <CardFooter className="flex flex-wrap gap-2 mt-auto">
@@ -235,7 +235,7 @@ export function EventsCarousel({ events }: { events: Event[] }) {
                     </CardHeader>
 
                     <CardContent className="flex-grow">
-                      <p className="text-gray-600 text-sm line-clamp-4">
+                      <div className="text-gray-600 text-sm line-clamp-4">
                         <ReactMarkdown 
                           components={{
                             strong: ({children}) => <span className="font-bold">{children}</span>
@@ -243,7 +243,7 @@ export function EventsCarousel({ events }: { events: Event[] }) {
                         >
                           {event.description}
                         </ReactMarkdown>
-                      </p>
+                      </div>
                     </CardContent>
 
                     <CardFooter className="flex flex-wrap gap-2 mt-auto">

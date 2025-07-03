@@ -9,7 +9,6 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    domains: ['your-image-domain.com'],
   },
 }
 
