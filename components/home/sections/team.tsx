@@ -5,6 +5,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MotionDiv } from "@/components/ui/motion-div"
 
+const motionProps = {
+  initial: { opacity: 0, y: 50 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+}
+
 export function TeamSection() {
   return (
     <section id="team" className="py-8 md:py-16">
@@ -19,10 +25,8 @@ export function TeamSection() {
             className="object-cover w-full h-full absolute"
             priority
           />
-          <MotionDiv 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <MotionDiv
+            {...motionProps}
             transition={{ duration: 0.7 }}
             className="relative z-20 py-12 md:py-20 px-4 sm:px-8 md:px-12 h-full flex flex-col justify-center"
           >
@@ -33,25 +37,15 @@ export function TeamSection() {
               <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
                 The Programmers Club Committee is a dedicated team of students driving innovation and collaboration on campus. They organize events, workshops, and activities that enhance technical skills and foster a passion for programming, creating a dynamic platform for learning and growth.
               </p>
-              <Button 
-                size="lg" 
-                className="
-                  mt-6 sm:mt-8
-                  bg-[#4267B2] hover:bg-[#3b5998]
-                  text-white
-                  shadow-md hover:shadow-lg 
-                  transition-all duration-300 
-                  font-medium 
-                  px-8 py-2 
-                  rounded-full
-                  min-w-[200px]
-                "
+              <Button
+                size="lg"
+                className="mt-6 sm:mt-8 bg-[#4267B2] hover:bg-[#3b5998] text-white shadow-md hover:shadow-lg transition-all duration-300 font-medium px-8 py-2 rounded-full min-w-[200px]"
                 asChild
               >
                 <Link href="/team" className="flex items-center justify-center gap-2">
                   Meet our team
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                    →
+                    &rarr;
                   </span>
                 </Link>
               </Button>

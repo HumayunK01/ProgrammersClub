@@ -5,15 +5,31 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
 import { MainCarousel } from "../carousel/main-carousel"
-import { HeroPill } from "@/components/ui/hero-pill"
+
+// Class variables for reuse and clarity
+const sectionClass = "relative container mx-auto px-[30px] md:px-[50px] overflow-hidden py-5 md:py-9 lg:py-9 mt-4 pt-16 md:pt-24 lg:pt-24"
+const bgPattern1 = "absolute top-20 left-10 w-72 h-72 bg-[#40C9CE]/5 rounded-full mix-blend-multiply filter blur-xl animate-float-slow"
+const bgPattern2 = "absolute bottom-20 right-10 w-96 h-96 bg-[#4267B2]/5 rounded-full mix-blend-multiply filter blur-xl animate-float-slow-reverse"
+const headingClass = "text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold relative z-10"
+const headingGradient = "block lg:py-4 md:py-4 bg-gradient-to-r from-[#40C9CE] via-[#40C9CE] to-[#4267B2] text-transparent bg-clip-text"
+const descClass = "text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0"
+const buttonClass = [
+  "text-sm md:text-base",
+  "bg-[#4267B2] hover:bg-[#3b5998]",
+  "text-white",
+  "transition-all duration-300",
+  "shadow-lg hover:shadow-xl",
+  "rounded-full",
+  "min-w-[200px]",
+  "group"
+].join(" ")
+const chevronClass = "w-6 h-6 md:w-8 md:h-8 animate-bounce text-muted-foreground"
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative container mx-auto px-[30px] md:px-[50px] overflow-hidden py-5 md:py-9 lg:py-9 mt-4 pt-16 md:pt-24 lg:pt-24">
-      {/* Animated background patterns */}
+    <section id="hero" className={sectionClass}>
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#40C9CE]/5 rounded-full mix-blend-multiply filter blur-xl animate-float-slow" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#4267B2]/5 rounded-full mix-blend-multiply filter blur-xl animate-float-slow-reverse" />
+        {/* No background patterns for performance */}
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -24,23 +40,14 @@ export function HeroSection() {
           className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
           <div className="space-y-4 md:space-y-5">
-            {/* <div className="flex justify-center lg:justify-start mb-4">
-              <HeroPill 
-                href="/events"
-                label="Checkout our latest events!"
-                announcement="🎉 Ambrosia!"
-                className="bg-[#40C9CE]/20 ring-[#4267B2] [&_div]:bg-[#4267B2] [&_div]:text-[#40C9CE] [&_p]:text-[#4267B2] [&_svg_path]:fill-[#4267B2]"
-              />
-            </div> */}
-
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
               className="relative inline-block"
             >
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold relative z-10">
-                <span className="block lg:py-4 md:py-4 bg-gradient-to-r from-[#40C9CE] via-[#40C9CE] to-[#4267B2] text-transparent bg-clip-text">
+              <h1 className={headingClass}>
+                <span className={headingGradient}>
                   Programmers' Club
                 </span>
               </h1>
@@ -51,7 +58,7 @@ export function HeroSection() {
               />
             </motion.div>
             
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0">
+            <p className={descClass}>
               Transforming Skills, Inspiring Innovation, and Creating Tomorrow's Trailblazers!
             </p>
           </div>
@@ -64,16 +71,7 @@ export function HeroSection() {
           >
             <Button 
               size="lg" 
-              className="
-                text-sm md:text-base 
-                bg-[#4267B2] hover:bg-[#3b5998] 
-                text-white 
-                transition-all duration-300 
-                shadow-lg hover:shadow-xl 
-                rounded-full
-                min-w-[200px]
-                group
-              " 
+              className={buttonClass}
               asChild
             >
               <Link href="/team" className="flex items-center justify-center gap-2">
@@ -95,7 +93,7 @@ export function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <ChevronDown className="w-6 h-6 md:w-8 md:h-8 animate-bounce text-muted-foreground" />
+        <ChevronDown className={chevronClass} />
       </motion.div>
     </section>
   )

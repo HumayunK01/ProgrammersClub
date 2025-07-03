@@ -3,6 +3,27 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+const sectionMotionProps = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.8 },
+  viewport: { once: true },
+}
+
+const leftColMotionProps = {
+  initial: { opacity: 0, x: -20 },
+  whileInView: { opacity: 1, x: 0 },
+  transition: { duration: 0.8 },
+  viewport: { once: true },
+}
+
+const rightColMotionProps = {
+  initial: { opacity: 0, x: 20 },
+  whileInView: { opacity: 1, x: 0 },
+  transition: { duration: 0.8 },
+  viewport: { once: true },
+}
+
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
@@ -30,7 +51,7 @@ export function ContactSection() {
   }
 
   const validateEmail = (email: string) => {
-   if (!email.endsWith('@mhssce.ac.in')) {
+    if (!email.endsWith('@mhssce.ac.in')) {
       setErrors(prev => ({ ...prev, email: 'Please use MHSSCE College Email Address' }))
       return false
     }
@@ -122,13 +143,7 @@ export function ContactSection() {
       </AnimatePresence>
 
       <div className="max-w-6xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-4 md:mb-8"
-        >
+        <motion.div {...sectionMotionProps} className="text-center mb-4 md:mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-10 h-10 bg-gradient-to-r from-[#3D52A0] to-[#7091E6] rounded-lg flex items-center justify-center">
               <svg 
@@ -156,13 +171,7 @@ export function ContactSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-3 md:space-y-4 p-2 sm:p-3 md:p-4 order-2 md:order-1"
-          >
+          <motion.div {...leftColMotionProps} className="space-y-3 md:space-y-4 p-2 sm:p-3 md:p-4 order-2 md:order-1">
             <motion.button 
               onClick={handleCopyEmail}
               whileHover={{ scale: 1.01 }}
@@ -216,13 +225,7 @@ export function ContactSection() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="backdrop-blur-sm bg-white/50 rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 border border-[#e5edff] order-1 md:order-2 hover:shadow-xl transition-all duration-300"
-          >
+          <motion.div {...rightColMotionProps} className="backdrop-blur-sm bg-white/50 rounded-2xl shadow-lg p-3 sm:p-4 md:p-6 border border-[#e5edff] order-1 md:order-2 hover:shadow-xl transition-all duration-300">
             <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3 md:space-y-4">
               <div className="group">
                 <label htmlFor="name" className="text-[#2d3b6f] font-medium mb-1 text-sm sm:text-base flex items-center gap-2">

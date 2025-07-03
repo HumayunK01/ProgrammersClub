@@ -15,21 +15,8 @@ export function MainCarousel() {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="relative mt-8 lg:mt-0 w-full max-w-full"
+      className="relative mt-8 lg:mt-0 w-full max-w-full shadow-lg rounded-2xl"
     >
-      {/* Decorative elements */}
-      <div className="absolute -inset-6 bg-gradient-to-r from-[#40C9CE]/20 to-[#4267B2]/20 rounded-2xl blur-xl" />
-      <motion.div 
-        className="absolute -top-6 -left-6 w-24 h-24 border-t-2 border-l-2 border-[#40C9CE]/50"
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      />
-      <motion.div 
-        className="absolute -bottom-6 -right-6 w-24 h-24 border-b-2 border-r-2 border-[#4267B2]/50"
-        animate={{ opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-      />
-
       {/* Main Carousel */}
       <Carousel
         className="w-full max-w-2xl mx-auto overflow-hidden rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-sm"
@@ -44,6 +31,7 @@ export function MainCarousel() {
           loop: true,
         }}
       >
+        <div className="absolute inset-0 bg-gradient-to-r from-[#40C9CE]/10 to-[#4267B2]/10 rounded-2xl pointer-events-none" />
         <CarouselContent>
           {[
             "/assets/carousel/event1.png",
@@ -65,20 +53,29 @@ export function MainCarousel() {
                   width={1200}
                   height={900}
                   quality={85}
-                  priority={index === 0 || index === 1}
+                  priority={index === 0}
                   loading={index <= 1 ? "eager" : "lazy"}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-auto aspect-[5/4] object-cover rounded-lg transition-transform duration-300"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
                 {/* Subtle grid pattern */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
               </motion.div>
             </CarouselItem>
           ))}
         </CarouselContent>
+        {/* Top-left accent */}
+        <svg className="absolute top-0 left-0 w-8 h-8" viewBox="0 0 32 32" fill="none">
+          <rect x="0" y="0" width="16" height="4" fill="#40C9CE" />
+          <rect x="0" y="0" width="4" height="16" fill="#40C9CE" />
+        </svg>
+        {/* Bottom-right accent */}
+        <svg className="absolute bottom-0 right-0 w-8 h-8" viewBox="0 0 32 32" fill="none">
+          <rect x="16" y="28" width="16" height="4" fill="#4267B2" />
+          <rect x="28" y="16" width="4" height="16" fill="#4267B2" />
+        </svg>
       </Carousel>
 
       {/* Progress indicator */}

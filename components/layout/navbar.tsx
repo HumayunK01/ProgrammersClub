@@ -5,10 +5,38 @@ import Image from "next/image"
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
-import { HomeIcon, Calendar, Users, Info, X, Menu, BookOpen } from 'lucide-react' //BookOpen
+import { HomeIcon, Calendar, Users, Info, X, Menu, BookOpen } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
 import * as React from "react"
+
+const MENU_ITEMS = [
+  {
+    href: "/",
+    icon: <HomeIcon size={15} strokeWidth={2} aria-label="Home icon" />,
+    label: "Home",
+  },
+  {
+    href: "/about",
+    icon: <Info size={15} strokeWidth={2} aria-label="About Us icon" />,
+    label: "About Us",
+  },
+  {
+    href: "/events",
+    icon: <Calendar size={15} strokeWidth={2} aria-label="Events icon" />,
+    label: "Events",
+  },
+  {
+    href: "/team",
+    icon: <Users size={15} strokeWidth={2} aria-label="Our Team icon" />,
+    label: "Our Team",
+  },
+  {
+    href: "/magazines",
+    icon: <BookOpen size={15} strokeWidth={2} aria-label="Magazines icon" />,
+    label: "Magazines",
+  },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,46 +44,13 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const isActive = (path: string) => pathname === path
-
-  const menuItems = [
-    { 
-      href: "/", 
-      icon: <HomeIcon size={15} strokeWidth={2} />, 
-      label: "Home" 
-    },
-    { 
-      href: "/about", 
-      icon: <Info size={15} strokeWidth={2} />, 
-      label: "About Us" 
-    },
-    { 
-      href: "/events", 
-      icon: <Calendar size={15} strokeWidth={2} />, 
-      label: "Events" 
-    },
-    { 
-      href: "/team", 
-      icon: <Users size={15} strokeWidth={2} />, 
-      label: "Our Team" 
-    },
-    { 
-      href: "/magazines", 
-      icon: <BookOpen size={15} strokeWidth={2} />, 
-      label: "Magazines" 
-    },
-  ];
 
   return (
     <header
@@ -67,7 +62,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-[30px] md:px-[50px]">
         <nav className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:opacity-80">
+          <Link href="/" className="flex items-center space-x-2 transition-all duration-300 hover:scale-105 hover:opacity-80" aria-label="Home">
             <Image
               src="/assets/images/logo.png"
               alt="Programmer's Club Logo"
@@ -78,22 +73,12 @@ export function Navbar() {
             />
           </Link>
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <Link 
+            {MENU_ITEMS.map((item) => (
+              <Link
                 key={item.href}
-                href={item.href} 
-                className={`
-                  group
-                  flex items-center gap-2
-                  text-[15px] font-medium 
-                  transition-all duration-300
-                  relative
-                  py-2
-                  ${isActive(item.href) 
-                    ? 'text-[#4267B2]' 
-                    : 'text-black hover:text-[#4267B2]'
-                  }
-                `}
+                href={item.href}
+                aria-label={item.label}
+                className={`group flex items-center gap-2 text-[15px] font-medium transition-all duration-300 relative py-2 ${isActive(item.href) ? 'text-[#4267B2]' : 'text-black hover:text-[#4267B2]'}`}
               >
                 {isActive(item.href) && (
                   <motion.div
@@ -102,32 +87,25 @@ export function Navbar() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                <div className={`
-                  transition-colors duration-300
-                  ${isActive(item.href) 
-                    ? 'text-[#4267B2]' 
-                    : 'text-black group-hover:text-[#4267B2]'
-                  }
-                `}>
-                  {item.icon}
-                </div>
+                <div className={`transition-colors duration-300 ${isActive(item.href) ? 'text-[#4267B2]' : 'text-black group-hover:text-[#4267B2]'}`}>{item.icon}</div>
                 <span>{item.label}</span>
               </Link>
             ))}
           </div>
           <Sheet>
             <SheetTrigger asChild>
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="md:hidden h-9 w-9 hover:bg-blue-50 transition-colors duration-300"
+                aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent 
-              side="right" 
+            <SheetContent
+              side="right"
               className="w-full border-0 bg-gradient-to-br from-white via-blue-50/90 to-blue-100/80 backdrop-blur-xl [&>div>[data-radix-collection-item]]:hidden [&>[data-radix-dialog-close]]:hidden [&>[data-radix-collection-item]]:hidden [&>button[type=button]]:hidden [&>button]:first:hidden"
             >
               <SheetClose className="!block absolute right-7 top-5 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100">
@@ -135,39 +113,28 @@ export function Navbar() {
                 <span className="sr-only">Close</span>
               </SheetClose>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="flex flex-col items-center justify-center h-full space-y-6"
               >
-                {menuItems.map((item, index) => (
+                {MENU_ITEMS.map((item, index) => (
                   <motion.div
                     key={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ 
+                    transition={{
                       delay: index * 0.1,
                       duration: 0.4,
                       ease: "easeOut"
                     }}
                   >
                     <SheetClose asChild>
-                      <Link 
+                      <Link
                         href={item.href}
-                        className={`
-                          group
-                          flex items-center gap-3 
-                          py-2 px-4
-                          rounded-lg 
-                          text-lg font-medium 
-                          transition-all duration-300
-                          relative
-                          ${isActive(item.href) 
-                            ? 'text-[#4267B2] bg-blue-50/70' 
-                            : 'text-black hover:text-[#4267B2] hover:bg-blue-50/50'
-                          }
-                        `}
+                        aria-label={item.label}
+                        className={`group flex items-center gap-3 py-2 px-4 rounded-lg text-lg font-medium transition-all duration-300 relative ${isActive(item.href) ? 'text-[#4267B2] bg-blue-50/70' : 'text-black hover:text-[#4267B2] hover:bg-blue-50/50'}`}
                       >
                         {isActive(item.href) && (
                           <motion.div
@@ -176,16 +143,11 @@ export function Navbar() {
                             transition={{ type: "spring", stiffness: 380, damping: 30 }}
                           />
                         )}
-                        <div className={`
-                          transition-colors duration-300
-                          ${isActive(item.href) 
-                            ? 'text-[#4267B2]' 
-                            : 'text-black group-hover:text-[#4267B2]'
-                          }
-                        `}>
+                        <div className={`transition-colors duration-300 ${isActive(item.href) ? 'text-[#4267B2]' : 'text-black group-hover:text-[#4267B2]'}`}>
                           {React.cloneElement(item.icon as React.ReactElement, {
                             size: 18,
-                            strokeWidth: 2
+                            strokeWidth: 2,
+                            'aria-label': item.label + ' icon',
                           })}
                         </div>
                         {item.label}
