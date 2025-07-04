@@ -1,94 +1,16 @@
-# Programmers Club 🚀
+# Programmers Club V1.0
 
-A sleek and responsive landing page built with Next.js 14, featuring dynamic sections and smooth scrolling effects.
+## ⚠️ Project Archived – Version 2.0 Coming Soon!
 
-## 🖥️ Live Preview
+Hello everyone 👋,
 
-![Website Preview](public/preview.png)
+I want to let you know that development on **Version 1.0** of this project has officially been stopped.
 
-> 💡 Live demo: [View Demo](https://programmersclub.vercel.app/)
+Due to some unresolved critical errors and an unfortunate loss of important project files that cannot be recovered, I’ve decided to discontinue this version. I truly tried my best to fix the issues, but they kept getting worse over time and became too complex to handle within the current setup.
 
-## ✨ Features
+But here’s the good news — **Version 2.0** is on the way! 🚀  
+The new version will be rebuilt from the ground up with improved structure, cleaner code, and better stability. Every challenge faced in this version is shaping the next one to be more robust and maintainable.
 
-- 🎨 Modern, responsive design
-- 📱 Smart navbar with scroll detection
-- 🌈 Custom background effects
-- 📑 Multiple content sections (Hero, About, Events, Team)
-- 🔧 Built with TypeScript for type safety
-- 🎭 Smooth animations and transitions
-- 📱 Mobile-first approach
-- 🔍 SEO optimized
-- 🚀 Fast page loads
-- 🌐 Cross-browser compatible
+Thank you for your understanding and support. Stay tuned — exciting things are coming soon! 😊
 
-## 🛠️ Tech Stack
-
-- Next.js 14
-- React
-- TypeScript
-- CSS Modules
-- Framer Motion (for animations)
-- ESLint (code quality)
-- Prettier (code formatting)
-- Vercel (deployment)
-
-## 🎨 Design Features
-
-- Minimalist and clean UI
-- Custom color palette
-- Responsive typography
-- Modern card designs
-- Interactive hover effects
-- Smooth scroll behavior
-
-## 🚀 Getting Started
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/HumayunK01/programmersclub.git
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) to view the site
-
-## 📁 Components Overview
-
-- **Navbar**: Responsive navigation with scroll-based styling
-- **Background**: Wrapper component for visual effects
-- **Sections**:
-  - Hero: Main landing section
-  - About: Project/company information
-  - Events: Events showcase
-  - Team: Team members display
-- **Footer**: Site footer with links
-
-## 💡 Usage Tips
-
-- Use the navigation menu to jump to different sections
-- Explore hover effects on interactive elements
-- Check out the responsive design on different devices
-- Experience smooth scrolling animations
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-Copyright © 2024 [Humayun Khan](https://devhumayun.vercel.app/). <br />
-This project is licensed under the MIT License.
-
-## 📧 Contact
-
-Your Name - [humayunk.pvt@gmail.com](mailto:humayunk.pvt@gmail.com)
-
-**[⬆ back to top](#programmers-club-)**
+**– Humayun**
